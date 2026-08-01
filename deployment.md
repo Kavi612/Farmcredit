@@ -289,22 +289,32 @@ git commit -m "Add Vercel landing page"
 git push
 ```
 
+The repo includes a root `vercel.json` that serves the `landing/` folder as a static site (so Vercel does **not** treat the project as Python).
+
+Commit and push before deploying:
+
+```powershell
+git add landing/ vercel.json requirements.txt
+git commit -m "Add Vercel static landing config"
+git push
+```
+
 ### Step 3.2 — Import project on Vercel
 
 1. Log in to [vercel.com](https://vercel.com) → **Add New…** → **Project**.
 2. Import the same GitHub repository.
-3. On the **Configure Project** screen, click **Edit** next to **Root Directory** and set it to `landing`.
+3. Prefer setting **Root Directory** to `landing` (avoids Python autodetection from root `requirements.txt`).
 4. Configure every field like this:
 
 | Field | Value | Notes |
 |-------|--------|--------|
-| **Framework Preset** | **Other** | Static HTML — not Next.js |
+| **Framework Preset** | **Other** | Static HTML — not Next.js / not Python |
 | **Root Directory** | `landing` | Click **Edit** → select the `landing` folder |
 | **Build Command** | *(empty — delete any default)* | No build step for plain HTML |
-| **Output Directory** | *(empty — leave blank)* | Vercel serves files from `landing/` directly |
+| **Output Directory** | *(empty — leave blank)* | With Root Directory = `landing`, Vercel serves that folder |
 | **Install Command** | *(empty — leave blank)* | No npm/pip install needed |
 
-> **Common mistake:** If Root Directory stays at repo root, Vercel looks for `package.json` and may fail. Always set Root Directory to `landing` before deploying.
+> **If you see “No python entrypoint found”:** Vercel detected root `requirements.txt` as a Python app. Fix: Project → **Settings** → **General** → **Root Directory** = `landing` → Save → **Deployments** → Redeploy. Do **not** add `app.py` / `main.py` for Vercel.
 
 5. Click **Deploy**.
 
@@ -412,10 +422,16 @@ Update **`README.md`** demo table:
 - Set Python 3.11 in Streamlit Cloud advanced settings.
 - Check build logs for missing packages.
 
+### Vercel: “No python entrypoint found”
+
+- Vercel wrongly chose **Python** because of root `requirements.txt` (that file is for Streamlit Cloud, not Vercel).
+- Set **Root Directory** to `landing`, Framework = **Other**, clear Build/Install commands, then Redeploy.
+- Do not create `app.py` / `main.py` just to satisfy Vercel.
+
 ### Vercel shows 404 or “No Output Directory”
 
 - **Root Directory** must be `landing` (Project → Settings → General → Root Directory).
-- **Build Command** and **Output Directory** should both be **empty** for this static site.
+- **Build Command** and **Output Directory** should both be **empty** when Root Directory is `landing`.
 - Confirm `landing/index.html` exists in Git.
 
 ### Render shows Build Command / Start Command instead of Dockerfile
