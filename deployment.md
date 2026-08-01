@@ -63,19 +63,25 @@ Replace `YOUR_USERNAME/farmcredit-ai` with your repository.
 1. Log in to [dashboard.render.com](https://dashboard.render.com).
 2. Click **New +** → **Web Service**.
 3. Connect your GitHub account if prompted.
-4. Select the **farmcredit-ai** repository.
-5. Configure the service:
+4. Select the **Farmcredit** repository (or your fork).
+5. Configure the service — use **exactly** these values:
 
-| Field | Value |
-|-------|--------|
-| **Name** | `farmcredit-api` (or any name) |
-| **Region** | Choose closest to your users (e.g. Singapore / Frankfurt) |
-| **Branch** | `main` |
-| **Runtime** | **Docker** |
-| **Dockerfile path** | `Dockerfile` (repo root) |
-| **Instance type** | Free (demo) or Starter (always-on, faster cold starts) |
+| Field | Value | Notes |
+|-------|--------|--------|
+| **Name** | `farmcredit-api` | Any name is fine |
+| **Region** | Closest to your users | e.g. Singapore / Frankfurt |
+| **Branch** | `main` | |
+| **Root Directory** | *(leave blank)* | Repo root — do **not** set `backend` or `frontend` |
+| **Runtime** | **Docker** | Must be Docker (not Python) |
+| **Dockerfile Path** | `Dockerfile` | File at repo root |
+| **Docker Build Context Directory** | *(leave blank)* | Same as repo root |
+| **Build Command** | *(not shown / leave empty)* | Render builds via `Dockerfile` — no separate build command |
+| **Start Command** | *(leave blank)* | Uses `CMD` from `Dockerfile` |
+| **Instance type** | Free or Starter | Free spins down after idle |
 
-6. Click **Advanced** and set **Health Check Path** to `/health` (optional but recommended).
+> **If you picked Python by mistake:** switch **Runtime** to **Docker**. Python mode shows Build Command / Start Command instead — this project is meant to deploy with the root `Dockerfile`.
+
+6. Expand **Advanced** and set **Health Check Path** to `/health`.
 
 ### Step 1.3 — Set environment variables on Render
 
@@ -155,11 +161,20 @@ git push
 ### Step 2.2 — Create the Streamlit Cloud app
 
 1. Go to [share.streamlit.io](https://share.streamlit.io) and sign in with GitHub.
-2. Click **New app**.
+2. Click **Create app** (or **New app**).
 3. Select your repository and branch (`main`).
-4. Set **Main file path:**  
-   `frontend/streamlit_app.py`
-5. Under **Advanced settings:**
+4. Fill in the deploy form:
+
+| Field | Value | Notes |
+|-------|--------|--------|
+| **Repository** | `Kavi612/Farmcredit` | Your GitHub repo |
+| **Branch** | `main` | |
+| **Main file path** | `frontend/streamlit_app.py` | Not root directory — this is the entry file |
+| **App URL** | `farmcredit-ai` (or your choice) | Becomes `https://farmcredit-ai.streamlit.app` |
+| **Root Directory** | *(not used)* | Streamlit Cloud has no root-directory field |
+| **Build Command** | *(not used)* | Installs from repo-root `requirements.txt` automatically |
+
+5. Click **Advanced settings** (optional):
    - **Python version:** 3.11
    - **Secrets:** add (replace with your Render URL):
 
@@ -271,16 +286,20 @@ git push
 
 1. Log in to [vercel.com](https://vercel.com) → **Add New…** → **Project**.
 2. Import the same GitHub repository.
-3. Configure:
+3. On the **Configure Project** screen, click **Edit** next to **Root Directory** and set it to `landing`.
+4. Configure every field like this:
 
-| Field | Value |
-|-------|--------|
-| **Framework Preset** | Other |
-| **Root Directory** | `landing` |
-| **Build Command** | (leave empty) |
-| **Output Directory** | `.` |
+| Field | Value | Notes |
+|-------|--------|--------|
+| **Framework Preset** | **Other** | Static HTML — not Next.js |
+| **Root Directory** | `landing` | Click **Edit** → select the `landing` folder |
+| **Build Command** | *(empty — delete any default)* | No build step for plain HTML |
+| **Output Directory** | *(empty — leave blank)* | Vercel serves files from `landing/` directly |
+| **Install Command** | *(empty — leave blank)* | No npm/pip install needed |
 
-4. Click **Deploy**.
+> **Common mistake:** If Root Directory stays at repo root, Vercel looks for `package.json` and may fail. Always set Root Directory to `landing` before deploying.
+
+5. Click **Deploy**.
 
 ### Step 3.3 — Custom domain (optional)
 
@@ -386,10 +405,16 @@ Update **`README.md`** demo table:
 - Set Python 3.11 in Streamlit Cloud advanced settings.
 - Check build logs for missing packages.
 
-### Vercel shows 404
+### Vercel shows 404 or “No Output Directory”
 
-- Confirm **Root Directory** is set to `landing`.
-- Confirm `index.html` exists inside `landing/`.
+- **Root Directory** must be `landing` (Project → Settings → General → Root Directory).
+- **Build Command** and **Output Directory** should both be **empty** for this static site.
+- Confirm `landing/index.html` exists in Git.
+
+### Render shows Build Command / Start Command instead of Dockerfile
+
+- You selected **Python** runtime. Delete the service and recreate with **Runtime → Docker**.
+- For Docker: **Root Directory** blank, **Dockerfile Path** = `Dockerfile`, no build command.
 
 ---
 
