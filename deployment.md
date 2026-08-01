@@ -146,22 +146,17 @@ Also check API docs:
 
 **Streamlit is a long-running Python server.** It does **not** run on Vercel serverless. Use **Streamlit Community Cloud** (free) for the UI.
 
-### Step 2.1 — Add a root requirements file (if missing)
+### Step 2.1 — Push Streamlit Cloud files
 
-Streamlit Cloud looks for `requirements.txt` at the repo root. Create or ensure this file exists:
+Repo root must include:
 
-**`requirements.txt`** (repo root):
-
-```text
--r requirements-demo.txt
-streamlit-javascript>=0.1.5,<1.0.0
-```
-
-Commit and push:
+- `requirements.txt` — frontend-only deps (already set for Streamlit Cloud)
+- `frontend/streamlit_app.py` — main entry
+- `.streamlit/config.toml` — theme/server defaults
 
 ```powershell
-git add requirements.txt
-git commit -m "Add root requirements for Streamlit Cloud"
+git add requirements.txt frontend/utils/api.py .streamlit/ landing/ vercel.json deployment.md
+git commit -m "Prepare Streamlit Cloud deploy"
 git push
 ```
 
@@ -176,20 +171,19 @@ git push
 |-------|--------|--------|
 | **Repository** | `Kavi612/Farmcredit` | Your GitHub repo |
 | **Branch** | `main` | |
-| **Main file path** | `frontend/streamlit_app.py` | Not root directory — this is the entry file |
+| **Main file path** | `frontend/streamlit_app.py` | Required — this is the app entry |
 | **App URL** | `farmcredit-ai` (or your choice) | Becomes `https://farmcredit-ai.streamlit.app` |
-| **Root Directory** | *(not used)* | Streamlit Cloud has no root-directory field |
-| **Build Command** | *(not used)* | Installs from repo-root `requirements.txt` automatically |
 
-5. Click **Advanced settings** (optional):
+5. Click **Advanced settings**:
    - **Python version:** 3.11
-   - **Secrets:** add (replace with your Render URL):
+   - **Secrets:** paste (use your real Render URL, no trailing slash):
 
 ```toml
-FARMCREDIT_API_URL = "https://farmcredit-api.onrender.com"
+FARMCREDIT_API_URL = "https://YOUR-RENDER-SERVICE.onrender.com"
 ```
 
 6. Click **Deploy**.
+7. Copy your Streamlit URL, then update `landing/index.html` “Open live demo” link and redeploy Vercel.
 
 ### Step 2.3 — Verify the frontend
 

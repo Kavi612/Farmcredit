@@ -21,6 +21,17 @@ class ApiError(Exception):
 
 
 def get_base_url() -> str:
+    """Resolve API URL: Streamlit secrets → env var → local default."""
+    # Streamlit Cloud secrets (Settings → Secrets)
+    try:
+        import streamlit as st
+
+        secret = st.secrets.get("FARMCREDIT_API_URL")
+        if secret:
+            return str(secret).rstrip("/")
+    except Exception:  # noqa: BLE001 — no streamlit / no secrets file locally
+        pass
+
     return os.getenv("FARMCREDIT_API_URL", DEFAULT_BASE_URL).rstrip("/")
 
 
