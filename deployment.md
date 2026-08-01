@@ -66,20 +66,27 @@ Replace `YOUR_USERNAME/farmcredit-ai` with your repository.
 4. Select the **Farmcredit** repository (or your fork).
 5. Configure the service — use **exactly** these values:
 
-| Field | Value | Notes |
-|-------|--------|--------|
-| **Name** | `farmcredit-api` | Any name is fine |
-| **Region** | Closest to your users | e.g. Singapore / Frankfurt |
-| **Branch** | `main` | |
-| **Root Directory** | *(leave blank)* | Repo root — do **not** set `backend` or `frontend` |
-| **Runtime** | **Docker** | Must be Docker (not Python) |
-| **Dockerfile Path** | `Dockerfile` | File at repo root |
-| **Docker Build Context Directory** | *(leave blank)* | Same as repo root |
-| **Build Command** | *(not shown / leave empty)* | Render builds via `Dockerfile` — no separate build command |
-| **Start Command** | *(leave blank)* | Uses `CMD` from `Dockerfile` |
-| **Instance type** | Free or Starter | Free spins down after idle |
+| Field | Value |
+|-------|--------|
+| **Name** | `farmcredit-api` (or any name) |
+| **Region** | Choose closest to your users (e.g. Singapore / Frankfurt) |
+| **Branch** | `main` |
+| **Runtime** | **Docker** |
+| **Dockerfile path** | `Dockerfile` (repo root) |
+| **Instance type** | Free (demo) or Starter (always-on, faster cold starts) |
 
 > **If you picked Python by mistake:** switch **Runtime** to **Docker**. Python mode shows Build Command / Start Command instead — this project is meant to deploy with the root `Dockerfile`.
+
+**If you stay on Python (what Render shows by default):**
+
+| Field | Value |
+|-------|--------|
+| **Root Directory** | *(leave blank)* |
+| **Build Command** | `pip install -r backend/requirements.txt` |
+| **Start Command** | `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT` |
+| **Instance Type** | Free |
+
+Also add env var `PYTHONPATH` = `.` (or leave blank if Render uses repo root as cwd). Prefer **Docker** when you can; Python free tier can OOM on heavy ML deps.
 
 6. Expand **Advanced** and set **Health Check Path** to `/health`.
 
