@@ -1,0 +1,2 @@
+-r requirements-demo.txt
+streamlit-javascript>=0.1.5,<1.0.0
