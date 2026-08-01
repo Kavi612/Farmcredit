@@ -1,0 +1,12 @@
+RMSE=0.0804
+MAE=0.0627
+AUC=0.9620933791089293
+
+              precision    recall  f1-score   support
+
+    low_risk       0.90      0.94      0.92       968
+   high_risk       0.88      0.81      0.84       532
+
+    accuracy                           0.89      1500
+   macro avg       0.89      0.87      0.88      1500
+weighted avg       0.89      0.89      0.89      1500

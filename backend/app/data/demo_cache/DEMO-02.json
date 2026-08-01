@@ -1,0 +1,165 @@
+{
+  "id": "DEMO-02",
+  "display_name": "Savita Patil",
+  "narrative": "Small soybean holder in Vidarbha with moderate leverage and mixed credit pressure.",
+  "expected_risk_level": "Medium",
+  "features": {
+    "state": "MH",
+    "district": "MH-Vidarbha",
+    "crop_type": "Soybean",
+    "season": "Kharif",
+    "land_size_ha": 1.2,
+    "soil_type": "Black",
+    "rainfall_mm": 780,
+    "irrigation_type": "Tubewell",
+    "loan_amount_inr": 180000,
+    "prior_loan_count": 2,
+    "prior_default_flag": 0,
+    "repayment_score": 62,
+    "annual_income_inr": 165000,
+    "existing_debt_inr": 70000
+  },
+  "prediction": {
+    "risk_score": 0.4094,
+    "risk_level": "Medium"
+  },
+  "explanation": {
+    "baseline": 0.4322,
+    "prediction": 0.4094,
+    "risk_level": "Medium",
+    "top_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 165000,
+        "shap_value": -0.203318,
+        "direction": "decreases_risk",
+        "points": -20,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "existing_debt_inr",
+        "display_label": "Existing debt",
+        "feature_value": 70000,
+        "shap_value": 0.070033,
+        "direction": "increases_risk",
+        "points": 7,
+        "plain_hint": "Existing debt increased pressure on repayment capacity"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 180000,
+        "shap_value": 0.060216,
+        "direction": "increases_risk",
+        "points": 6,
+        "plain_hint": "Loan size is high relative to what similar farms typically carry"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 62,
+        "shap_value": 0.03261,
+        "direction": "increases_risk",
+        "points": 3,
+        "plain_hint": "Weaker repayment history increased risk"
+      },
+      {
+        "feature": "district",
+        "display_label": "District",
+        "feature_value": "MH-Vidarbha",
+        "shap_value": 0.015237,
+        "direction": "increases_risk",
+        "points": 2,
+        "plain_hint": "Local district conditions raised risk vs baseline"
+      }
+    ],
+    "protective_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 165000,
+        "shap_value": -0.203318,
+        "direction": "decreases_risk",
+        "points": -20,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "prior_default_flag",
+        "display_label": "Prior default",
+        "feature_value": 0,
+        "shap_value": -0.011739,
+        "direction": "decreases_risk",
+        "points": -1,
+        "plain_hint": "No prior default helped keep risk lower"
+      },
+      {
+        "feature": "irrigation_type",
+        "display_label": "Irrigation",
+        "feature_value": "Tubewell",
+        "shap_value": -0.004501,
+        "direction": "decreases_risk",
+        "points": 0,
+        "plain_hint": "Irrigation setup helped protect against weather stress"
+      }
+    ]
+  },
+  "advisory_text": "Namaste Savita Patil. Your FarmCredit risk level is Medium. Main pressure points: Existing debt increased pressure on repayment capacity; Loan size is high relative to what similar farms typically carry; Weaker repayment history increased risk. What is helping: Farm income provides a stronger buffer for repayment. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+  "report": {
+    "title": "FarmCredit risk brief \u2014 Savita Patil",
+    "risk_score": 0.4094,
+    "risk_level": "Medium",
+    "top_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 165000,
+        "shap_value": -0.203318,
+        "direction": "decreases_risk",
+        "points": -20,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "existing_debt_inr",
+        "display_label": "Existing debt",
+        "feature_value": 70000,
+        "shap_value": 0.070033,
+        "direction": "increases_risk",
+        "points": 7,
+        "plain_hint": "Existing debt increased pressure on repayment capacity"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 180000,
+        "shap_value": 0.060216,
+        "direction": "increases_risk",
+        "points": 6,
+        "plain_hint": "Loan size is high relative to what similar farms typically carry"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 62,
+        "shap_value": 0.03261,
+        "direction": "increases_risk",
+        "points": 3,
+        "plain_hint": "Weaker repayment history increased risk"
+      },
+      {
+        "feature": "district",
+        "display_label": "District",
+        "feature_value": "MH-Vidarbha",
+        "shap_value": 0.015237,
+        "direction": "increases_risk",
+        "points": 2,
+        "plain_hint": "Local district conditions raised risk vs baseline"
+      }
+    ],
+    "advisory_text": "Namaste Savita Patil. Your FarmCredit risk level is Medium. Main pressure points: Existing debt increased pressure on repayment capacity; Loan size is high relative to what similar farms typically carry; Weaker repayment history increased risk. What is helping: Farm income provides a stronger buffer for repayment. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+    "generated_at": "2026-08-01T07:58:14.540516+00:00",
+    "cached": true
+  },
+  "cached": true,
+  "generated_at": "2026-08-01T07:58:14.540529+00:00"
+}

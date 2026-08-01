@@ -1,0 +1,3516 @@
+{
+  "label": "Illustrative portfolio for dashboard demo \u2014 not real applicants.",
+  "n_rows": 45,
+  "applications": [
+    {
+      "application_id": "DEMO-04",
+      "display_name": "Anita Devi",
+      "is_demo": true,
+      "narrative": "Small rice holding with prior default and heavy debt \u2014 critical repayment stress.",
+      "state": "BR",
+      "state_name": "Bihar",
+      "district": "BR-Gangetic",
+      "crop_type": "Rice",
+      "season": "Kharif",
+      "loan_amount_inr": 220000,
+      "land_size_ha": 0.6,
+      "risk_score": 1.0,
+      "risk_level": "Critical",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 180000,
+          "shap_value": 0.169916,
+          "direction": "increases_risk",
+          "points": 17,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.11147,
+          "direction": "increases_risk",
+          "points": 11,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 220000,
+          "shap_value": 0.10817,
+          "direction": "increases_risk",
+          "points": 11,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 28,
+          "shap_value": 0.056416,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 75000,
+          "shap_value": 0.032548,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Farm income looks thin for the loan burden"
+        }
+      ],
+      "features": {
+        "state": "BR",
+        "district": "BR-Gangetic",
+        "crop_type": "Rice",
+        "season": "Kharif",
+        "land_size_ha": 0.6,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 900.0,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 220000,
+        "prior_loan_count": 5,
+        "prior_default_flag": 1,
+        "repayment_score": 28.0,
+        "annual_income_inr": 75000,
+        "existing_debt_inr": 180000
+      }
+    },
+    {
+      "application_id": "APP-0026",
+      "display_name": "Vikram Devi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Western",
+      "crop_type": "Maize",
+      "season": "Kharif",
+      "loan_amount_inr": 56825,
+      "land_size_ha": 0.45,
+      "risk_score": 0.8844,
+      "risk_level": "Critical",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 239785,
+          "shap_value": 0.248376,
+          "direction": "increases_risk",
+          "points": 25,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.139215,
+          "direction": "increases_risk",
+          "points": 14,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 56825,
+          "shap_value": -0.066278,
+          "direction": "decreases_risk",
+          "points": -7,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 58.37151877781545,
+          "shap_value": 0.046043,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 542.9,
+          "shap_value": 0.040195,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Western",
+        "crop_type": "Maize",
+        "season": "Kharif",
+        "land_size_ha": 0.45,
+        "soil_type": "Laterite",
+        "rainfall_mm": 542.9,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 56825,
+        "prior_loan_count": 0,
+        "prior_default_flag": 1,
+        "repayment_score": 58.37151877781545,
+        "annual_income_inr": 69371,
+        "existing_debt_inr": 239785
+      }
+    },
+    {
+      "application_id": "APP-0036",
+      "display_name": "Meena Pillai",
+      "is_demo": false,
+      "narrative": null,
+      "state": "GJ",
+      "state_name": "Gujarat",
+      "district": "GJ-Central",
+      "crop_type": "Groundnut",
+      "season": "Rabi",
+      "loan_amount_inr": 44722,
+      "land_size_ha": 0.22,
+      "risk_score": 0.8393,
+      "risk_level": "Critical",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 230029,
+          "shap_value": 0.285381,
+          "direction": "increases_risk",
+          "points": 29,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 44722,
+          "shap_value": -0.08234,
+          "direction": "decreases_risk",
+          "points": -8,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 27.86171101751463,
+          "shap_value": 0.081131,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.22,
+          "shap_value": 0.072945,
+          "direction": "increases_risk",
+          "points": 7,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 54160,
+          "shap_value": 0.05544,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Farm income looks thin for the loan burden"
+        }
+      ],
+      "features": {
+        "state": "GJ",
+        "district": "GJ-Central",
+        "crop_type": "Groundnut",
+        "season": "Rabi",
+        "land_size_ha": 0.22,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 935.2,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 44722,
+        "prior_loan_count": 5,
+        "prior_default_flag": 0,
+        "repayment_score": 27.86171101751463,
+        "annual_income_inr": 54160,
+        "existing_debt_inr": 230029
+      }
+    },
+    {
+      "application_id": "APP-0034",
+      "display_name": "Geeta Devi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "GJ",
+      "state_name": "Gujarat",
+      "district": "GJ-Saurashtra",
+      "crop_type": "Cotton",
+      "season": "Kharif",
+      "loan_amount_inr": 79737,
+      "land_size_ha": 0.97,
+      "risk_score": 0.7804,
+      "risk_level": "Critical",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 155467,
+          "shap_value": 0.1999,
+          "direction": "increases_risk",
+          "points": 20,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.146839,
+          "direction": "increases_risk",
+          "points": 15,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 36.70327539824167,
+          "shap_value": 0.084119,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 79737,
+          "shap_value": -0.046605,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1177.9,
+          "shap_value": -0.039286,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "GJ",
+        "district": "GJ-Saurashtra",
+        "crop_type": "Cotton",
+        "season": "Kharif",
+        "land_size_ha": 0.97,
+        "soil_type": "Laterite",
+        "rainfall_mm": 1177.9,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 79737,
+        "prior_loan_count": 5,
+        "prior_default_flag": 1,
+        "repayment_score": 36.70327539824167,
+        "annual_income_inr": 80268,
+        "existing_debt_inr": 155467
+      }
+    },
+    {
+      "application_id": "APP-0008",
+      "display_name": "Nisha Das",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Bundelkhand",
+      "crop_type": "Maize",
+      "season": "Kharif",
+      "loan_amount_inr": 57774,
+      "land_size_ha": 0.5,
+      "risk_score": 0.7625,
+      "risk_level": "Critical",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 229413,
+          "shap_value": 0.277464,
+          "direction": "increases_risk",
+          "points": 28,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 57774,
+          "shap_value": -0.075907,
+          "direction": "decreases_risk",
+          "points": -8,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 57.309452365942384,
+          "shap_value": 0.052234,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 592.6,
+          "shap_value": 0.035145,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.5,
+          "shap_value": 0.02617,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Bundelkhand",
+        "crop_type": "Maize",
+        "season": "Kharif",
+        "land_size_ha": 0.5,
+        "soil_type": "Sandy",
+        "rainfall_mm": 592.6,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 57774,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 57.309452365942384,
+        "annual_income_inr": 63889,
+        "existing_debt_inr": 229413
+      }
+    },
+    {
+      "application_id": "APP-0022",
+      "display_name": "Ravi Reddy",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Eastern",
+      "crop_type": "Soybean",
+      "season": "Rabi",
+      "loan_amount_inr": 78988,
+      "land_size_ha": 0.87,
+      "risk_score": 0.7301,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 206488,
+          "shap_value": 0.242938,
+          "direction": "increases_risk",
+          "points": 24,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.153409,
+          "direction": "increases_risk",
+          "points": 15,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 95006,
+          "shap_value": -0.049822,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 78988,
+          "shap_value": -0.048096,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1106.5,
+          "shap_value": -0.018156,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Eastern",
+        "crop_type": "Soybean",
+        "season": "Rabi",
+        "land_size_ha": 0.87,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 1106.5,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 78988,
+        "prior_loan_count": 0,
+        "prior_default_flag": 1,
+        "repayment_score": 73.79325537408675,
+        "annual_income_inr": 95006,
+        "existing_debt_inr": 206488
+      }
+    },
+    {
+      "application_id": "APP-0018",
+      "display_name": "Suresh Pillai",
+      "is_demo": false,
+      "narrative": null,
+      "state": "GJ",
+      "state_name": "Gujarat",
+      "district": "GJ-South",
+      "crop_type": "Rice",
+      "season": "Kharif",
+      "loan_amount_inr": 85400,
+      "land_size_ha": 1.07,
+      "risk_score": 0.6847,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 133289,
+          "shap_value": 0.191076,
+          "direction": "increases_risk",
+          "points": 19,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 41.99712366224685,
+          "shap_value": 0.091278,
+          "direction": "increases_risk",
+          "points": 9,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 87186,
+          "shap_value": -0.053809,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.049759,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 85400,
+          "shap_value": -0.048333,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        }
+      ],
+      "features": {
+        "state": "GJ",
+        "district": "GJ-South",
+        "crop_type": "Rice",
+        "season": "Kharif",
+        "land_size_ha": 1.07,
+        "soil_type": "Laterite",
+        "rainfall_mm": 666.7,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 85400,
+        "prior_loan_count": 0,
+        "prior_default_flag": 0,
+        "repayment_score": 41.99712366224685,
+        "annual_income_inr": 87186,
+        "existing_debt_inr": 133289
+      }
+    },
+    {
+      "application_id": "APP-0003",
+      "display_name": "Geeta Verma",
+      "is_demo": false,
+      "narrative": null,
+      "state": "BR",
+      "state_name": "Bihar",
+      "district": "BR-South",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "loan_amount_inr": 81585,
+      "land_size_ha": 0.99,
+      "risk_score": 0.6827,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.158388,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 90976,
+          "shap_value": 0.123982,
+          "direction": "increases_risk",
+          "points": 12,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 84557,
+          "shap_value": -0.059174,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 81585,
+          "shap_value": -0.054924,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "BR-South",
+          "shap_value": 0.049141,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Local district conditions raised risk vs baseline"
+        }
+      ],
+      "features": {
+        "state": "BR",
+        "district": "BR-South",
+        "crop_type": "Soybean",
+        "season": "Kharif",
+        "land_size_ha": 0.99,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 730.1,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 81585,
+        "prior_loan_count": 3,
+        "prior_default_flag": 1,
+        "repayment_score": 72.4291870087278,
+        "annual_income_inr": 84557,
+        "existing_debt_inr": 90976
+      }
+    },
+    {
+      "application_id": "DEMO-03",
+      "display_name": "Ramesh Jadhav",
+      "is_demo": true,
+      "narrative": "Rainfed cotton in Marathwada under low rainfall \u2014 classic climate-credit stress.",
+      "state": "MH",
+      "state_name": "Maharashtra",
+      "district": "MH-Marathwada",
+      "crop_type": "Cotton",
+      "season": "Kharif",
+      "loan_amount_inr": 200000,
+      "land_size_ha": 1.0,
+      "risk_score": 0.6814,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 130000,
+          "shap_value": -0.144186,
+          "direction": "decreases_risk",
+          "points": -14,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 520,
+          "shap_value": 0.083663,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 90000,
+          "shap_value": 0.081423,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 200000,
+          "shap_value": 0.07968,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 52,
+          "shap_value": 0.062541,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        }
+      ],
+      "features": {
+        "state": "MH",
+        "district": "MH-Marathwada",
+        "crop_type": "Cotton",
+        "season": "Kharif",
+        "land_size_ha": 1.0,
+        "soil_type": "Black",
+        "rainfall_mm": 520.0,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 200000,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 52.0,
+        "annual_income_inr": 130000,
+        "existing_debt_inr": 90000
+      }
+    },
+    {
+      "application_id": "APP-0009",
+      "display_name": "Geeta Pillai",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Eastern",
+      "crop_type": "Mustard",
+      "season": "Rabi",
+      "loan_amount_inr": 66581,
+      "land_size_ha": 0.7,
+      "risk_score": 0.6776,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 203505,
+          "shap_value": 0.272265,
+          "direction": "increases_risk",
+          "points": 27,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 66581,
+          "shap_value": -0.063828,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 56.55075787635097,
+          "shap_value": 0.051731,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.037023,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.7,
+          "shap_value": 0.017438,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Eastern",
+        "crop_type": "Mustard",
+        "season": "Rabi",
+        "land_size_ha": 0.7,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 748.3,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 66581,
+        "prior_loan_count": 5,
+        "prior_default_flag": 0,
+        "repayment_score": 56.55075787635097,
+        "annual_income_inr": 68837,
+        "existing_debt_inr": 203505
+      }
+    },
+    {
+      "application_id": "APP-0032",
+      "display_name": "Arjun Choudhary",
+      "is_demo": false,
+      "narrative": null,
+      "state": "MH",
+      "state_name": "Maharashtra",
+      "district": "MH-Konkan",
+      "crop_type": "Mustard",
+      "season": "Rabi",
+      "loan_amount_inr": 51831,
+      "land_size_ha": 0.38,
+      "risk_score": 0.6747,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 108474,
+          "shap_value": 0.234557,
+          "direction": "increases_risk",
+          "points": 23,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 51831,
+          "shap_value": -0.087815,
+          "direction": "decreases_risk",
+          "points": -9,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 58622,
+          "shap_value": 0.053242,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Farm income looks thin for the loan burden"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.38,
+          "shap_value": 0.049644,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 58.97978889759422,
+          "shap_value": 0.042366,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Weaker repayment history increased risk"
+        }
+      ],
+      "features": {
+        "state": "MH",
+        "district": "MH-Konkan",
+        "crop_type": "Mustard",
+        "season": "Rabi",
+        "land_size_ha": 0.38,
+        "soil_type": "Laterite",
+        "rainfall_mm": 1091.9,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 51831,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 58.97978889759422,
+        "annual_income_inr": 58622,
+        "existing_debt_inr": 108474
+      }
+    },
+    {
+      "application_id": "APP-0027",
+      "display_name": "Geeta Patil",
+      "is_demo": false,
+      "narrative": null,
+      "state": "GJ",
+      "state_name": "Gujarat",
+      "district": "GJ-South",
+      "crop_type": "Millet",
+      "season": "Kharif",
+      "loan_amount_inr": 127415,
+      "land_size_ha": 1.9,
+      "risk_score": 0.6437,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.172347,
+          "direction": "increases_risk",
+          "points": 17,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 144353,
+          "shap_value": 0.157847,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 131209,
+          "shap_value": -0.108391,
+          "direction": "decreases_risk",
+          "points": -11,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 60.712872608456024,
+          "shap_value": 0.041484,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 1.9,
+          "shap_value": -0.01811,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "GJ",
+        "district": "GJ-South",
+        "crop_type": "Millet",
+        "season": "Kharif",
+        "land_size_ha": 1.9,
+        "soil_type": "Sandy",
+        "rainfall_mm": 971.7,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 127415,
+        "prior_loan_count": 1,
+        "prior_default_flag": 1,
+        "repayment_score": 60.712872608456024,
+        "annual_income_inr": 131209,
+        "existing_debt_inr": 144353
+      }
+    },
+    {
+      "application_id": "APP-0010",
+      "display_name": "Vikram Reddy",
+      "is_demo": false,
+      "narrative": null,
+      "state": "MP",
+      "state_name": "Madhya Pradesh",
+      "district": "MP-Malwa",
+      "crop_type": "Groundnut",
+      "season": "Kharif",
+      "loan_amount_inr": 86495,
+      "land_size_ha": 1.03,
+      "risk_score": 0.6396,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.160678,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 111539,
+          "shap_value": 0.130044,
+          "direction": "increases_risk",
+          "points": 13,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 101170,
+          "shap_value": -0.089497,
+          "direction": "decreases_risk",
+          "points": -9,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 41.19140697762076,
+          "shap_value": 0.080575,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 86495,
+          "shap_value": -0.049959,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        }
+      ],
+      "features": {
+        "state": "MP",
+        "district": "MP-Malwa",
+        "crop_type": "Groundnut",
+        "season": "Kharif",
+        "land_size_ha": 1.03,
+        "soil_type": "Red",
+        "rainfall_mm": 731.5,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 86495,
+        "prior_loan_count": 4,
+        "prior_default_flag": 1,
+        "repayment_score": 41.19140697762076,
+        "annual_income_inr": 101170,
+        "existing_debt_inr": 111539
+      }
+    },
+    {
+      "application_id": "APP-0039",
+      "display_name": "Kiran Joshi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Western",
+      "crop_type": "Millet",
+      "season": "Rabi",
+      "loan_amount_inr": 91417,
+      "land_size_ha": 1.11,
+      "risk_score": 0.6322,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 211584,
+          "shap_value": 0.239683,
+          "direction": "increases_risk",
+          "points": 24,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.162585,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 100.0,
+          "shap_value": -0.068546,
+          "direction": "decreases_risk",
+          "points": -7,
+          "plain_hint": "Stronger repayment history lowered risk"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 109278,
+          "shap_value": -0.063637,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 91417,
+          "shap_value": -0.030768,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Western",
+        "crop_type": "Millet",
+        "season": "Rabi",
+        "land_size_ha": 1.11,
+        "soil_type": "Laterite",
+        "rainfall_mm": 1222.1,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 91417,
+        "prior_loan_count": 6,
+        "prior_default_flag": 1,
+        "repayment_score": 100.0,
+        "annual_income_inr": 109278,
+        "existing_debt_inr": 211584
+      }
+    },
+    {
+      "application_id": "APP-0017",
+      "display_name": "Sanjay Sharma",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Western",
+      "crop_type": "Millet",
+      "season": "Kharif",
+      "loan_amount_inr": 57765,
+      "land_size_ha": 0.48,
+      "risk_score": 0.6271,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 136700,
+          "shap_value": 0.242673,
+          "direction": "increases_risk",
+          "points": 24,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 57765,
+          "shap_value": -0.086027,
+          "direction": "decreases_risk",
+          "points": -9,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 579.8,
+          "shap_value": 0.03729,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.48,
+          "shap_value": 0.034051,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 80.09280566725421,
+          "shap_value": -0.020527,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Stronger repayment history lowered risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Western",
+        "crop_type": "Millet",
+        "season": "Kharif",
+        "land_size_ha": 0.48,
+        "soil_type": "Laterite",
+        "rainfall_mm": 579.8,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 57765,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 80.09280566725421,
+        "annual_income_inr": 67392,
+        "existing_debt_inr": 136700
+      }
+    },
+    {
+      "application_id": "APP-0004",
+      "display_name": "Rahul Verma",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Eastern",
+      "crop_type": "Millet",
+      "season": "Rabi",
+      "loan_amount_inr": 63605,
+      "land_size_ha": 0.63,
+      "risk_score": 0.5861,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 115735,
+          "shap_value": 0.209373,
+          "direction": "increases_risk",
+          "points": 21,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 63605,
+          "shap_value": -0.073314,
+          "direction": "decreases_risk",
+          "points": -7,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 50.15933811755769,
+          "shap_value": 0.071453,
+          "direction": "increases_risk",
+          "points": 7,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.028712,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.63,
+          "shap_value": 0.017809,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Eastern",
+        "crop_type": "Millet",
+        "season": "Rabi",
+        "land_size_ha": 0.63,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 1022.5,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 63605,
+        "prior_loan_count": 0,
+        "prior_default_flag": 0,
+        "repayment_score": 50.15933811755769,
+        "annual_income_inr": 67980,
+        "existing_debt_inr": 115735
+      }
+    },
+    {
+      "application_id": "APP-0014",
+      "display_name": "Deepak Das",
+      "is_demo": false,
+      "narrative": null,
+      "state": "GJ",
+      "state_name": "Gujarat",
+      "district": "GJ-Saurashtra",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "loan_amount_inr": 76408,
+      "land_size_ha": 0.84,
+      "risk_score": 0.5735,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 73688,
+          "shap_value": 0.115262,
+          "direction": "increases_risk",
+          "points": 12,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 464.5,
+          "shap_value": 0.086162,
+          "direction": "increases_risk",
+          "points": 9,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 88792,
+          "shap_value": -0.070197,
+          "direction": "decreases_risk",
+          "points": -7,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 46.71957653826425,
+          "shap_value": 0.063482,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 76408,
+          "shap_value": -0.062206,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        }
+      ],
+      "features": {
+        "state": "GJ",
+        "district": "GJ-Saurashtra",
+        "crop_type": "Soybean",
+        "season": "Kharif",
+        "land_size_ha": 0.84,
+        "soil_type": "Black",
+        "rainfall_mm": 464.5,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 76408,
+        "prior_loan_count": 0,
+        "prior_default_flag": 0,
+        "repayment_score": 46.71957653826425,
+        "annual_income_inr": 88792,
+        "existing_debt_inr": 73688
+      }
+    },
+    {
+      "application_id": "APP-0025",
+      "display_name": "Meena Joshi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "HR",
+      "state_name": "Haryana",
+      "district": "HR-West",
+      "crop_type": "Maize",
+      "season": "Rabi",
+      "loan_amount_inr": 85691,
+      "land_size_ha": 0.99,
+      "risk_score": 0.5692,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 188338,
+          "shap_value": 0.248906,
+          "direction": "increases_risk",
+          "points": 25,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 106210,
+          "shap_value": -0.087969,
+          "direction": "decreases_risk",
+          "points": -9,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 49.216505992983414,
+          "shap_value": 0.063366,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 85691,
+          "shap_value": -0.049605,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "HR-West",
+          "shap_value": -0.033703,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Local district conditions were slightly protective"
+        }
+      ],
+      "features": {
+        "state": "HR",
+        "district": "HR-West",
+        "crop_type": "Maize",
+        "season": "Rabi",
+        "land_size_ha": 0.99,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 552.5,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 85691,
+        "prior_loan_count": 4,
+        "prior_default_flag": 0,
+        "repayment_score": 49.216505992983414,
+        "annual_income_inr": 106210,
+        "existing_debt_inr": 188338
+      }
+    },
+    {
+      "application_id": "APP-0016",
+      "display_name": "Geeta Verma",
+      "is_demo": false,
+      "narrative": null,
+      "state": "HR",
+      "state_name": "Haryana",
+      "district": "HR-East",
+      "crop_type": "Millet",
+      "season": "Rabi",
+      "loan_amount_inr": 80884,
+      "land_size_ha": 0.99,
+      "risk_score": 0.5681,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 166497,
+          "shap_value": 0.253062,
+          "direction": "increases_risk",
+          "points": 25,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 80884,
+          "shap_value": -0.057608,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "HR-East",
+          "shap_value": -0.033454,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Local district conditions were slightly protective"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 81620,
+          "shap_value": -0.030159,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 560.0,
+          "shap_value": 0.022436,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        }
+      ],
+      "features": {
+        "state": "HR",
+        "district": "HR-East",
+        "crop_type": "Millet",
+        "season": "Rabi",
+        "land_size_ha": 0.99,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 560.0,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 80884,
+        "prior_loan_count": 4,
+        "prior_default_flag": 0,
+        "repayment_score": 70.05236180512566,
+        "annual_income_inr": 81620,
+        "existing_debt_inr": 166497
+      }
+    },
+    {
+      "application_id": "APP-0040",
+      "display_name": "Anil Patil",
+      "is_demo": false,
+      "narrative": null,
+      "state": "BR",
+      "state_name": "Bihar",
+      "district": "BR-Gangetic",
+      "crop_type": "Mustard",
+      "season": "Rabi",
+      "loan_amount_inr": 96344,
+      "land_size_ha": 1.19,
+      "risk_score": 0.5546,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 171524,
+          "shap_value": 0.240949,
+          "direction": "increases_risk",
+          "points": 24,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 118350,
+          "shap_value": -0.114877,
+          "direction": "decreases_risk",
+          "points": -11,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 50.705546779542374,
+          "shap_value": 0.071847,
+          "direction": "increases_risk",
+          "points": 7,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 96344,
+          "shap_value": -0.027703,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1216.7,
+          "shap_value": -0.025792,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "BR",
+        "district": "BR-Gangetic",
+        "crop_type": "Mustard",
+        "season": "Rabi",
+        "land_size_ha": 1.19,
+        "soil_type": "Laterite",
+        "rainfall_mm": 1216.7,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 96344,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 50.705546779542374,
+        "annual_income_inr": 118350,
+        "existing_debt_inr": 171524
+      }
+    },
+    {
+      "application_id": "APP-0006",
+      "display_name": "Kavita Singh",
+      "is_demo": false,
+      "narrative": null,
+      "state": "TG",
+      "state_name": "Telangana",
+      "district": "TG-Central",
+      "crop_type": "Sugarcane",
+      "season": "Kharif",
+      "loan_amount_inr": 123868,
+      "land_size_ha": 1.72,
+      "risk_score": 0.548,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 150487,
+          "shap_value": -0.17792,
+          "direction": "decreases_risk",
+          "points": -18,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 138911,
+          "shap_value": 0.158591,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 442.0,
+          "shap_value": 0.101423,
+          "direction": "increases_risk",
+          "points": 10,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 60.047439477919696,
+          "shap_value": 0.049424,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 1.72,
+          "shap_value": -0.018576,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "TG",
+        "district": "TG-Central",
+        "crop_type": "Sugarcane",
+        "season": "Kharif",
+        "land_size_ha": 1.72,
+        "soil_type": "Red",
+        "rainfall_mm": 442.0,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 123868,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 60.047439477919696,
+        "annual_income_inr": 150487,
+        "existing_debt_inr": 138911
+      }
+    },
+    {
+      "application_id": "APP-0015",
+      "display_name": "Priya Nair",
+      "is_demo": false,
+      "narrative": null,
+      "state": "AP",
+      "state_name": "Andhra Pradesh",
+      "district": "AP-Coastal",
+      "crop_type": "Maize",
+      "season": "Kharif",
+      "loan_amount_inr": 108073,
+      "land_size_ha": 1.48,
+      "risk_score": 0.5437,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 201899,
+          "shap_value": 0.220137,
+          "direction": "increases_risk",
+          "points": 22,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 119948,
+          "shap_value": -0.111766,
+          "direction": "decreases_risk",
+          "points": -11,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 57.523569316765666,
+          "shap_value": 0.058238,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.041899,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 572.9,
+          "shap_value": 0.02946,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        }
+      ],
+      "features": {
+        "state": "AP",
+        "district": "AP-Coastal",
+        "crop_type": "Maize",
+        "season": "Kharif",
+        "land_size_ha": 1.48,
+        "soil_type": "Red",
+        "rainfall_mm": 572.9,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 108073,
+        "prior_loan_count": 1,
+        "prior_default_flag": 0,
+        "repayment_score": 57.523569316765666,
+        "annual_income_inr": 119948,
+        "existing_debt_inr": 201899
+      }
+    },
+    {
+      "application_id": "APP-0001",
+      "display_name": "Priya Nair",
+      "is_demo": false,
+      "narrative": null,
+      "state": "BR",
+      "state_name": "Bihar",
+      "district": "BR-South",
+      "crop_type": "Rice",
+      "season": "Kharif",
+      "loan_amount_inr": 148578,
+      "land_size_ha": 2.13,
+      "risk_score": 0.537,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 190924,
+          "shap_value": -0.230034,
+          "direction": "decreases_risk",
+          "points": -23,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 183938,
+          "shap_value": 0.160881,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 303.7,
+          "shap_value": 0.122918,
+          "direction": "increases_risk",
+          "points": 12,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "BR-South",
+          "shap_value": 0.039982,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Local district conditions raised risk vs baseline"
+        },
+        {
+          "feature": "crop_type",
+          "display_label": "Crop",
+          "feature_value": "Rice",
+          "shap_value": 0.030057,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Crop choice is water-demanding or poorly matched to conditions"
+        }
+      ],
+      "features": {
+        "state": "BR",
+        "district": "BR-South",
+        "crop_type": "Rice",
+        "season": "Kharif",
+        "land_size_ha": 2.13,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 303.7,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 148578,
+        "prior_loan_count": 5,
+        "prior_default_flag": 0,
+        "repayment_score": 64.6975791649228,
+        "annual_income_inr": 190924,
+        "existing_debt_inr": 183938
+      }
+    },
+    {
+      "application_id": "APP-0028",
+      "display_name": "Nisha Patil",
+      "is_demo": false,
+      "narrative": null,
+      "state": "GJ",
+      "state_name": "Gujarat",
+      "district": "GJ-Central",
+      "crop_type": "Sugarcane",
+      "season": "Kharif",
+      "loan_amount_inr": 144819,
+      "land_size_ha": 2.25,
+      "risk_score": 0.5126,
+      "risk_level": "High",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 246105,
+          "shap_value": 0.225811,
+          "direction": "increases_risk",
+          "points": 23,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 150012,
+          "shap_value": -0.169041,
+          "direction": "decreases_risk",
+          "points": -17,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 52.01195539622874,
+          "shap_value": 0.063933,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.028287,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 2.25,
+          "shap_value": -0.028245,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "GJ",
+        "district": "GJ-Central",
+        "crop_type": "Sugarcane",
+        "season": "Kharif",
+        "land_size_ha": 2.25,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 893.5,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 144819,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 52.01195539622874,
+        "annual_income_inr": 150012,
+        "existing_debt_inr": 246105
+      }
+    },
+    {
+      "application_id": "APP-0021",
+      "display_name": "Anil Yadav",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Western",
+      "crop_type": "Millet",
+      "season": "Rabi",
+      "loan_amount_inr": 81511,
+      "land_size_ha": 0.99,
+      "risk_score": 0.4956,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 28.096902181441592,
+          "shap_value": 0.096366,
+          "direction": "increases_risk",
+          "points": 10,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 69824,
+          "shap_value": 0.087373,
+          "direction": "increases_risk",
+          "points": 9,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 85419,
+          "shap_value": -0.06805,
+          "direction": "decreases_risk",
+          "points": -7,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 81511,
+          "shap_value": -0.05973,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 944.5,
+          "shap_value": -0.029237,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Western",
+        "crop_type": "Millet",
+        "season": "Rabi",
+        "land_size_ha": 0.99,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 944.5,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 81511,
+        "prior_loan_count": 0,
+        "prior_default_flag": 0,
+        "repayment_score": 28.096902181441592,
+        "annual_income_inr": 85419,
+        "existing_debt_inr": 69824
+      }
+    },
+    {
+      "application_id": "APP-0005",
+      "display_name": "Lata Devi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Central",
+      "crop_type": "Groundnut",
+      "season": "Rabi",
+      "loan_amount_inr": 118688,
+      "land_size_ha": 1.62,
+      "risk_score": 0.4858,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 210422,
+          "shap_value": 0.194706,
+          "direction": "increases_risk",
+          "points": 19,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 145159,
+          "shap_value": -0.172134,
+          "direction": "decreases_risk",
+          "points": -17,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.039433,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 663.7,
+          "shap_value": 0.038255,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 80.68571800306742,
+          "shap_value": -0.018888,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Stronger repayment history lowered risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Central",
+        "crop_type": "Groundnut",
+        "season": "Rabi",
+        "land_size_ha": 1.62,
+        "soil_type": "Laterite",
+        "rainfall_mm": 663.7,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 118688,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 80.68571800306742,
+        "annual_income_inr": 145159,
+        "existing_debt_inr": 210422
+      }
+    },
+    {
+      "application_id": "APP-0012",
+      "display_name": "Manoj Nair",
+      "is_demo": false,
+      "narrative": null,
+      "state": "MH",
+      "state_name": "Maharashtra",
+      "district": "MH-Western",
+      "crop_type": "Groundnut",
+      "season": "Kharif",
+      "loan_amount_inr": 106199,
+      "land_size_ha": 1.5,
+      "risk_score": 0.4629,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 115801,
+          "shap_value": 0.159834,
+          "direction": "increases_risk",
+          "points": 16,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 106409,
+          "shap_value": -0.116528,
+          "direction": "decreases_risk",
+          "points": -12,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 55.46913123685155,
+          "shap_value": 0.0626,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 1.5,
+          "shap_value": -0.021305,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 916.6,
+          "shap_value": -0.020502,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "MH",
+        "district": "MH-Western",
+        "crop_type": "Groundnut",
+        "season": "Kharif",
+        "land_size_ha": 1.5,
+        "soil_type": "Red",
+        "rainfall_mm": 916.6,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 106199,
+        "prior_loan_count": 5,
+        "prior_default_flag": 0,
+        "repayment_score": 55.46913123685155,
+        "annual_income_inr": 106409,
+        "existing_debt_inr": 115801
+      }
+    },
+    {
+      "application_id": "APP-0002",
+      "display_name": "Anil Joshi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "MP",
+      "state_name": "Madhya Pradesh",
+      "district": "MP-Chambal",
+      "crop_type": "Groundnut",
+      "season": "Rabi",
+      "loan_amount_inr": 152696,
+      "land_size_ha": 2.43,
+      "risk_score": 0.4475,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "prior_default_flag",
+          "display_label": "Prior default",
+          "feature_value": 1,
+          "shap_value": 0.210532,
+          "direction": "increases_risk",
+          "points": 21,
+          "plain_hint": "A past default signal pushed risk higher"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 151908,
+          "shap_value": -0.156307,
+          "direction": "decreases_risk",
+          "points": -16,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 2.43,
+          "shap_value": -0.027598,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.026978,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 980.9,
+          "shap_value": -0.026714,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "MP",
+        "district": "MP-Chambal",
+        "crop_type": "Groundnut",
+        "season": "Rabi",
+        "land_size_ha": 2.43,
+        "soil_type": "Red",
+        "rainfall_mm": 980.9,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 152696,
+        "prior_loan_count": 3,
+        "prior_default_flag": 1,
+        "repayment_score": 80.81210542353091,
+        "annual_income_inr": 151908,
+        "existing_debt_inr": 23033
+      }
+    },
+    {
+      "application_id": "APP-0031",
+      "display_name": "Lata Nair",
+      "is_demo": false,
+      "narrative": null,
+      "state": "TG",
+      "state_name": "Telangana",
+      "district": "TG-South",
+      "crop_type": "Groundnut",
+      "season": "Rabi",
+      "loan_amount_inr": 188537,
+      "land_size_ha": 3.1,
+      "risk_score": 0.4394,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 198529,
+          "shap_value": -0.238672,
+          "direction": "decreases_risk",
+          "points": -24,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 128555,
+          "shap_value": 0.134757,
+          "direction": "increases_risk",
+          "points": 13,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 280.0,
+          "shap_value": 0.099368,
+          "direction": "increases_risk",
+          "points": 10,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 188537,
+          "shap_value": 0.051541,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.05076,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        }
+      ],
+      "features": {
+        "state": "TG",
+        "district": "TG-South",
+        "crop_type": "Groundnut",
+        "season": "Rabi",
+        "land_size_ha": 3.1,
+        "soil_type": "Laterite",
+        "rainfall_mm": 280.0,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 188537,
+        "prior_loan_count": 4,
+        "prior_default_flag": 0,
+        "repayment_score": 58.30553753621678,
+        "annual_income_inr": 198529,
+        "existing_debt_inr": 128555
+      }
+    },
+    {
+      "application_id": "APP-0035",
+      "display_name": "Nisha Joshi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Western",
+      "crop_type": "Groundnut",
+      "season": "Rabi",
+      "loan_amount_inr": 126150,
+      "land_size_ha": 1.73,
+      "risk_score": 0.4256,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 160391,
+          "shap_value": -0.167138,
+          "direction": "decreases_risk",
+          "points": -17,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 52.91947500686154,
+          "shap_value": 0.080236,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 654.3,
+          "shap_value": 0.056469,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.054098,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "crop_type",
+          "display_label": "Crop",
+          "feature_value": "Groundnut",
+          "shap_value": -0.018792,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Crop choice fits local conditions better than average"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Western",
+        "crop_type": "Groundnut",
+        "season": "Rabi",
+        "land_size_ha": 1.73,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 654.3,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 126150,
+        "prior_loan_count": 1,
+        "prior_default_flag": 0,
+        "repayment_score": 52.91947500686154,
+        "annual_income_inr": 160391,
+        "existing_debt_inr": 22526
+      }
+    },
+    {
+      "application_id": "DEMO-02",
+      "display_name": "Savita Patil",
+      "is_demo": true,
+      "narrative": "Small soybean holder in Vidarbha with moderate leverage and mixed credit pressure.",
+      "state": "MH",
+      "state_name": "Maharashtra",
+      "district": "MH-Vidarbha",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "loan_amount_inr": 180000,
+      "land_size_ha": 1.2,
+      "risk_score": 0.4094,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 165000,
+          "shap_value": -0.203318,
+          "direction": "decreases_risk",
+          "points": -20,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 70000,
+          "shap_value": 0.070033,
+          "direction": "increases_risk",
+          "points": 7,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 180000,
+          "shap_value": 0.060216,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 62,
+          "shap_value": 0.03261,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "MH-Vidarbha",
+          "shap_value": 0.015237,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Local district conditions raised risk vs baseline"
+        }
+      ],
+      "features": {
+        "state": "MH",
+        "district": "MH-Vidarbha",
+        "crop_type": "Soybean",
+        "season": "Kharif",
+        "land_size_ha": 1.2,
+        "soil_type": "Black",
+        "rainfall_mm": 780.0,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 180000,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 62.0,
+        "annual_income_inr": 165000,
+        "existing_debt_inr": 70000
+      }
+    },
+    {
+      "application_id": "APP-0020",
+      "display_name": "Anil Sharma",
+      "is_demo": false,
+      "narrative": null,
+      "state": "KA",
+      "state_name": "Karnataka",
+      "district": "KA-Coastal",
+      "crop_type": "Cotton",
+      "season": "Rabi",
+      "loan_amount_inr": 203983,
+      "land_size_ha": 3.51,
+      "risk_score": 0.3893,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 192895,
+          "shap_value": -0.249998,
+          "direction": "decreases_risk",
+          "points": -25,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 186684,
+          "shap_value": 0.169475,
+          "direction": "increases_risk",
+          "points": 17,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 45.07317772321721,
+          "shap_value": 0.06405,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 203983,
+          "shap_value": 0.04816,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 3.51,
+          "shap_value": -0.039101,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "KA",
+        "district": "KA-Coastal",
+        "crop_type": "Cotton",
+        "season": "Rabi",
+        "land_size_ha": 3.51,
+        "soil_type": "Sandy",
+        "rainfall_mm": 1332.6,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 203983,
+        "prior_loan_count": 1,
+        "prior_default_flag": 0,
+        "repayment_score": 45.07317772321721,
+        "annual_income_inr": 192895,
+        "existing_debt_inr": 186684
+      }
+    },
+    {
+      "application_id": "APP-0011",
+      "display_name": "Ravi Singh",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Central",
+      "crop_type": "Wheat",
+      "season": "Rabi",
+      "loan_amount_inr": 77815,
+      "land_size_ha": 0.85,
+      "risk_score": 0.3744,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 94449,
+          "shap_value": -0.093355,
+          "direction": "decreases_risk",
+          "points": -9,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 65285,
+          "shap_value": 0.087854,
+          "direction": "increases_risk",
+          "points": 9,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1213.8,
+          "shap_value": -0.058708,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 77815,
+          "shap_value": -0.057755,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 61.30212395838266,
+          "shap_value": 0.036174,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Weaker repayment history increased risk"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Central",
+        "crop_type": "Wheat",
+        "season": "Rabi",
+        "land_size_ha": 0.85,
+        "soil_type": "ClayLoam",
+        "rainfall_mm": 1213.8,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 77815,
+        "prior_loan_count": 5,
+        "prior_default_flag": 0,
+        "repayment_score": 61.30212395838266,
+        "annual_income_inr": 94449,
+        "existing_debt_inr": 65285
+      }
+    },
+    {
+      "application_id": "APP-0038",
+      "display_name": "Suresh Ghosh",
+      "is_demo": false,
+      "narrative": null,
+      "state": "PB",
+      "state_name": "Punjab",
+      "district": "PB-Doaba",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "loan_amount_inr": 86515,
+      "land_size_ha": 0.99,
+      "risk_score": 0.3598,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 138753,
+          "shap_value": 0.198585,
+          "direction": "increases_risk",
+          "points": 20,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 108924,
+          "shap_value": -0.111701,
+          "direction": "decreases_risk",
+          "points": -11,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 91.66619985786151,
+          "shap_value": -0.051633,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Stronger repayment history lowered risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 86515,
+          "shap_value": -0.04731,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.02883,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        }
+      ],
+      "features": {
+        "state": "PB",
+        "district": "PB-Doaba",
+        "crop_type": "Soybean",
+        "season": "Kharif",
+        "land_size_ha": 0.99,
+        "soil_type": "Laterite",
+        "rainfall_mm": 957.4,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 86515,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 91.66619985786151,
+        "annual_income_inr": 108924,
+        "existing_debt_inr": 138753
+      }
+    },
+    {
+      "application_id": "APP-0007",
+      "display_name": "Pooja Nair",
+      "is_demo": false,
+      "narrative": null,
+      "state": "MH",
+      "state_name": "Maharashtra",
+      "district": "MH-Vidarbha",
+      "crop_type": "Rice",
+      "season": "Kharif",
+      "loan_amount_inr": 77894,
+      "land_size_ha": 0.87,
+      "risk_score": 0.3594,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 89628,
+          "shap_value": -0.071961,
+          "direction": "decreases_risk",
+          "points": -7,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 77894,
+          "shap_value": -0.064146,
+          "direction": "decreases_risk",
+          "points": -6,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 58.722948699528125,
+          "shap_value": 0.052432,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.040211,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 895.6,
+          "shap_value": -0.032747,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        }
+      ],
+      "features": {
+        "state": "MH",
+        "district": "MH-Vidarbha",
+        "crop_type": "Rice",
+        "season": "Kharif",
+        "land_size_ha": 0.87,
+        "soil_type": "Sandy",
+        "rainfall_mm": 895.6,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 77894,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 58.722948699528125,
+        "annual_income_inr": 89628,
+        "existing_debt_inr": 22641
+      }
+    },
+    {
+      "application_id": "APP-0013",
+      "display_name": "Manoj Singh",
+      "is_demo": false,
+      "narrative": null,
+      "state": "HR",
+      "state_name": "Haryana",
+      "district": "HR-South",
+      "crop_type": "Groundnut",
+      "season": "Rabi",
+      "loan_amount_inr": 58899,
+      "land_size_ha": 0.54,
+      "risk_score": 0.3469,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 58899,
+          "shap_value": -0.100104,
+          "direction": "decreases_risk",
+          "points": -10,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 44864,
+          "shap_value": 0.035779,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.0275,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 900.2,
+          "shap_value": -0.023451,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 0.54,
+          "shap_value": 0.019659,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Smaller landholding raised leverage risk"
+        }
+      ],
+      "features": {
+        "state": "HR",
+        "district": "HR-South",
+        "crop_type": "Groundnut",
+        "season": "Rabi",
+        "land_size_ha": 0.54,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 900.2,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 58899,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 71.42367906469117,
+        "annual_income_inr": 61525,
+        "existing_debt_inr": 44864
+      }
+    },
+    {
+      "application_id": "APP-0019",
+      "display_name": "Geeta Das",
+      "is_demo": false,
+      "narrative": null,
+      "state": "BR",
+      "state_name": "Bihar",
+      "district": "BR-South",
+      "crop_type": "Sugarcane",
+      "season": "Rabi",
+      "loan_amount_inr": 104271,
+      "land_size_ha": 1.35,
+      "risk_score": 0.3449,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 126365,
+          "shap_value": -0.153586,
+          "direction": "decreases_risk",
+          "points": -15,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 83895,
+          "shap_value": 0.111395,
+          "direction": "increases_risk",
+          "points": 11,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1215.7,
+          "shap_value": -0.042913,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "BR-South",
+          "shap_value": 0.04228,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Local district conditions raised risk vs baseline"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 104271,
+          "shap_value": -0.014278,
+          "direction": "decreases_risk",
+          "points": -1,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        }
+      ],
+      "features": {
+        "state": "BR",
+        "district": "BR-South",
+        "crop_type": "Sugarcane",
+        "season": "Rabi",
+        "land_size_ha": 1.35,
+        "soil_type": "Black",
+        "rainfall_mm": 1215.7,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 104271,
+        "prior_loan_count": 4,
+        "prior_default_flag": 0,
+        "repayment_score": 72.71761589230904,
+        "annual_income_inr": 126365,
+        "existing_debt_inr": 83895
+      }
+    },
+    {
+      "application_id": "APP-0023",
+      "display_name": "Priya Singh",
+      "is_demo": false,
+      "narrative": null,
+      "state": "UP",
+      "state_name": "Uttar Pradesh",
+      "district": "UP-Central",
+      "crop_type": "Groundnut",
+      "season": "Kharif",
+      "loan_amount_inr": 184641,
+      "land_size_ha": 2.82,
+      "risk_score": 0.309,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 234524,
+          "shap_value": -0.270176,
+          "direction": "decreases_risk",
+          "points": -27,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 124791,
+          "shap_value": 0.10118,
+          "direction": "increases_risk",
+          "points": 10,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 184641,
+          "shap_value": 0.044504,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.036615,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 2.82,
+          "shap_value": -0.035074,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "UP",
+        "district": "UP-Central",
+        "crop_type": "Groundnut",
+        "season": "Kharif",
+        "land_size_ha": 2.82,
+        "soil_type": "Laterite",
+        "rainfall_mm": 806.7,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 184641,
+        "prior_loan_count": 0,
+        "prior_default_flag": 0,
+        "repayment_score": 68.1783204521668,
+        "annual_income_inr": 234524,
+        "existing_debt_inr": 124791
+      }
+    },
+    {
+      "application_id": "DEMO-05",
+      "display_name": "Gopal Sharma",
+      "is_demo": true,
+      "narrative": "Edge case: drought-tolerant millet with drip in Rajasthan, but thin income keeps risk mid-range.",
+      "state": "RJ",
+      "state_name": "Rajasthan",
+      "district": "RJ-Marwar",
+      "crop_type": "Millet",
+      "season": "Kharif",
+      "loan_amount_inr": 95000,
+      "land_size_ha": 0.8,
+      "risk_score": 0.2886,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 90000,
+          "shap_value": -0.080175,
+          "direction": "decreases_risk",
+          "points": -8,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 320,
+          "shap_value": 0.067204,
+          "direction": "increases_risk",
+          "points": 7,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 95000,
+          "shap_value": -0.042241,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Loan size is manageable compared with similar farms"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.041466,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "RJ-Marwar",
+          "shap_value": -0.026199,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Local district conditions were slightly protective"
+        }
+      ],
+      "features": {
+        "state": "RJ",
+        "district": "RJ-Marwar",
+        "crop_type": "Millet",
+        "season": "Kharif",
+        "land_size_ha": 0.8,
+        "soil_type": "Sandy",
+        "rainfall_mm": 320.0,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 95000,
+        "prior_loan_count": 1,
+        "prior_default_flag": 0,
+        "repayment_score": 70.0,
+        "annual_income_inr": 90000,
+        "existing_debt_inr": 25000
+      }
+    },
+    {
+      "application_id": "APP-0037",
+      "display_name": "Priya Das",
+      "is_demo": false,
+      "narrative": null,
+      "state": "TN",
+      "state_name": "Tamil Nadu",
+      "district": "TN-Delta",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "loan_amount_inr": 108532,
+      "land_size_ha": 1.43,
+      "risk_score": 0.2816,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 131611,
+          "shap_value": -0.146709,
+          "direction": "decreases_risk",
+          "points": -15,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 52066,
+          "shap_value": 0.064089,
+          "direction": "increases_risk",
+          "points": 6,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1087.0,
+          "shap_value": -0.032357,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Canal",
+          "shap_value": -0.017962,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 1.43,
+          "shap_value": -0.014463,
+          "direction": "decreases_risk",
+          "points": -1,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "TN",
+        "district": "TN-Delta",
+        "crop_type": "Soybean",
+        "season": "Kharif",
+        "land_size_ha": 1.43,
+        "soil_type": "Red",
+        "rainfall_mm": 1087.0,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 108532,
+        "prior_loan_count": 4,
+        "prior_default_flag": 0,
+        "repayment_score": 69.19180436246903,
+        "annual_income_inr": 131611,
+        "existing_debt_inr": 52066
+      }
+    },
+    {
+      "application_id": "APP-0033",
+      "display_name": "Ravi Sharma",
+      "is_demo": false,
+      "narrative": null,
+      "state": "RJ",
+      "state_name": "Rajasthan",
+      "district": "RJ-Shekhawati",
+      "crop_type": "Sugarcane",
+      "season": "Kharif",
+      "loan_amount_inr": 111158,
+      "land_size_ha": 1.5,
+      "risk_score": 0.2658,
+      "risk_level": "Medium",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 130223,
+          "shap_value": -0.131934,
+          "direction": "decreases_risk",
+          "points": -13,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 50589,
+          "shap_value": 0.054258,
+          "direction": "increases_risk",
+          "points": 5,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 1338.3,
+          "shap_value": -0.028843,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Drip",
+          "shap_value": -0.024407,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Irrigation setup helped protect against weather stress"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 66.19782468546569,
+          "shap_value": 0.023116,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Weaker repayment history increased risk"
+        }
+      ],
+      "features": {
+        "state": "RJ",
+        "district": "RJ-Shekhawati",
+        "crop_type": "Sugarcane",
+        "season": "Kharif",
+        "land_size_ha": 1.5,
+        "soil_type": "Red",
+        "rainfall_mm": 1338.3,
+        "irrigation_type": "Drip",
+        "loan_amount_inr": 111158,
+        "prior_loan_count": 5,
+        "prior_default_flag": 0,
+        "repayment_score": 66.19782468546569,
+        "annual_income_inr": 130223,
+        "existing_debt_inr": 50589
+      }
+    },
+    {
+      "application_id": "APP-0029",
+      "display_name": "Ravi Khan",
+      "is_demo": false,
+      "narrative": null,
+      "state": "MH",
+      "state_name": "Maharashtra",
+      "district": "MH-Konkan",
+      "crop_type": "Sugarcane",
+      "season": "Kharif",
+      "loan_amount_inr": 192663,
+      "land_size_ha": 3.32,
+      "risk_score": 0.244,
+      "risk_level": "Low",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 173400,
+          "shap_value": -0.196296,
+          "direction": "decreases_risk",
+          "points": -20,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 192663,
+          "shap_value": 0.082705,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 44.97659350429848,
+          "shap_value": 0.067705,
+          "direction": "increases_risk",
+          "points": 7,
+          "plain_hint": "Weaker repayment history increased risk"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 1768,
+          "shap_value": -0.050492,
+          "direction": "decreases_risk",
+          "points": -5,
+          "plain_hint": "Lower existing debt reduced pressure on repayment"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 3.32,
+          "shap_value": -0.031823,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "MH",
+        "district": "MH-Konkan",
+        "crop_type": "Sugarcane",
+        "season": "Kharif",
+        "land_size_ha": 3.32,
+        "soil_type": "Black",
+        "rainfall_mm": 958.0,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 192663,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 44.97659350429848,
+        "annual_income_inr": 173400,
+        "existing_debt_inr": 1768
+      }
+    },
+    {
+      "application_id": "APP-0030",
+      "display_name": "Priya Joshi",
+      "is_demo": false,
+      "narrative": null,
+      "state": "BR",
+      "state_name": "Bihar",
+      "district": "BR-Gangetic",
+      "crop_type": "Mustard",
+      "season": "Rabi",
+      "loan_amount_inr": 147576,
+      "land_size_ha": 2.12,
+      "risk_score": 0.2359,
+      "risk_level": "Low",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 189819,
+          "shap_value": -0.219318,
+          "direction": "decreases_risk",
+          "points": -22,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "irrigation_type",
+          "display_label": "Irrigation",
+          "feature_value": "Rainfed",
+          "shap_value": 0.040011,
+          "direction": "increases_risk",
+          "points": 4,
+          "plain_hint": "Irrigation setup left the farm more exposed to weather stress"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "BR-Gangetic",
+          "shap_value": 0.030481,
+          "direction": "increases_risk",
+          "points": 3,
+          "plain_hint": "Local district conditions raised risk vs baseline"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 977.2,
+          "shap_value": -0.02712,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Rainfall conditions helped lower repayment risk"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 2.12,
+          "shap_value": -0.023766,
+          "direction": "decreases_risk",
+          "points": -2,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        }
+      ],
+      "features": {
+        "state": "BR",
+        "district": "BR-Gangetic",
+        "crop_type": "Mustard",
+        "season": "Rabi",
+        "land_size_ha": 2.12,
+        "soil_type": "Sandy",
+        "rainfall_mm": 977.2,
+        "irrigation_type": "Rainfed",
+        "loan_amount_inr": 147576,
+        "prior_loan_count": 2,
+        "prior_default_flag": 0,
+        "repayment_score": 65.94440237041239,
+        "annual_income_inr": 189819,
+        "existing_debt_inr": 24778
+      }
+    },
+    {
+      "application_id": "APP-0024",
+      "display_name": "Manoj Singh",
+      "is_demo": false,
+      "narrative": null,
+      "state": "RJ",
+      "state_name": "Rajasthan",
+      "district": "RJ-Hadoti",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "loan_amount_inr": 250946,
+      "land_size_ha": 4.11,
+      "risk_score": 0.225,
+      "risk_level": "Low",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 307428,
+          "shap_value": -0.31377,
+          "direction": "decreases_risk",
+          "points": -31,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "existing_debt_inr",
+          "display_label": "Existing debt",
+          "feature_value": 108019,
+          "shap_value": 0.101825,
+          "direction": "increases_risk",
+          "points": 10,
+          "plain_hint": "Existing debt increased pressure on repayment capacity"
+        },
+        {
+          "feature": "loan_amount_inr",
+          "display_label": "Loan amount",
+          "feature_value": 250946,
+          "shap_value": 0.07905,
+          "direction": "increases_risk",
+          "points": 8,
+          "plain_hint": "Loan size is high relative to what similar farms typically carry"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 4.11,
+          "shap_value": -0.037953,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "RJ-Hadoti",
+          "shap_value": -0.033187,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Local district conditions were slightly protective"
+        }
+      ],
+      "features": {
+        "state": "RJ",
+        "district": "RJ-Hadoti",
+        "crop_type": "Soybean",
+        "season": "Kharif",
+        "land_size_ha": 4.11,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 611.1,
+        "irrigation_type": "Tubewell",
+        "loan_amount_inr": 250946,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 70.68089006462613,
+        "annual_income_inr": 307428,
+        "existing_debt_inr": 108019
+      }
+    },
+    {
+      "application_id": "DEMO-01",
+      "display_name": "Harpreet Singh",
+      "is_demo": true,
+      "narrative": "Stable wheat grower in Punjab with canal irrigation and strong repayment history.",
+      "state": "PB",
+      "state_name": "Punjab",
+      "district": "PB-Malwa",
+      "crop_type": "Wheat",
+      "season": "Rabi",
+      "loan_amount_inr": 120000,
+      "land_size_ha": 3.5,
+      "risk_score": 0.0503,
+      "risk_level": "Low",
+      "top_factors": [
+        {
+          "feature": "annual_income_inr",
+          "display_label": "Annual farm income",
+          "feature_value": 420000,
+          "shap_value": -0.260219,
+          "direction": "decreases_risk",
+          "points": -26,
+          "plain_hint": "Farm income provides a stronger buffer for repayment"
+        },
+        {
+          "feature": "land_size_ha",
+          "display_label": "Land size (ha)",
+          "feature_value": 3.5,
+          "shap_value": -0.042309,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Land size supported a more comfortable loan profile"
+        },
+        {
+          "feature": "repayment_score",
+          "display_label": "Repayment history",
+          "feature_value": 88,
+          "shap_value": -0.041132,
+          "direction": "decreases_risk",
+          "points": -4,
+          "plain_hint": "Stronger repayment history lowered risk"
+        },
+        {
+          "feature": "district",
+          "display_label": "District",
+          "feature_value": "PB-Malwa",
+          "shap_value": -0.031216,
+          "direction": "decreases_risk",
+          "points": -3,
+          "plain_hint": "Local district conditions were slightly protective"
+        },
+        {
+          "feature": "rainfall_mm",
+          "display_label": "Rainfall (mm)",
+          "feature_value": 650,
+          "shap_value": 0.024314,
+          "direction": "increases_risk",
+          "points": 2,
+          "plain_hint": "Rainfall conditions in your area raised repayment risk"
+        }
+      ],
+      "features": {
+        "state": "PB",
+        "district": "PB-Malwa",
+        "crop_type": "Wheat",
+        "season": "Rabi",
+        "land_size_ha": 3.5,
+        "soil_type": "Alluvial",
+        "rainfall_mm": 650.0,
+        "irrigation_type": "Canal",
+        "loan_amount_inr": 120000,
+        "prior_loan_count": 3,
+        "prior_default_flag": 0,
+        "repayment_score": 88.0,
+        "annual_income_inr": 420000,
+        "existing_debt_inr": 40000
+      }
+    }
+  ]
+}

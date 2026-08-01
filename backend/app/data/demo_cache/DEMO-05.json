@@ -1,0 +1,165 @@
+{
+  "id": "DEMO-05",
+  "display_name": "Gopal Sharma",
+  "narrative": "Edge case: drought-tolerant millet with drip in Rajasthan, but thin income keeps risk mid-range.",
+  "expected_risk_level": "Medium",
+  "features": {
+    "state": "RJ",
+    "district": "RJ-Marwar",
+    "crop_type": "Millet",
+    "season": "Kharif",
+    "land_size_ha": 0.8,
+    "soil_type": "Sandy",
+    "rainfall_mm": 320,
+    "irrigation_type": "Drip",
+    "loan_amount_inr": 95000,
+    "prior_loan_count": 1,
+    "prior_default_flag": 0,
+    "repayment_score": 70,
+    "annual_income_inr": 90000,
+    "existing_debt_inr": 25000
+  },
+  "prediction": {
+    "risk_score": 0.2886,
+    "risk_level": "Medium"
+  },
+  "explanation": {
+    "baseline": 0.4322,
+    "prediction": 0.2886,
+    "risk_level": "Medium",
+    "top_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 90000,
+        "shap_value": -0.080175,
+        "direction": "decreases_risk",
+        "points": -8,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "rainfall_mm",
+        "display_label": "Rainfall (mm)",
+        "feature_value": 320,
+        "shap_value": 0.067204,
+        "direction": "increases_risk",
+        "points": 7,
+        "plain_hint": "Rainfall conditions in your area raised repayment risk"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 95000,
+        "shap_value": -0.042241,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Loan size is manageable compared with similar farms"
+      },
+      {
+        "feature": "irrigation_type",
+        "display_label": "Irrigation",
+        "feature_value": "Drip",
+        "shap_value": -0.041466,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Irrigation setup helped protect against weather stress"
+      },
+      {
+        "feature": "district",
+        "display_label": "District",
+        "feature_value": "RJ-Marwar",
+        "shap_value": -0.026199,
+        "direction": "decreases_risk",
+        "points": -3,
+        "plain_hint": "Local district conditions were slightly protective"
+      }
+    ],
+    "protective_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 90000,
+        "shap_value": -0.080175,
+        "direction": "decreases_risk",
+        "points": -8,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 95000,
+        "shap_value": -0.042241,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Loan size is manageable compared with similar farms"
+      },
+      {
+        "feature": "irrigation_type",
+        "display_label": "Irrigation",
+        "feature_value": "Drip",
+        "shap_value": -0.041466,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Irrigation setup helped protect against weather stress"
+      }
+    ]
+  },
+  "advisory_text": "Namaste Gopal Sharma. Your FarmCredit risk level is Medium. Main pressure points: Rainfall conditions in your area raised repayment risk. What is helping: Farm income provides a stronger buffer for repayment; Loan size is manageable compared with similar farms. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+  "report": {
+    "title": "FarmCredit risk brief \u2014 Gopal Sharma",
+    "risk_score": 0.2886,
+    "risk_level": "Medium",
+    "top_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 90000,
+        "shap_value": -0.080175,
+        "direction": "decreases_risk",
+        "points": -8,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "rainfall_mm",
+        "display_label": "Rainfall (mm)",
+        "feature_value": 320,
+        "shap_value": 0.067204,
+        "direction": "increases_risk",
+        "points": 7,
+        "plain_hint": "Rainfall conditions in your area raised repayment risk"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 95000,
+        "shap_value": -0.042241,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Loan size is manageable compared with similar farms"
+      },
+      {
+        "feature": "irrigation_type",
+        "display_label": "Irrigation",
+        "feature_value": "Drip",
+        "shap_value": -0.041466,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Irrigation setup helped protect against weather stress"
+      },
+      {
+        "feature": "district",
+        "display_label": "District",
+        "feature_value": "RJ-Marwar",
+        "shap_value": -0.026199,
+        "direction": "decreases_risk",
+        "points": -3,
+        "plain_hint": "Local district conditions were slightly protective"
+      }
+    ],
+    "advisory_text": "Namaste Gopal Sharma. Your FarmCredit risk level is Medium. Main pressure points: Rainfall conditions in your area raised repayment risk. What is helping: Farm income provides a stronger buffer for repayment; Loan size is manageable compared with similar farms. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+    "generated_at": "2026-08-01T07:58:14.612342+00:00",
+    "cached": true
+  },
+  "cached": true,
+  "generated_at": "2026-08-01T07:58:14.612352+00:00"
+}

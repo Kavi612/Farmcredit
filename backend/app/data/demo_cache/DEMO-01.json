@@ -1,0 +1,165 @@
+{
+  "id": "DEMO-01",
+  "display_name": "Harpreet Singh",
+  "narrative": "Stable wheat grower in Punjab with canal irrigation and strong repayment history.",
+  "expected_risk_level": "Low",
+  "features": {
+    "state": "PB",
+    "district": "PB-Malwa",
+    "crop_type": "Wheat",
+    "season": "Rabi",
+    "land_size_ha": 3.5,
+    "soil_type": "Alluvial",
+    "rainfall_mm": 650,
+    "irrigation_type": "Canal",
+    "loan_amount_inr": 120000,
+    "prior_loan_count": 3,
+    "prior_default_flag": 0,
+    "repayment_score": 88,
+    "annual_income_inr": 420000,
+    "existing_debt_inr": 40000
+  },
+  "prediction": {
+    "risk_score": 0.0503,
+    "risk_level": "Low"
+  },
+  "explanation": {
+    "baseline": 0.4322,
+    "prediction": 0.0503,
+    "risk_level": "Low",
+    "top_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 420000,
+        "shap_value": -0.260219,
+        "direction": "decreases_risk",
+        "points": -26,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "land_size_ha",
+        "display_label": "Land size (ha)",
+        "feature_value": 3.5,
+        "shap_value": -0.042309,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Land size supported a more comfortable loan profile"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 88,
+        "shap_value": -0.041132,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Stronger repayment history lowered risk"
+      },
+      {
+        "feature": "district",
+        "display_label": "District",
+        "feature_value": "PB-Malwa",
+        "shap_value": -0.031216,
+        "direction": "decreases_risk",
+        "points": -3,
+        "plain_hint": "Local district conditions were slightly protective"
+      },
+      {
+        "feature": "rainfall_mm",
+        "display_label": "Rainfall (mm)",
+        "feature_value": 650,
+        "shap_value": 0.024314,
+        "direction": "increases_risk",
+        "points": 2,
+        "plain_hint": "Rainfall conditions in your area raised repayment risk"
+      }
+    ],
+    "protective_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 420000,
+        "shap_value": -0.260219,
+        "direction": "decreases_risk",
+        "points": -26,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "land_size_ha",
+        "display_label": "Land size (ha)",
+        "feature_value": 3.5,
+        "shap_value": -0.042309,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Land size supported a more comfortable loan profile"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 88,
+        "shap_value": -0.041132,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Stronger repayment history lowered risk"
+      }
+    ]
+  },
+  "advisory_text": "Namaste Harpreet Singh. Your FarmCredit risk level is Low. Main pressure points: Rainfall conditions in your area raised repayment risk. What is helping: Farm income provides a stronger buffer for repayment; Land size supported a more comfortable loan profile. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+  "report": {
+    "title": "FarmCredit risk brief \u2014 Harpreet Singh",
+    "risk_score": 0.0503,
+    "risk_level": "Low",
+    "top_factors": [
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 420000,
+        "shap_value": -0.260219,
+        "direction": "decreases_risk",
+        "points": -26,
+        "plain_hint": "Farm income provides a stronger buffer for repayment"
+      },
+      {
+        "feature": "land_size_ha",
+        "display_label": "Land size (ha)",
+        "feature_value": 3.5,
+        "shap_value": -0.042309,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Land size supported a more comfortable loan profile"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 88,
+        "shap_value": -0.041132,
+        "direction": "decreases_risk",
+        "points": -4,
+        "plain_hint": "Stronger repayment history lowered risk"
+      },
+      {
+        "feature": "district",
+        "display_label": "District",
+        "feature_value": "PB-Malwa",
+        "shap_value": -0.031216,
+        "direction": "decreases_risk",
+        "points": -3,
+        "plain_hint": "Local district conditions were slightly protective"
+      },
+      {
+        "feature": "rainfall_mm",
+        "display_label": "Rainfall (mm)",
+        "feature_value": 650,
+        "shap_value": 0.024314,
+        "direction": "increases_risk",
+        "points": 2,
+        "plain_hint": "Rainfall conditions in your area raised repayment risk"
+      }
+    ],
+    "advisory_text": "Namaste Harpreet Singh. Your FarmCredit risk level is Low. Main pressure points: Rainfall conditions in your area raised repayment risk. What is helping: Farm income provides a stronger buffer for repayment; Land size supported a more comfortable loan profile. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+    "generated_at": "2026-08-01T07:58:14.512376+00:00",
+    "cached": true
+  },
+  "cached": true,
+  "generated_at": "2026-08-01T07:58:14.512385+00:00"
+}

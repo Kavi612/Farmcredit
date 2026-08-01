@@ -1,0 +1,112 @@
+[
+  {
+    "id": "DEMO-01",
+    "display_name": "Harpreet Singh",
+    "narrative": "Stable wheat grower in Punjab with canal irrigation and strong repayment history.",
+    "expected_risk_level": "Low",
+    "features": {
+      "state": "PB",
+      "district": "PB-Malwa",
+      "crop_type": "Wheat",
+      "season": "Rabi",
+      "land_size_ha": 3.5,
+      "soil_type": "Alluvial",
+      "rainfall_mm": 650,
+      "irrigation_type": "Canal",
+      "loan_amount_inr": 120000,
+      "prior_loan_count": 3,
+      "prior_default_flag": 0,
+      "repayment_score": 88,
+      "annual_income_inr": 420000,
+      "existing_debt_inr": 40000
+    }
+  },
+  {
+    "id": "DEMO-02",
+    "display_name": "Savita Patil",
+    "narrative": "Small soybean holder in Vidarbha with moderate leverage and mixed credit pressure.",
+    "expected_risk_level": "Medium",
+    "features": {
+      "state": "MH",
+      "district": "MH-Vidarbha",
+      "crop_type": "Soybean",
+      "season": "Kharif",
+      "land_size_ha": 1.2,
+      "soil_type": "Black",
+      "rainfall_mm": 780,
+      "irrigation_type": "Tubewell",
+      "loan_amount_inr": 180000,
+      "prior_loan_count": 2,
+      "prior_default_flag": 0,
+      "repayment_score": 62,
+      "annual_income_inr": 165000,
+      "existing_debt_inr": 70000
+    }
+  },
+  {
+    "id": "DEMO-03",
+    "display_name": "Ramesh Jadhav",
+    "narrative": "Rainfed cotton in Marathwada under low rainfall — classic climate-credit stress.",
+    "expected_risk_level": "High",
+    "features": {
+      "state": "MH",
+      "district": "MH-Marathwada",
+      "crop_type": "Cotton",
+      "season": "Kharif",
+      "land_size_ha": 1.0,
+      "soil_type": "Black",
+      "rainfall_mm": 520,
+      "irrigation_type": "Rainfed",
+      "loan_amount_inr": 200000,
+      "prior_loan_count": 3,
+      "prior_default_flag": 0,
+      "repayment_score": 52,
+      "annual_income_inr": 130000,
+      "existing_debt_inr": 90000
+    }
+  },
+  {
+    "id": "DEMO-04",
+    "display_name": "Anita Devi",
+    "narrative": "Small rice holding with prior default and heavy debt — critical repayment stress.",
+    "expected_risk_level": "Critical",
+    "features": {
+      "state": "BR",
+      "district": "BR-Gangetic",
+      "crop_type": "Rice",
+      "season": "Kharif",
+      "land_size_ha": 0.6,
+      "soil_type": "Alluvial",
+      "rainfall_mm": 900,
+      "irrigation_type": "Rainfed",
+      "loan_amount_inr": 220000,
+      "prior_loan_count": 5,
+      "prior_default_flag": 1,
+      "repayment_score": 28,
+      "annual_income_inr": 75000,
+      "existing_debt_inr": 180000
+    }
+  },
+  {
+    "id": "DEMO-05",
+    "display_name": "Gopal Sharma",
+    "narrative": "Edge case: drought-tolerant millet with drip in Rajasthan, but thin income keeps risk mid-range.",
+    "expected_risk_level": "Medium",
+    "features": {
+      "state": "RJ",
+      "district": "RJ-Marwar",
+      "crop_type": "Millet",
+      "season": "Kharif",
+      "land_size_ha": 0.8,
+      "soil_type": "Sandy",
+      "rainfall_mm": 320,
+      "irrigation_type": "Drip",
+      "loan_amount_inr": 95000,
+      "prior_loan_count": 1,
+      "prior_default_flag": 0,
+      "repayment_score": 70,
+      "annual_income_inr": 90000,
+      "existing_debt_inr": 25000
+    }
+  }
+]

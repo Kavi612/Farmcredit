@@ -1,0 +1,156 @@
+{
+  "id": "DEMO-04",
+  "display_name": "Anita Devi",
+  "narrative": "Small rice holding with prior default and heavy debt \u2014 critical repayment stress.",
+  "expected_risk_level": "Critical",
+  "features": {
+    "state": "BR",
+    "district": "BR-Gangetic",
+    "crop_type": "Rice",
+    "season": "Kharif",
+    "land_size_ha": 0.6,
+    "soil_type": "Alluvial",
+    "rainfall_mm": 900,
+    "irrigation_type": "Rainfed",
+    "loan_amount_inr": 220000,
+    "prior_loan_count": 5,
+    "prior_default_flag": 1,
+    "repayment_score": 28,
+    "annual_income_inr": 75000,
+    "existing_debt_inr": 180000
+  },
+  "prediction": {
+    "risk_score": 1.0,
+    "risk_level": "Critical"
+  },
+  "explanation": {
+    "baseline": 0.4322,
+    "prediction": 1.0,
+    "risk_level": "Critical",
+    "top_factors": [
+      {
+        "feature": "existing_debt_inr",
+        "display_label": "Existing debt",
+        "feature_value": 180000,
+        "shap_value": 0.169916,
+        "direction": "increases_risk",
+        "points": 17,
+        "plain_hint": "Existing debt increased pressure on repayment capacity"
+      },
+      {
+        "feature": "prior_default_flag",
+        "display_label": "Prior default",
+        "feature_value": 1,
+        "shap_value": 0.11147,
+        "direction": "increases_risk",
+        "points": 11,
+        "plain_hint": "A past default signal pushed risk higher"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 220000,
+        "shap_value": 0.10817,
+        "direction": "increases_risk",
+        "points": 11,
+        "plain_hint": "Loan size is high relative to what similar farms typically carry"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 28,
+        "shap_value": 0.056416,
+        "direction": "increases_risk",
+        "points": 6,
+        "plain_hint": "Weaker repayment history increased risk"
+      },
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 75000,
+        "shap_value": 0.032548,
+        "direction": "increases_risk",
+        "points": 3,
+        "plain_hint": "Farm income looks thin for the loan burden"
+      }
+    ],
+    "protective_factors": [
+      {
+        "feature": "rainfall_mm",
+        "display_label": "Rainfall (mm)",
+        "feature_value": 900,
+        "shap_value": -0.007072,
+        "direction": "decreases_risk",
+        "points": -1,
+        "plain_hint": "Rainfall conditions helped lower repayment risk"
+      },
+      {
+        "feature": "soil_type",
+        "display_label": "Soil type",
+        "feature_value": "Alluvial",
+        "shap_value": -0.00101,
+        "direction": "decreases_risk",
+        "points": 0,
+        "plain_hint": "Soil type supports the chosen crop reasonably well"
+      }
+    ]
+  },
+  "advisory_text": "Namaste Anita Devi. Your FarmCredit risk level is Critical. Main pressure points: Existing debt increased pressure on repayment capacity; A past default signal pushed risk higher; Loan size is high relative to what similar farms typically carry. What is helping: Keep using practices that protect income.. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+  "report": {
+    "title": "FarmCredit risk brief \u2014 Anita Devi",
+    "risk_score": 1.0,
+    "risk_level": "Critical",
+    "top_factors": [
+      {
+        "feature": "existing_debt_inr",
+        "display_label": "Existing debt",
+        "feature_value": 180000,
+        "shap_value": 0.169916,
+        "direction": "increases_risk",
+        "points": 17,
+        "plain_hint": "Existing debt increased pressure on repayment capacity"
+      },
+      {
+        "feature": "prior_default_flag",
+        "display_label": "Prior default",
+        "feature_value": 1,
+        "shap_value": 0.11147,
+        "direction": "increases_risk",
+        "points": 11,
+        "plain_hint": "A past default signal pushed risk higher"
+      },
+      {
+        "feature": "loan_amount_inr",
+        "display_label": "Loan amount",
+        "feature_value": 220000,
+        "shap_value": 0.10817,
+        "direction": "increases_risk",
+        "points": 11,
+        "plain_hint": "Loan size is high relative to what similar farms typically carry"
+      },
+      {
+        "feature": "repayment_score",
+        "display_label": "Repayment history",
+        "feature_value": 28,
+        "shap_value": 0.056416,
+        "direction": "increases_risk",
+        "points": 6,
+        "plain_hint": "Weaker repayment history increased risk"
+      },
+      {
+        "feature": "annual_income_inr",
+        "display_label": "Annual farm income",
+        "feature_value": 75000,
+        "shap_value": 0.032548,
+        "direction": "increases_risk",
+        "points": 3,
+        "plain_hint": "Farm income looks thin for the loan burden"
+      }
+    ],
+    "advisory_text": "Namaste Anita Devi. Your FarmCredit risk level is Critical. Main pressure points: Existing debt increased pressure on repayment capacity; A past default signal pushed risk higher; Loan size is high relative to what similar farms typically carry. What is helping: Keep using practices that protect income.. Next steps: match crop and irrigation to local rainfall, keep loan size close to expected income, and ask your bank/CSC about KCC, PM-KISAN, and PMFBY eligibility. Figures here are indicative for this demo \u2014 confirm locally.",
+    "generated_at": "2026-08-01T07:58:14.588983+00:00",
+    "cached": true
+  },
+  "cached": true,
+  "generated_at": "2026-08-01T07:58:14.588992+00:00"
+}

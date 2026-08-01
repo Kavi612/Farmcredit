@@ -1,0 +1,107 @@
+{
+  "_comment": "Synthetic crop agronomy proxies for FarmCredit AI demo generation. Indicative only — not official ICAR yield tables.",
+  "water_intensity_levels": ["Low", "Medium", "High"],
+  "crops": {
+    "Rice": {
+      "water_intensity": "High",
+      "typical_seasons": ["Kharif", "Rabi"],
+      "base_yield_qtl_ha": 40.0,
+      "yield_std_qtl_ha": 8.0,
+      "price_inr_per_qtl": 2100,
+      "drought_sensitivity": 0.9,
+      "preferred_soils": ["Alluvial", "ClayLoam", "Black"]
+    },
+    "Wheat": {
+      "water_intensity": "Medium",
+      "typical_seasons": ["Rabi"],
+      "base_yield_qtl_ha": 35.0,
+      "yield_std_qtl_ha": 7.0,
+      "price_inr_per_qtl": 2300,
+      "drought_sensitivity": 0.55,
+      "preferred_soils": ["Alluvial", "ClayLoam", "Black"]
+    },
+    "Cotton": {
+      "water_intensity": "High",
+      "typical_seasons": ["Kharif"],
+      "base_yield_qtl_ha": 15.0,
+      "yield_std_qtl_ha": 4.0,
+      "price_inr_per_qtl": 6500,
+      "drought_sensitivity": 0.75,
+      "preferred_soils": ["Black", "Red", "ClayLoam"]
+    },
+    "Sugarcane": {
+      "water_intensity": "High",
+      "typical_seasons": ["Kharif", "Rabi"],
+      "base_yield_qtl_ha": 700.0,
+      "yield_std_qtl_ha": 120.0,
+      "price_inr_per_qtl": 320,
+      "drought_sensitivity": 0.85,
+      "preferred_soils": ["Alluvial", "Black", "ClayLoam"]
+    },
+    "Soybean": {
+      "water_intensity": "Medium",
+      "typical_seasons": ["Kharif"],
+      "base_yield_qtl_ha": 12.0,
+      "yield_std_qtl_ha": 3.0,
+      "price_inr_per_qtl": 4500,
+      "drought_sensitivity": 0.6,
+      "preferred_soils": ["Black", "Red", "ClayLoam"]
+    },
+    "Maize": {
+      "water_intensity": "Medium",
+      "typical_seasons": ["Kharif", "Rabi"],
+      "base_yield_qtl_ha": 30.0,
+      "yield_std_qtl_ha": 7.0,
+      "price_inr_per_qtl": 2000,
+      "drought_sensitivity": 0.5,
+      "preferred_soils": ["Alluvial", "Red", "ClayLoam"]
+    },
+    "Pulses": {
+      "water_intensity": "Low",
+      "typical_seasons": ["Kharif", "Rabi"],
+      "base_yield_qtl_ha": 8.0,
+      "yield_std_qtl_ha": 2.0,
+      "price_inr_per_qtl": 5500,
+      "drought_sensitivity": 0.35,
+      "preferred_soils": ["Black", "Red", "Sandy", "Alluvial"]
+    },
+    "Groundnut": {
+      "water_intensity": "Medium",
+      "typical_seasons": ["Kharif", "Rabi"],
+      "base_yield_qtl_ha": 14.0,
+      "yield_std_qtl_ha": 3.5,
+      "price_inr_per_qtl": 5800,
+      "drought_sensitivity": 0.5,
+      "preferred_soils": ["Sandy", "Red", "Alluvial"]
+    },
+    "Mustard": {
+      "water_intensity": "Low",
+      "typical_seasons": ["Rabi"],
+      "base_yield_qtl_ha": 12.0,
+      "yield_std_qtl_ha": 3.0,
+      "price_inr_per_qtl": 5200,
+      "drought_sensitivity": 0.3,
+      "preferred_soils": ["Alluvial", "Sandy", "ClayLoam"]
+    },
+    "Millet": {
+      "water_intensity": "Low",
+      "typical_seasons": ["Kharif"],
+      "base_yield_qtl_ha": 10.0,
+      "yield_std_qtl_ha": 2.5,
+      "price_inr_per_qtl": 2800,
+      "drought_sensitivity": 0.2,
+      "preferred_soils": ["Sandy", "Red", "Laterite"]
+    }
+  },
+  "irrigation_drought_buffer": {
+    "Rainfed": 0.0,
+    "Tubewell": 0.35,
+    "Canal": 0.5,
+    "Drip": 0.65
+  },
+  "water_intensity_score": {
+    "Low": 0.25,
+    "Medium": 0.55,
+    "High": 0.9
+  }
+}

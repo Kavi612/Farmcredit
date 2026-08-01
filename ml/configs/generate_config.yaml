@@ -1,0 +1,21 @@
+seed: 42
+n_rows: 10000
+train_frac: 0.70
+val_frac: 0.15
+test_frac: 0.15
+
+paths:
+  state_priors: data/reference/state_priors.json
+  crop_water: data/reference/crop_water.json
+  raw_csv: data/raw/farmcredit_synthetic.csv
+  train_csv: data/processed/train.csv
+  val_csv: data/processed/val.csv
+  test_csv: data/processed/test.csv
+
+risk_bands:
+  Low: 0.25
+  Medium: 0.50
+  High: 0.75
+  # Critical: >= High threshold
+
+noise_std: 0.35

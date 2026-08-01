@@ -1,0 +1,329 @@
+{
+  "_comment": "Synthetic agro-priors for FarmCredit AI demo generation. Indicative ranges inspired by public-domain Indian agri patterns — not official IMD/ICAR/NABARD microdata.",
+  "states": {
+    "MH": {
+      "name": "Maharashtra",
+      "sample_weight": 0.12,
+      "rainfall_mm_mean": 900,
+      "rainfall_mm_std": 220,
+      "districts": ["MH-Vidarbha", "MH-Marathwada", "MH-Konkan", "MH-Western"],
+      "soil_weights": {
+        "Black": 0.45,
+        "Red": 0.2,
+        "Laterite": 0.1,
+        "Alluvial": 0.1,
+        "ClayLoam": 0.1,
+        "Sandy": 0.05
+      },
+      "crop_weights": {
+        "Cotton": 0.22,
+        "Soybean": 0.2,
+        "Sugarcane": 0.15,
+        "Pulses": 0.12,
+        "Wheat": 0.1,
+        "Rice": 0.08,
+        "Maize": 0.07,
+        "Groundnut": 0.04,
+        "Millet": 0.02,
+        "Mustard": 0.0
+      }
+    },
+    "UP": {
+      "name": "Uttar Pradesh",
+      "sample_weight": 0.14,
+      "rainfall_mm_mean": 950,
+      "rainfall_mm_std": 180,
+      "districts": ["UP-Western", "UP-Central", "UP-Eastern", "UP-Bundelkhand"],
+      "soil_weights": {
+        "Alluvial": 0.7,
+        "ClayLoam": 0.15,
+        "Sandy": 0.08,
+        "Black": 0.04,
+        "Red": 0.02,
+        "Laterite": 0.01
+      },
+      "crop_weights": {
+        "Wheat": 0.28,
+        "Rice": 0.22,
+        "Sugarcane": 0.18,
+        "Mustard": 0.1,
+        "Pulses": 0.08,
+        "Maize": 0.07,
+        "Cotton": 0.03,
+        "Soybean": 0.02,
+        "Groundnut": 0.01,
+        "Millet": 0.01
+      }
+    },
+    "MP": {
+      "name": "Madhya Pradesh",
+      "sample_weight": 0.1,
+      "rainfall_mm_mean": 1000,
+      "rainfall_mm_std": 200,
+      "districts": ["MP-Malwa", "MP-Bundelkhand", "MP-Mahakoshal", "MP-Chambal"],
+      "soil_weights": {
+        "Black": 0.4,
+        "Red": 0.25,
+        "Alluvial": 0.15,
+        "ClayLoam": 0.12,
+        "Sandy": 0.05,
+        "Laterite": 0.03
+      },
+      "crop_weights": {
+        "Soybean": 0.25,
+        "Wheat": 0.22,
+        "Pulses": 0.15,
+        "Rice": 0.1,
+        "Maize": 0.1,
+        "Cotton": 0.08,
+        "Mustard": 0.05,
+        "Groundnut": 0.03,
+        "Millet": 0.02,
+        "Sugarcane": 0.0
+      }
+    },
+    "RJ": {
+      "name": "Rajasthan",
+      "sample_weight": 0.08,
+      "rainfall_mm_mean": 450,
+      "rainfall_mm_std": 150,
+      "districts": ["RJ-Marwar", "RJ-Mewar", "RJ-Shekhawati", "RJ-Hadoti"],
+      "soil_weights": {
+        "Sandy": 0.45,
+        "Alluvial": 0.2,
+        "ClayLoam": 0.15,
+        "Red": 0.1,
+        "Black": 0.07,
+        "Laterite": 0.03
+      },
+      "crop_weights": {
+        "Millet": 0.28,
+        "Mustard": 0.2,
+        "Wheat": 0.15,
+        "Pulses": 0.12,
+        "Groundnut": 0.1,
+        "Cotton": 0.08,
+        "Maize": 0.05,
+        "Soybean": 0.02,
+        "Rice": 0.0,
+        "Sugarcane": 0.0
+      }
+    },
+    "KA": {
+      "name": "Karnataka",
+      "sample_weight": 0.08,
+      "rainfall_mm_mean": 1100,
+      "rainfall_mm_std": 350,
+      "districts": ["KA-North", "KA-South", "KA-Coastal", "KA-Central"],
+      "soil_weights": {
+        "Red": 0.35,
+        "Black": 0.25,
+        "Laterite": 0.15,
+        "Alluvial": 0.1,
+        "ClayLoam": 0.1,
+        "Sandy": 0.05
+      },
+      "crop_weights": {
+        "Rice": 0.18,
+        "Maize": 0.15,
+        "Cotton": 0.12,
+        "Groundnut": 0.12,
+        "Sugarcane": 0.12,
+        "Pulses": 0.1,
+        "Millet": 0.1,
+        "Soybean": 0.05,
+        "Wheat": 0.04,
+        "Mustard": 0.02
+      }
+    },
+    "AP": {
+      "name": "Andhra Pradesh",
+      "sample_weight": 0.07,
+      "rainfall_mm_mean": 950,
+      "rainfall_mm_std": 200,
+      "districts": ["AP-Coastal", "AP-Rayalaseema", "AP-Upland"],
+      "soil_weights": {
+        "Red": 0.3,
+        "Black": 0.25,
+        "Alluvial": 0.2,
+        "ClayLoam": 0.15,
+        "Sandy": 0.07,
+        "Laterite": 0.03
+      },
+      "crop_weights": {
+        "Rice": 0.3,
+        "Cotton": 0.15,
+        "Groundnut": 0.15,
+        "Maize": 0.12,
+        "Pulses": 0.1,
+        "Sugarcane": 0.08,
+        "Millet": 0.05,
+        "Wheat": 0.03,
+        "Soybean": 0.02,
+        "Mustard": 0.0
+      }
+    },
+    "TG": {
+      "name": "Telangana",
+      "sample_weight": 0.06,
+      "rainfall_mm_mean": 900,
+      "rainfall_mm_std": 210,
+      "districts": ["TG-North", "TG-South", "TG-Central"],
+      "soil_weights": {
+        "Red": 0.35,
+        "Black": 0.3,
+        "ClayLoam": 0.15,
+        "Alluvial": 0.1,
+        "Sandy": 0.07,
+        "Laterite": 0.03
+      },
+      "crop_weights": {
+        "Rice": 0.28,
+        "Cotton": 0.22,
+        "Maize": 0.15,
+        "Pulses": 0.12,
+        "Groundnut": 0.08,
+        "Soybean": 0.05,
+        "Millet": 0.05,
+        "Sugarcane": 0.03,
+        "Wheat": 0.02,
+        "Mustard": 0.0
+      }
+    },
+    "PB": {
+      "name": "Punjab",
+      "sample_weight": 0.07,
+      "rainfall_mm_mean": 650,
+      "rainfall_mm_std": 120,
+      "districts": ["PB-Malwa", "PB-Doaba", "PB-Majha"],
+      "soil_weights": {
+        "Alluvial": 0.75,
+        "ClayLoam": 0.15,
+        "Sandy": 0.08,
+        "Black": 0.01,
+        "Red": 0.01,
+        "Laterite": 0.0
+      },
+      "crop_weights": {
+        "Wheat": 0.4,
+        "Rice": 0.35,
+        "Cotton": 0.1,
+        "Maize": 0.08,
+        "Mustard": 0.04,
+        "Pulses": 0.02,
+        "Sugarcane": 0.01,
+        "Soybean": 0.0,
+        "Groundnut": 0.0,
+        "Millet": 0.0
+      }
+    },
+    "HR": {
+      "name": "Haryana",
+      "sample_weight": 0.06,
+      "rainfall_mm_mean": 550,
+      "rainfall_mm_std": 130,
+      "districts": ["HR-East", "HR-West", "HR-South"],
+      "soil_weights": {
+        "Alluvial": 0.65,
+        "Sandy": 0.2,
+        "ClayLoam": 0.12,
+        "Black": 0.02,
+        "Red": 0.01,
+        "Laterite": 0.0
+      },
+      "crop_weights": {
+        "Wheat": 0.38,
+        "Rice": 0.25,
+        "Mustard": 0.12,
+        "Cotton": 0.12,
+        "Maize": 0.05,
+        "Pulses": 0.04,
+        "Sugarcane": 0.03,
+        "Millet": 0.01,
+        "Soybean": 0.0,
+        "Groundnut": 0.0
+      }
+    },
+    "GJ": {
+      "name": "Gujarat",
+      "sample_weight": 0.07,
+      "rainfall_mm_mean": 800,
+      "rainfall_mm_std": 250,
+      "districts": ["GJ-Saurashtra", "GJ-North", "GJ-Central", "GJ-South"],
+      "soil_weights": {
+        "Black": 0.3,
+        "Alluvial": 0.25,
+        "Sandy": 0.2,
+        "ClayLoam": 0.15,
+        "Red": 0.08,
+        "Laterite": 0.02
+      },
+      "crop_weights": {
+        "Cotton": 0.25,
+        "Groundnut": 0.2,
+        "Wheat": 0.15,
+        "Rice": 0.1,
+        "Maize": 0.08,
+        "Pulses": 0.08,
+        "Mustard": 0.06,
+        "Millet": 0.05,
+        "Sugarcane": 0.02,
+        "Soybean": 0.01
+      }
+    },
+    "TN": {
+      "name": "Tamil Nadu",
+      "sample_weight": 0.07,
+      "rainfall_mm_mean": 950,
+      "rainfall_mm_std": 220,
+      "districts": ["TN-Delta", "TN-West", "TN-South", "TN-North"],
+      "soil_weights": {
+        "Red": 0.3,
+        "Alluvial": 0.25,
+        "Black": 0.15,
+        "Laterite": 0.15,
+        "ClayLoam": 0.1,
+        "Sandy": 0.05
+      },
+      "crop_weights": {
+        "Rice": 0.35,
+        "Groundnut": 0.12,
+        "Sugarcane": 0.12,
+        "Maize": 0.1,
+        "Pulses": 0.1,
+        "Cotton": 0.08,
+        "Millet": 0.08,
+        "Wheat": 0.03,
+        "Soybean": 0.02,
+        "Mustard": 0.0
+      }
+    },
+    "BR": {
+      "name": "Bihar",
+      "sample_weight": 0.08,
+      "rainfall_mm_mean": 1200,
+      "rainfall_mm_std": 200,
+      "districts": ["BR-Gangetic", "BR-North", "BR-South"],
+      "soil_weights": {
+        "Alluvial": 0.75,
+        "ClayLoam": 0.15,
+        "Sandy": 0.05,
+        "Red": 0.03,
+        "Black": 0.01,
+        "Laterite": 0.01
+      },
+      "crop_weights": {
+        "Rice": 0.4,
+        "Wheat": 0.25,
+        "Maize": 0.12,
+        "Pulses": 0.1,
+        "Mustard": 0.06,
+        "Sugarcane": 0.04,
+        "Cotton": 0.01,
+        "Groundnut": 0.01,
+        "Soybean": 0.01,
+        "Millet": 0.0
+      }
+    }
+  }
+}
