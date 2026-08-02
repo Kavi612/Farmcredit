@@ -108,7 +108,7 @@ def _svg_data_uri(svg: str) -> str:
 BRAND_LEAF_ICON_URI = _svg_data_uri(BRAND_LEAF_SVG_RAW)
 
 THEME_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {{
   --fc-green: {GREEN_MID};
@@ -117,19 +117,32 @@ THEME_CSS = f"""
   --fc-muted: {TEXT_MUTED};
   --fc-border: {BORDER};
   --fc-surface: {SURFACE};
-  --fc-radius: 16px;
-  --fc-radius-lg: 22px;
+  --fc-radius: 18px;
+  --fc-radius-lg: 24px;
+  --fc-font: 'Outfit', 'Segoe UI', sans-serif;
+  --fc-display: 'Fraunces', Georgia, serif;
 }}
 
 html, body, [class*="css"] {{
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif !important;
+  font-family: var(--fc-font) !important;
   color: {TEXT};
 }}
 .stApp {{
   background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, #dcfce7 0%, transparent 55%),
-    radial-gradient(ellipse 60% 40% at 100% 0%, #dbeafe 0%, transparent 50%),
-    {PAGE_BG} !important;
+    linear-gradient(180deg, #ecfdf5 0%, #f7faf8 38%, #f8fafc 100%) !important;
+}}
+
+@keyframes fc-fade-up {{
+  from {{ opacity: 0; transform: translateY(18px); }}
+  to {{ opacity: 1; transform: translateY(0); }}
+}}
+@keyframes fc-soft-zoom {{
+  from {{ transform: scale(1.04); }}
+  to {{ transform: scale(1); }}
+}}
+@keyframes fc-fade-in {{
+  from {{ opacity: 0; }}
+  to {{ opacity: 1; }}
 }}
 
 header[data-testid="stHeader"],
@@ -149,20 +162,6 @@ header[data-testid="stHeader"],
 [data-testid="stSidebarNav"],
 section[data-testid="stSidebar"] {{
   display: none !important;
-}}
-
-.fc-hero-cta-bar {{
-  margin: 1.25rem 0 2.5rem 0;
-  max-width: 560px;
-  padding: 0;
-}}
-.fc-hero-cta-label {{
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: {TEXT_MUTED};
-  margin-bottom: 0.55rem;
-  text-transform: uppercase;
 }}
 
 /* ── Bottom CTA band ── */
@@ -211,16 +210,17 @@ section[data-testid="stSidebar"] {{
 
 /* ── Header shell (brand + nav) ── */
 .fc-header-shell {{
-  background: rgba(255,255,255,0.96);
-  border: 1px solid {BORDER};
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226,232,240,0.95);
   border-bottom: none;
-  border-radius: 18px 18px 0 0;
-  padding: 0.85rem 1rem 0;
+  border-radius: 20px 20px 0 0;
+  padding: 0.9rem 1.15rem 0;
   margin-bottom: 0;
   box-shadow: none;
 }}
 .fc-header-shell .fc-brand {{
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.8rem;
   border-bottom: 1px solid {BORDER_SOFT};
   margin-bottom: 0;
 }}
@@ -238,14 +238,15 @@ div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{
 
 div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-  background: rgba(255,255,255,0.96);
-  border: 1px solid {BORDER};
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226,232,240,0.95);
   border-top: none;
-  border-radius: 0 0 18px 18px;
-  padding: 0.55rem 1rem 0.65rem;
+  border-radius: 0 0 20px 20px;
+  padding: 0.55rem 1.15rem 0.7rem;
   margin-top: -0.5rem;
-  margin-bottom: 1.25rem;
-  box-shadow: {SHADOW_SM};
+  margin-bottom: 1.35rem;
+  box-shadow: 0 8px 28px rgba(15, 70, 40, 0.06);
   align-items: center !important;
   gap: 0.45rem !important;
 }}
@@ -268,136 +269,99 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
   }}
 }}
 
-/* ── Hero (open — no card wrapper) ── */
-.fc-hero-open {{
-  padding: 0.25rem 0 0.5rem;
-  margin-bottom: 0.25rem;
-  background: none;
-  border: none;
-  box-shadow: none;
-}}
-.fc-hero-grid {{
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 2.5rem;
-  align-items: center;
-}}
-.fc-hero-left {{ min-width: 0; }}
-.fc-hero-right {{ min-width: 0; }}
-.fc-hero-icon-col {{
+/* ── Full-bleed photo hero ── */
+.fc-hero-bleed {{
+  position: relative;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 2.25rem;
+  min-height: min(72vh, 640px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
+  align-items: flex-end;
+  overflow: hidden;
+  border-radius: 0;
+  isolation: isolate;
+  animation: fc-fade-in 0.7s ease both;
 }}
-.fc-hero-icon {{
-  width: 148px;
-  height: 148px;
-  border-radius: 34px;
-  background: linear-gradient(135deg, {GREEN_LIGHT} 0%, {MINT} 100%);
-  border: 1px solid #bbf7d0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 16px 48px rgba(21, 128, 61, 0.12);
+.fc-hero-bleed-bg {{
+  position: absolute;
+  inset: 0;
+  background-color: #14532d;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: fc-soft-zoom 12s ease-out both;
+  z-index: 0;
 }}
-.fc-hero-icon svg,
-.fc-hero-icon img {{
-  width: 64px;
-  height: 64px;
-  display: block;
+.fc-hero-bleed-veil {{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(105deg, rgba(10, 36, 22, 0.82) 0%, rgba(15, 61, 36, 0.62) 42%, rgba(15, 61, 36, 0.28) 68%, rgba(15, 61, 36, 0.12) 100%),
+    linear-gradient(180deg, rgba(8, 28, 18, 0.15) 0%, rgba(8, 28, 18, 0.55) 100%);
 }}
-.fc-hero-badge {{
-  display: inline-block;
-  background: {WHITE};
-  border: 1px solid #bbf7d0;
-  color: {GREEN_MID};
-  font-size: 0.68rem;
+.fc-hero-bleed-content {{
+  position: relative;
+  z-index: 2;
+  width: min(1140px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: 3.5rem 0 3.25rem;
+  animation: fc-fade-up 0.85s 0.12s ease both;
+}}
+.fc-hero-brand {{
+  font-family: var(--fc-display);
+  font-size: clamp(2.6rem, 6.2vw, 4.4rem);
   font-weight: 800;
-  letter-spacing: 0.1em;
-  padding: 0.38rem 0.9rem;
-  border-radius: 999px;
-  margin-bottom: 1rem;
-  box-shadow: {SHADOW_SM};
+  color: #ffffff;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  margin: 0 0 0.85rem 0;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.25);
+  max-width: 14ch;
 }}
 .fc-hero-title {{
-  font-size: clamp(1.9rem, 4vw, 2.75rem);
-  font-weight: 800;
-  color: {GREEN_DARK};
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  margin: 0 0 0.9rem 0;
+  font-family: var(--fc-font);
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  color: rgba(255,255,255,0.94);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem 0;
+  max-width: 28ch;
 }}
 .fc-hero-sub {{
-  color: {TEXT_MUTED};
-  font-size: 1.03rem;
-  line-height: 1.65;
-  max-width: 520px;
-  margin: 0 0 1.1rem 0;
+  color: rgba(236, 253, 245, 0.88);
+  font-size: 1.02rem;
+  line-height: 1.6;
+  max-width: 36ch;
+  margin: 0;
+  font-weight: 400;
 }}
-.fc-hero-bullets {{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+.fc-hero-cta-bar {{
+  width: min(1140px, 100%);
+  margin: -1.1rem auto 2.5rem;
+  max-width: 560px;
+  padding: 0;
+  position: relative;
+  z-index: 3;
+  animation: fc-fade-up 0.8s 0.28s ease both;
 }}
-.fc-hero-bullets span {{
-  color: {TEXT};
-  font-size: 0.84rem;
-  font-weight: 600;
-  background: rgba(255,255,255,0.85);
-  border: 1px solid {BORDER};
-  padding: 0.38rem 0.8rem;
-  border-radius: 999px;
+.fc-hero-cta-label {{
+  display: none;
 }}
-.fc-hero-bullets span::before {{
-  content: "✓ ";
-  color: {GREEN_MID};
-  font-weight: 800;
+.fc-hero-open {{
+  display: none;
 }}
-.fc-farm-svg {{
-  width: 100%;
-  height: auto;
+.fc-feature-section {{
+  animation: fc-fade-up 0.75s 0.18s ease both;
+}}
+.fc-icon-svg {{
+  width: 26px;
+  height: 26px;
   display: block;
-}}
-.fc-hero-float-stack {{
-  position: absolute;
-  top: 6%;
-  right: -2%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  width: min(200px, 46%);
-  z-index: 2;
-}}
-.fc-hero-float-card {{
-  background: rgba(255,255,255,0.97);
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 0.72rem 0.88rem;
-  box-shadow: {SHADOW_MD};
-  backdrop-filter: blur(8px);
-}}
-.fc-hero-float-label {{
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  color: {GREEN_MID};
-  margin-bottom: 0.12rem;
-}}
-.fc-hero-float-title {{
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: {TEXT};
-  line-height: 1.25;
-}}
-.fc-hero-float-sub {{
-  font-size: 0.72rem;
-  color: {TEXT_MUTED};
-  margin-top: 0.12rem;
-  line-height: 1.35;
-}}
-.fc-hero-cta-row {{
-  margin-bottom: 2rem;
 }}
 
 /* ── Card grids ── */
@@ -408,7 +372,12 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 }}
 .fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
 .fc-card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
+.fc-card-grid-4 {{ grid-template-columns: repeat(4, 1fr); }}
 .fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
+
+@media (max-width: 900px) {{
+  .fc-card-grid-4 {{ grid-template-columns: repeat(2, 1fr); }}
+}}
 
 .fc-steps-row {{
   display: grid;
@@ -444,50 +413,51 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 
 /* ── Sections ── */
 .fc-section-title {{
-  font-size: 1.55rem;
-  font-weight: 800;
+  font-family: var(--fc-display);
+  font-size: 1.85rem;
+  font-weight: 700;
   color: {GREEN_DARK};
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   margin: 3rem 0 0.45rem 0;
-  line-height: 1.2;
+  line-height: 1.15;
 }}
 .fc-section-title:first-child {{ margin-top: 0.25rem; }}
 .fc-section-sub {{
   color: {TEXT_MUTED};
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   line-height: 1.55;
-  margin: 0 0 1.25rem 0;
+  margin: 0 0 1.45rem 0;
   max-width: 640px;
 }}
 
 /* ── Cards ── */
 .fc-card {{
   background: {SURFACE};
-  border: 1px solid {BORDER};
+  border: 1px solid rgba(226,232,240,0.9);
   border-radius: var(--fc-radius);
-  padding: 1.5rem 1.4rem;
-  box-shadow: {SHADOW_SM};
+  padding: 1.55rem 1.35rem 1.45rem;
+  box-shadow: 0 10px 30px rgba(15, 70, 40, 0.05);
   height: 100%;
   box-sizing: border-box;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }}
 .fc-card:hover {{
-  transform: translateY(-2px);
-  box-shadow: {SHADOW_MD};
-  border-color: #cbd5e1;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(15, 70, 40, 0.09);
+  border-color: #bbf7d0;
 }}
 .fc-card-icon-wrap {{
-  width: 48px; height: 48px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, {MINT}, {GREEN_LIGHT});
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #ecfdf5, #dcfce7);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.35rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   border: 1px solid #bbf7d0;
+  color: {GREEN_MID};
 }}
 .fc-card-num {{
   width: 36px; height: 36px;
-  border-radius: 50%;
+  border-radius: 12px;
   background: linear-gradient(135deg, {GREEN_MID}, {GREEN_BRIGHT});
   color: white;
   font-size: 0.78rem;
@@ -498,9 +468,9 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 .fc-card-title {{
   font-weight: 700;
   color: {TEXT};
-  font-size: 1.02rem;
-  margin-bottom: 0.45rem;
-  letter-spacing: -0.01em;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
 }}
 .fc-card-text {{
   color: {TEXT_MUTED};
@@ -643,13 +613,12 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
   min-width: 0;
 }}
 .fc-brand-icon {{
-  width: 42px; height: 42px;
-  border-radius: 13px;
-  background: linear-gradient(135deg, {GREEN_LIGHT}, {MINT});
-  border: 1px solid #bbf7d0;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #dcfce7, #bbf7d0);
+  border: 1px solid #86efac;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
 }}
 .fc-brand-icon svg,
 .fc-brand-icon img {{
@@ -658,10 +627,11 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
   display: block;
 }}
 .fc-brand-name {{
-  font-size: 1.08rem;
-  font-weight: 800;
+  font-family: var(--fc-display);
+  font-size: 1.2rem;
+  font-weight: 700;
   color: {GREEN_DARK};
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 1.15;
 }}
 .fc-brand-tag {{
@@ -681,28 +651,31 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 }}
 
 .stButton > button {{
-  border-radius: 12px !important;
-  font-weight: 600 !important;
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
-  padding: 0.55rem 1.1rem !important;
-  transition: all 0.15s ease !important;
+  border-radius: 14px !important;
+  font-weight: 650 !important;
+  font-family: var(--fc-font) !important;
+  padding: 0.7rem 1.2rem !important;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease !important;
   border: 1px solid {BORDER} !important;
-  box-shadow: {SHADOW_SM} !important;
+  box-shadow: 0 2px 8px rgba(15,70,40,0.05) !important;
 }}
 .stButton > button[kind="primary"] {{
-  background: linear-gradient(135deg, {GREEN_MID}, {GREEN_BRIGHT}) !important;
-  border-color: {GREEN_MID} !important;
+  background: linear-gradient(135deg, #166534, {GREEN_MID}) !important;
+  border-color: #166534 !important;
   color: white !important;
-  box-shadow: 0 4px 14px rgba(21,128,61,0.25) !important;
+  box-shadow: 0 8px 22px rgba(21,128,61,0.28) !important;
 }}
 .stButton > button[kind="primary"]:hover {{
-  background: linear-gradient(135deg, {GREEN_DARK}, {GREEN_MID}) !important;
+  background: linear-gradient(135deg, {GREEN_DARK}, #166534) !important;
   border-color: {GREEN_DARK} !important;
   transform: translateY(-1px);
 }}
+.stButton > button[kind="secondary"] {{
+  background: rgba(255,255,255,0.92) !important;
+}}
 .stButton > button[kind="secondary"]:hover {{
-  border-color: #cbd5e1 !important;
-  background: {BORDER_SOFT} !important;
+  border-color: #86efac !important;
+  background: {MINT} !important;
 }}
 
 div[data-testid="stForm"] {{
@@ -777,41 +750,36 @@ hr {{
     width: 100% !important;
   }}
 
-  /* Hero — hide large icon on mobile (already in header) */
-  .fc-hero-right,
-  .fc-hero-icon-col {{
-    display: none !important;
+  .fc-hero-bleed {{
+    min-height: min(62vh, 520px) !important;
+    margin-bottom: 1.5rem !important;
   }}
-  .fc-hero-grid {{
-    grid-template-columns: 1fr !important;
-    gap: 0 !important;
+  .fc-hero-bleed-content {{
+    padding: 2.4rem 0 2.1rem !important;
+    width: calc(100% - 1.5rem) !important;
   }}
-  .fc-hero-open {{
-    padding: 0.15rem 0 0.25rem !important;
-    text-align: left !important;
+  .fc-hero-brand {{
+    font-size: 2.35rem !important;
+    max-width: none !important;
   }}
-  .fc-hero-title {{ font-size: 1.65rem !important; margin-bottom: 0.65rem !important; }}
-  .fc-hero-sub {{ font-size: 0.92rem !important; max-width: none !important; margin-bottom: 0.85rem !important; }}
-  .fc-hero-badge {{ margin-bottom: 0.75rem !important; }}
-  .fc-hero-bullets {{
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0.4rem !important;
+  .fc-hero-title {{
+    font-size: 1.08rem !important;
+    max-width: none !important;
+    margin-bottom: 0.55rem !important;
   }}
-  .fc-hero-bullets span {{
-    font-size: 0.82rem !important;
-    text-align: center !important;
-    display: block !important;
+  .fc-hero-sub {{
+    font-size: 0.92rem !important;
+    max-width: none !important;
   }}
   .fc-hero-cta-bar {{
-    margin: 0.85rem 0 1.5rem 0 !important;
+    margin: -0.65rem 0 1.5rem 0 !important;
     max-width: none !important;
   }}
 
   /* Sections & cards */
-  .fc-section-title {{ font-size: 1.25rem !important; margin-top: 1.75rem !important; }}
+  .fc-section-title {{ font-size: 1.4rem !important; margin-top: 1.75rem !important; }}
   .fc-section-sub {{ font-size: 0.88rem !important; margin-bottom: 1rem !important; }}
-  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-5, .fc-steps-row {{
+  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row {{
     grid-template-columns: 1fr !important;
   }}
 
@@ -854,120 +822,52 @@ hr {{
 }}
 
 @media (max-width: 480px) {{
-  .fc-hero-title {{ font-size: 1.45rem !important; }}
-  .fc-hero-badge {{ font-size: 0.6rem !important; letter-spacing: 0.06em !important; }}
+  .fc-hero-brand {{ font-size: 2.05rem !important; }}
+  .fc-hero-title {{ font-size: 1rem !important; }}
 }}
 """
 
 # CSS injected into every st.html iframe (global theme CSS does NOT reach iframes)
 HTML_IFRAME_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Outfit:wght@400;500;600;700;800&display=swap');
 * {{ box-sizing: border-box; }}
 body {{
-  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-family: 'Outfit', 'Segoe UI', sans-serif;
   margin: 0;
   color: {TEXT};
 }}
-.fc-hero-open {{
-  padding: 0.25rem 0 0.5rem;
-  margin: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-}}
-.fc-hero-grid {{
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 2.5rem;
-  align-items: center;
-}}
-.fc-hero-badge {{
-  display: inline-block;
-  background: {WHITE};
-  border: 1px solid #bbf7d0;
-  color: {GREEN_MID};
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  padding: 0.38rem 0.9rem;
-  border-radius: 999px;
-  margin-bottom: 1rem;
-}}
-.fc-hero-title {{
-  font-size: 2.35rem;
-  font-weight: 800;
-  color: {GREEN_DARK};
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  margin: 0 0 0.9rem 0;
-}}
-.fc-hero-sub {{
-  color: {TEXT_MUTED};
-  font-size: 1.02rem;
-  line-height: 1.65;
-  margin: 0 0 1.1rem 0;
-}}
-.fc-hero-bullets {{ display: flex; flex-wrap: wrap; gap: 0.45rem; }}
-.fc-hero-bullets span {{
-  font-size: 0.84rem;
-  font-weight: 600;
-  background: rgba(255,255,255,0.85);
-  border: 1px solid {BORDER};
-  padding: 0.38rem 0.8rem;
-  border-radius: 999px;
-}}
-.fc-hero-bullets span::before {{ content: "✓ "; color: {GREEN_MID}; font-weight: 800; }}
-.fc-hero-icon-col {{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-}}
-.fc-hero-icon {{
-  width: 148px;
-  height: 148px;
-  border-radius: 34px;
-  background: linear-gradient(135deg, {GREEN_LIGHT} 0%, {MINT} 100%);
-  border: 1px solid #bbf7d0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 16px 48px rgba(21, 128, 61, 0.12);
-}}
-.fc-hero-icon svg,
-.fc-hero-icon img {{
-  width: 64px;
-  height: 64px;
-  display: block;
-}}
 .fc-brand {{ display: flex; align-items: center; gap: 0.65rem; }}
 .fc-brand-icon {{
-  width: 42px; height: 42px; border-radius: 13px;
-  background: linear-gradient(135deg, {GREEN_LIGHT}, {MINT});
-  border: 1px solid #bbf7d0;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(145deg, #dcfce7, #bbf7d0);
+  border: 1px solid #86efac;
   display: flex; align-items: center; justify-content: center;
 }}
 .fc-brand-icon svg,
 .fc-brand-icon img {{ width: 22px; height: 22px; display: block; }}
-.fc-brand-name {{ font-size: 1.08rem; font-weight: 800; color: {GREEN_DARK}; line-height: 1.15; }}
+.fc-brand-name {{
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.2rem; font-weight: 700; color: {GREEN_DARK}; line-height: 1.15;
+}}
 .fc-brand-tag {{ font-size: 0.78rem; color: {TEXT_MUTED}; margin-top: 0.12rem; }}
 .fc-card-grid {{ display: grid; gap: 1.1rem; }}
 .fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
 .fc-card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
+.fc-card-grid-4 {{ grid-template-columns: repeat(4, 1fr); }}
 .fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
 .fc-steps-row {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }}
 .fc-card, .fc-step-card, .fc-choice-card, .fc-profile-card {{
   background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 16px;
-  padding: 1.4rem 1.3rem;
-  box-shadow: {SHADOW_SM};
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  border: 1px solid rgba(226,232,240,0.9);
+  border-radius: 18px;
+  padding: 1.45rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(15, 70, 40, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }}
 .fc-card:hover, .fc-step-card:hover, .fc-choice-card:hover {{
-  transform: translateY(-2px);
-  box-shadow: {SHADOW_MD};
-  border-color: #cbd5e1;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(15, 70, 40, 0.09);
+  border-color: #bbf7d0;
 }}
 .fc-choice-card {{ border-radius: 20px; padding: 1.65rem 1.5rem; margin-bottom: 0; }}
 .fc-choice-icon {{
@@ -977,19 +877,20 @@ body {{
   font-size: 1.4rem; margin-bottom: 1rem; border: 1px solid #dbeafe;
 }}
 .fc-card-icon-wrap {{
-  width: 48px; height: 48px; border-radius: 14px;
-  background: linear-gradient(135deg, {MINT}, {GREEN_LIGHT});
+  width: 52px; height: 52px; border-radius: 16px;
+  background: linear-gradient(145deg, #ecfdf5, #dcfce7);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.35rem; margin-bottom: 1rem; border: 1px solid #bbf7d0;
+  margin-bottom: 1.1rem; border: 1px solid #bbf7d0; color: {GREEN_MID};
 }}
+.fc-icon-svg {{ width: 26px; height: 26px; display: block; }}
 .fc-card-num {{
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 36px; height: 36px; border-radius: 12px;
   background: linear-gradient(135deg, {GREEN_MID}, {GREEN_BRIGHT});
   color: white; font-size: 0.78rem; font-weight: 800;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 0.85rem;
 }}
-.fc-card-title {{ font-weight: 700; color: {TEXT}; font-size: 1.02rem; margin-bottom: 0.45rem; }}
+.fc-card-title {{ font-weight: 700; color: {TEXT}; font-size: 1.05rem; margin-bottom: 0.5rem; }}
 .fc-card-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.6; }}
 .fc-profile-crop {{
   width: 40px; height: 40px; border-radius: 12px; background: {MINT};
@@ -1004,7 +905,10 @@ body {{
   padding: 0.22rem 0.65rem; border-radius: 999px;
 }}
 .fc-footer-wrap {{ text-align: center; padding: 1.5rem 0 0.25rem; border-top: 1px solid {BORDER}; margin-top: 2rem; }}
-.fc-footer-brand {{ font-weight: 800; color: {GREEN_DARK}; font-size: 0.98rem; }}
+.fc-footer-brand {{
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 700; color: {GREEN_DARK}; font-size: 1.05rem;
+}}
 .fc-footer-tag {{ font-size: 0.82rem; color: {TEXT_MUTED}; margin-top: 0.2rem; }}
 .fc-footer-copy {{ font-size: 0.78rem; color: #94a3b8; margin: 0.85rem 0 0; line-height: 1.5; }}
 .fc-cta-band {{
@@ -1027,8 +931,9 @@ body {{
 }}
 .fc-cta-band-inner {{ position: relative; z-index: 1; }}
 .fc-cta-band-title {{
-  font-size: 1.45rem;
-  font-weight: 800;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
   margin: 0 0 0.45rem 0;
   line-height: 1.2;
@@ -1039,21 +944,11 @@ body {{
   line-height: 1.55;
   margin: 0;
 }}
+@media (max-width: 900px) {{
+  .fc-card-grid-4 {{ grid-template-columns: repeat(2, 1fr) !important; }}
+}}
 @media (max-width: 768px) {{
-  .fc-hero-grid {{ grid-template-columns: 1fr !important; gap: 1rem !important; }}
-  .fc-hero-icon-col {{ padding: 0.25rem 0 0.5rem !important; }}
-  .fc-hero-icon {{
-    width: 112px !important;
-    height: 112px !important;
-    border-radius: 28px !important;
-  }}
-  .fc-hero-icon img {{
-    width: 52px !important;
-    height: 52px !important;
-  }}
-  .fc-hero-title {{ font-size: 1.75rem !important; }}
-  .fc-hero-sub {{ font-size: 0.95rem !important; }}
-  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-5, .fc-steps-row {{
+  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row {{
     grid-template-columns: 1fr !important;
   }}
   .fc-card, .fc-step-card, .fc-choice-card, .fc-profile-card {{
@@ -1063,7 +958,7 @@ body {{
     padding: 1.35rem 1.15rem 2.25rem !important;
     border-radius: 18px !important;
   }}
-  .fc-cta-band-title {{ font-size: 1.2rem !important; }}
+  .fc-cta-band-title {{ font-size: 1.25rem !important; }}
   .fc-cta-band-sub {{ font-size: 0.88rem !important; }}
 }}
 """

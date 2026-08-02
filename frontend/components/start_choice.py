@@ -15,7 +15,7 @@ def render_start_choice() -> None:
           <div class="fc-cta-band-inner">
             <h2 class="fc-cta-band-title">Ready to see your credit insight?</h2>
             <p class="fc-cta-band-sub">
-              Try a demo farmer profile in seconds, or enter your own farm and financial details
+              Explore a demo farmer profile in seconds, or enter your own farm and loan details
               for a personalized assessment.
             </p>
           </div>
