@@ -128,10 +128,7 @@ html, body, [class*="css"] {{
   color: {TEXT};
 }}
 .stApp {{
-  background:
-    radial-gradient(ellipse 70% 45% at 0% 0%, rgba(220, 252, 231, 0.7) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 35% at 100% 8%, rgba(209, 250, 229, 0.45) 0%, transparent 50%),
-    linear-gradient(180deg, #f4faf6 0%, #f7f8f7 45%, #f8fafc 100%) !important;
+  background: #f3f5f4 !important;
 }}
 
 @keyframes fc-fade-up {{
@@ -157,9 +154,9 @@ header[data-testid="stHeader"],
 
 .stAppViewContainer .main .block-container,
 .block-container {{
-  padding-top: 0.65rem;
+  padding-top: 0.85rem;
   padding-bottom: 3rem;
-  max-width: 1080px;
+  max-width: 1120px;
 }}
 [data-testid="stSidebarNav"],
 section[data-testid="stSidebar"] {{
@@ -168,15 +165,15 @@ section[data-testid="stSidebar"] {{
 
 /* ── Header shell (brand + nav) ── */
 .fc-header-shell {{
-  background: rgba(255,255,255,0.94);
+  background: #ffffff;
   border: 1px solid rgba(226,232,240,0.95);
   border-bottom: none;
-  border-radius: 16px 16px 0 0;
-  padding: 0.85rem 1.1rem 0;
+  border-radius: 18px 18px 0 0;
+  padding: 0.95rem 1.2rem 0;
   margin-bottom: 0;
 }}
 .fc-header-shell .fc-brand {{
-  padding-bottom: 0.7rem;
+  padding-bottom: 0.8rem;
   border-bottom: 1px solid {BORDER_SOFT};
   margin-bottom: 0;
 }}
@@ -193,31 +190,38 @@ div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{
 
 div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-  background: rgba(255,255,255,0.94);
+  background: #ffffff;
   border: 1px solid rgba(226,232,240,0.95);
   border-top: none;
-  border-radius: 0 0 16px 16px;
-  padding: 0.45rem 0.85rem 0.55rem;
+  border-radius: 0 0 18px 18px;
+  padding: 0.55rem 0.95rem 0.65rem;
   margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 6px 20px rgba(15, 70, 40, 0.05);
+  margin-bottom: 1.35rem;
+  box-shadow: 0 10px 30px rgba(15, 40, 30, 0.05);
   align-items: center !important;
-  gap: 0.35rem !important;
+  gap: 0.45rem !important;
 }}
 
-/* Soften nav link buttons (not primary CTA) */
+/* Soften nav link buttons into pill-like controls */
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"] {{
-  background: transparent !important;
+  background: #f3faf5 !important;
   border-color: transparent !important;
   box-shadow: none !important;
-  color: {TEXT} !important;
-  font-weight: 560 !important;
+  color: {GREEN_DARK} !important;
+  font-weight: 600 !important;
+  border-radius: 999px !important;
 }}
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"]:hover,
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"]:hover {{
-  background: {MINT} !important;
+  background: #e8f8ee !important;
   color: {GREEN_DARK} !important;
+}}
+div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="primary"],
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="primary"] {{
+  border-radius: 999px !important;
+  background: #0b3d28 !important;
+  border-color: #0b3d28 !important;
 }}
 
 @media (max-width: 768px) {{
@@ -225,8 +229,8 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
   [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
     flex-wrap: nowrap !important;
     gap: 0.5rem !important;
-    padding: 0.4rem 0.7rem 0.5rem !important;
-    border-radius: 0 0 14px 14px !important;
+    padding: 0.45rem 0.75rem 0.55rem !important;
+    border-radius: 0 0 16px 16px !important;
     margin-bottom: 1rem !important;
   }}
 }}
@@ -235,27 +239,28 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
 .fc-hero-bleed {{
   position: relative;
   width: 100%;
-  margin: 0 0 1.1rem 0;
-  min-height: min(52vh, 460px);
+  margin: 0 0 1.15rem 0;
+  min-height: min(56vh, 500px);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 22px;
   isolation: isolate;
   animation: fc-fade-in 0.65s ease both;
+  box-shadow: 0 18px 50px rgba(11, 61, 40, 0.16);
 }}
 .fc-hero-bleed-media,
 .fc-hero-bleed-fallback {{
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #14532d;
+  background: #0b3d28;
 }}
 .fc-hero-bleed-img {{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center 42%;
   display: block;
   animation: fc-soft-zoom 14s ease-out both;
 }}
@@ -264,31 +269,53 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(100deg, rgba(8, 28, 18, 0.88) 0%, rgba(12, 48, 28, 0.72) 38%, rgba(12, 48, 28, 0.35) 68%, rgba(12, 48, 28, 0.18) 100%),
-    linear-gradient(180deg, rgba(8, 28, 18, 0.08) 0%, rgba(8, 28, 18, 0.5) 100%);
+    linear-gradient(105deg, rgba(6, 28, 18, 0.9) 0%, rgba(8, 40, 26, 0.78) 34%, rgba(8, 40, 26, 0.35) 66%, rgba(8, 40, 26, 0.12) 100%),
+    linear-gradient(180deg, rgba(6, 28, 18, 0.12) 0%, rgba(6, 28, 18, 0.55) 100%);
 }}
 .fc-hero-bleed-content {{
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 2.4rem 1.6rem 2.1rem;
+  padding: 2.2rem 1.75rem 1.8rem;
   animation: fc-fade-up 0.75s 0.1s ease both;
 }}
-.fc-hero-kicker {{
-  margin: 0 0 0.65rem 0;
+.fc-hero-trust {{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1rem 0;
+  padding: 0.42rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(236,253,245,0.95);
   font-size: 0.78rem;
-  font-weight: 650;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(8px);
+}}
+.fc-hero-trust-dot {{
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #86efac;
+  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.25);
+}}
+.fc-hero-kicker {{
+  margin: 0 0 0.55rem 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(187, 247, 208, 0.95);
+  color: #86efac;
 }}
 .fc-hero-brand {{
   font-family: var(--fc-display);
-  font-size: clamp(2.4rem, 5.5vw, 3.75rem);
+  font-size: clamp(2.5rem, 5.8vw, 3.9rem);
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.03em;
-  line-height: 1.0;
+  line-height: 0.98;
   margin: 0 0 0.85rem 0;
   max-width: 12ch;
 }}
@@ -299,20 +326,150 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
   color: rgba(236, 253, 245, 0.9);
   font-size: 1.05rem;
   line-height: 1.55;
-  max-width: 38ch;
-  margin: 0;
+  max-width: 40ch;
+  margin: 0 0 1.5rem 0;
   font-weight: 400;
 }}
-.fc-hero-cta-wrap {{
-  margin: 0 0 2.75rem 0;
-  max-width: 520px;
-  animation: fc-fade-up 0.7s 0.2s ease both;
+.fc-hero-metrics {{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255,255,255,0.16);
 }}
-.fc-hero-cta-bar {{
+.fc-hero-metric {{
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  min-width: 0;
+}}
+.fc-hero-metric-icon {{
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbf7d0;
+  flex-shrink: 0;
+}}
+.fc-hero-metric-icon svg {{
+  width: 16px;
+  height: 16px;
+  display: block;
+}}
+.fc-hero-metric-title {{
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}}
+.fc-hero-metric-sub {{
+  color: rgba(220, 252, 231, 0.78);
+  font-size: 0.76rem;
+  line-height: 1.3;
+}}
+
+/* Start CTA cards (interactive) */
+.fc-start-row-marker {{
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}}
+.fc-start-card {{
+  border-radius: 18px 18px 0 0;
+  padding: 1.35rem 1.3rem 1.05rem;
+  min-height: 128px;
+}}
+.fc-start-card-primary {{
+  background: linear-gradient(145deg, #0b3d28 0%, #14532d 100%);
+  color: #fff;
+  border: 1px solid #0b3d28;
+  border-bottom: none;
+}}
+.fc-start-card-secondary {{
+  background: #ffffff;
+  color: {TEXT};
+  border: 1px solid {BORDER};
+  border-bottom: none;
+  box-shadow: 0 10px 28px rgba(15, 40, 30, 0.04);
+}}
+.fc-start-card-icon {{
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+}}
+.fc-start-card-primary .fc-start-card-icon {{
+  background: rgba(255,255,255,0.12);
+  color: #bbf7d0;
+}}
+.fc-start-card-secondary .fc-start-card-icon {{
+  background: #f3faf5;
+  color: {GREEN_DARK};
+  border: 1px solid #dcfce7;
+}}
+.fc-start-card-icon svg {{
+  width: 20px;
+  height: 20px;
+  display: block;
+}}
+.fc-start-card-title {{
+  font-size: 1.15rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}}
+.fc-start-card-sub {{
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.82;
+}}
+
+/* Attach CTA buttons to cards above (same pattern as nav marker) */
+div.element-container:has(.fc-start-row-marker) + div.element-container,
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-start-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] {{
+  margin-bottom: 1.25rem !important;
+  animation: fc-fade-up 0.7s 0.18s ease both;
+}}
+div.element-container:has(.fc-start-row-marker) + div.element-container [data-testid="column"]:nth-child(1) .stButton > button,
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-start-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] [data-testid="column"]:nth-child(1) .stButton > button {{
+  border-radius: 0 0 18px 18px !important;
+  margin-top: -0.45rem !important;
+  min-height: 3rem !important;
+  background: #0b3d28 !important;
+  border-color: #0b3d28 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}}
+div.element-container:has(.fc-start-row-marker) + div.element-container [data-testid="column"]:nth-child(2) .stButton > button,
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-start-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] [data-testid="column"]:nth-child(2) .stButton > button {{
+  border-radius: 0 0 18px 18px !important;
+  margin-top: -0.45rem !important;
+  min-height: 3rem !important;
+  background: #ffffff !important;
+  border: 1px solid {BORDER} !important;
+  border-top-color: {BORDER_SOFT} !important;
+  color: {GREEN_DARK} !important;
+  font-weight: 700 !important;
+  box-shadow: 0 10px 28px rgba(15, 40, 30, 0.04) !important;
+}}
+
+.fc-hero-cta-wrap,
+.fc-hero-cta-bar,
+.fc-start-grid-wrap {{
   display: none;
 }}
 
-/* Process + capability layouts (open, not heavy cards) */
+/* Process + capability layouts */
 .fc-process-row {{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -515,7 +672,6 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
   border: 1px solid #bbf7d0;
 }}
 
-/* legacy unused cta band kept minimal */
 .fc-cta-band {{ display: none; }}
 .fc-cta-actions {{ display: none; }}
 
@@ -631,8 +787,8 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
 .fc-brand-icon {{
   width: 44px; height: 44px;
   border-radius: 50%;
-  background: linear-gradient(145deg, #dcfce7, #bbf7d0);
-  border: 1px solid #86efac;
+  background: #dcfce7;
+  border: 1px solid #bbf7d0;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }}
@@ -644,7 +800,7 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
 }}
 .fc-brand-name {{
   font-family: var(--fc-display);
-  font-size: 1.2rem;
+  font-size: 1.22rem;
   font-weight: 700;
   color: {GREEN_DARK};
   letter-spacing: -0.025em;
@@ -667,7 +823,7 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
 }}
 
 .stButton > button {{
-  border-radius: 10px !important;
+  border-radius: 12px !important;
   font-weight: 600 !important;
   font-family: var(--fc-font) !important;
   padding: 0.65rem 1.1rem !important;
@@ -676,13 +832,13 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
   box-shadow: none !important;
 }}
 .stButton > button[kind="primary"] {{
-  background: {GREEN_DARK} !important;
-  border-color: {GREEN_DARK} !important;
+  background: #0b3d28 !important;
+  border-color: #0b3d28 !important;
   color: white !important;
 }}
 .stButton > button[kind="primary"]:hover {{
-  background: #0f3d24 !important;
-  border-color: #0f3d24 !important;
+  background: #072a1b !important;
+  border-color: #072a1b !important;
   transform: none;
 }}
 .stButton > button[kind="secondary"] {{
@@ -766,24 +922,29 @@ hr {{
   }}
 
   .fc-hero-bleed {{
-    min-height: min(46vh, 380px) !important;
-    margin-bottom: 0.85rem !important;
-    border-radius: 14px !important;
+    min-height: min(54vh, 460px) !important;
+    margin-bottom: 0.95rem !important;
+    border-radius: 18px !important;
   }}
   .fc-hero-bleed-content {{
-    padding: 1.6rem 1.1rem 1.4rem !important;
+    padding: 1.5rem 1.1rem 1.25rem !important;
   }}
   .fc-hero-brand {{
-    font-size: 2.2rem !important;
+    font-size: 2.25rem !important;
     max-width: none !important;
   }}
   .fc-hero-sub {{
     font-size: 0.95rem !important;
     max-width: none !important;
+    margin-bottom: 1.1rem !important;
   }}
-  .fc-hero-cta-wrap {{
-    margin-bottom: 2rem !important;
-    max-width: none !important;
+  .fc-hero-metrics {{
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }}
+  .fc-start-card {{
+    min-height: 110px !important;
+    padding: 1.15rem 1.05rem 0.9rem !important;
   }}
 
   /* Sections & cards */
