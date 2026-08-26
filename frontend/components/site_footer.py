@@ -10,8 +10,7 @@ def render_site_footer() -> None:
         """
         <footer class="fc-footer-wrap">
           <div class="fc-footer-brand">FarmCredit AI</div>
-          <div class="fc-footer-tag">Credit Guidance for Farmers</div>
-          <p class="fc-footer-copy">© 2026 FarmCredit AI · Illustrative demo — not real lending decisions.</p>
+          <p class="fc-footer-copy">Portfolio demo · Synthetic data only · Not for real lending decisions</p>
         </footer>
         """
     )

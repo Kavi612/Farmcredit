@@ -1,4 +1,4 @@
-"""Welcome hero — full-bleed landscape background, brand-first composition."""
+"""Welcome hero — one clear composition: photo, brand, headline, CTAs."""
 
 from __future__ import annotations
 
@@ -11,34 +11,34 @@ from frontend.utils.state import go_farmer_demo, go_farmer_manual
 
 def render_landing_hero() -> None:
     bg = hero_bg_data_uri()
-    if bg:
-        st.markdown(
-            f"<style>.fc-hero-bleed-bg{{background-image:url('{bg}');}}</style>",
-            unsafe_allow_html=True,
-        )
+    media = (
+        f'<img class="fc-hero-bleed-img" src="{bg}" alt="" />'
+        if bg
+        else '<div class="fc-hero-bleed-fallback" aria-hidden="true"></div>'
+    )
 
     render_inline_html(
-        """
+        f"""
         <section class="fc-hero-bleed" aria-label="FarmCredit AI welcome">
-          <div class="fc-hero-bleed-bg"></div>
+          <div class="fc-hero-bleed-media">{media}</div>
           <div class="fc-hero-bleed-veil" aria-hidden="true"></div>
           <div class="fc-hero-bleed-content">
+            <p class="fc-hero-kicker">Crop loan risk guidance</p>
             <h1 class="fc-hero-brand">FarmCredit AI</h1>
-            <p class="fc-hero-title">Understand crop loan risk before you apply</p>
             <p class="fc-hero-sub">
-              Clear risk scores, plain-language explanations, and practical guidance
-              for farmers and rural bank officers.
+              See your risk score, understand what drives it, and get practical next steps —
+              built for Indian farmers and rural bank officers.
             </p>
           </div>
         </section>
         """
     )
 
-    st.markdown('<div class="fc-hero-cta-bar"></div>', unsafe_allow_html=True)
-    c1, c2 = st.columns(2, gap="small")
+    st.markdown('<div class="fc-hero-cta-wrap">', unsafe_allow_html=True)
+    c1, c2, _ = st.columns([1.15, 1.15, 0.9], gap="small")
     with c1:
         if st.button(
-            "Try Demo Data →",
+            "Try Demo Data",
             key="hero_try_demo",
             type="primary",
             use_container_width=True,
@@ -53,3 +53,4 @@ def render_landing_hero() -> None:
         ):
             go_farmer_manual()
             st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)

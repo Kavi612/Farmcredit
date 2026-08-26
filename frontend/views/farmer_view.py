@@ -32,35 +32,35 @@ def _cached_demos() -> list[dict]:
 def _render_choose_step() -> None:
     section_heading(
         "How would you like to start?",
-        "Try a demo profile or enter your own farm details — both use the same form.",
+        "Both paths use the same assessment form.",
     )
     render_html(
         """
         <div class="fc-card-grid fc-card-grid-2">
           <div class="fc-choice-card">
-            <div class="fc-choice-icon">▶</div>
+            <div class="fc-choice-icon">A</div>
             <div class="fc-card-title">Try Demo Data</div>
-            <div class="fc-card-text">Pick one of 5 sample farmers and see their actual values pre-filled in the form.</div>
+            <div class="fc-card-text">Pick one of five sample farmers. Their details pre-fill the form so you can see a complete result quickly.</div>
           </div>
           <div class="fc-choice-card">
-            <div class="fc-choice-icon">📋</div>
+            <div class="fc-choice-icon">B</div>
             <div class="fc-card-title">Enter Your Own Data</div>
-            <div class="fc-card-text">Start with a blank form and fill in your farm and financial details manually.</div>
+            <div class="fc-card-text">Start with a blank form and enter farm location, crop, rainfall, and loan details yourself.</div>
           </div>
         </div>
         """
     )
     c1, c2 = st.columns(2, gap="medium")
     with c1:
-        if st.button("Try Demo Data →", key="farmer_try_demo", type="primary", use_container_width=True):
+        if st.button("Try Demo Data", key="farmer_try_demo", type="primary", use_container_width=True):
             farmer_choose_demo()
             st.rerun()
     with c2:
-        if st.button("Enter Your Own Data →", key="farmer_enter_own", use_container_width=True):
+        if st.button("Enter Your Own Data", key="farmer_enter_own", use_container_width=True):
             farmer_choose_manual()
             st.rerun()
 
-    if st.button("← Back to Welcome", key="farmer_choose_back"):
+    if st.button("Back to Welcome", key="farmer_choose_back"):
         go_welcome()
         st.rerun()
 

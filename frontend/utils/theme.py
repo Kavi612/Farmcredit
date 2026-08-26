@@ -129,15 +129,17 @@ html, body, [class*="css"] {{
 }}
 .stApp {{
   background:
-    linear-gradient(180deg, #ecfdf5 0%, #f7faf8 38%, #f8fafc 100%) !important;
+    radial-gradient(ellipse 70% 45% at 0% 0%, rgba(220, 252, 231, 0.7) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 100% 8%, rgba(209, 250, 229, 0.45) 0%, transparent 50%),
+    linear-gradient(180deg, #f4faf6 0%, #f7f8f7 45%, #f8fafc 100%) !important;
 }}
 
 @keyframes fc-fade-up {{
-  from {{ opacity: 0; transform: translateY(18px); }}
+  from {{ opacity: 0; transform: translateY(14px); }}
   to {{ opacity: 1; transform: translateY(0); }}
 }}
 @keyframes fc-soft-zoom {{
-  from {{ transform: scale(1.04); }}
+  from {{ transform: scale(1.05); }}
   to {{ transform: scale(1); }}
 }}
 @keyframes fc-fade-in {{
@@ -155,72 +157,26 @@ header[data-testid="stHeader"],
 
 .stAppViewContainer .main .block-container,
 .block-container {{
-  padding-top: 0.5rem;
-  padding-bottom: 2.5rem;
-  max-width: 1140px;
+  padding-top: 0.65rem;
+  padding-bottom: 3rem;
+  max-width: 1080px;
 }}
 [data-testid="stSidebarNav"],
 section[data-testid="stSidebar"] {{
   display: none !important;
 }}
 
-/* ── Bottom CTA band ── */
-.fc-cta-band {{
-  background: linear-gradient(135deg, {GREEN_DARK} 0%, {GREEN_MID} 55%, #166534 100%);
-  border-radius: 22px;
-  padding: 2rem 2.25rem 3.25rem;
-  margin: 3rem 0 0;
-  box-shadow: {SHADOW_LG};
-  color: white;
-  position: relative;
-  overflow: hidden;
-}}
-.fc-cta-band::before {{
-  content: "";
-  position: absolute;
-  width: 280px; height: 280px;
-  top: -60%; right: -5%;
-  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}}
-.fc-cta-band-inner {{
-  position: relative;
-  z-index: 1;
-}}
-.fc-cta-band-title {{
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.45rem 0;
-  line-height: 1.2;
-}}
-.fc-cta-band-sub {{
-  font-size: 0.95rem;
-  opacity: 0.88;
-  line-height: 1.55;
-  margin: 0;
-  max-width: 560px;
-}}
-.fc-cta-actions {{
-  margin: -2.35rem 0 0.5rem 0;
-  padding: 0 1.25rem;
-  position: relative;
-  z-index: 2;
-}}
-
 /* ── Header shell (brand + nav) ── */
 .fc-header-shell {{
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.94);
   border: 1px solid rgba(226,232,240,0.95);
   border-bottom: none;
-  border-radius: 20px 20px 0 0;
-  padding: 0.9rem 1.15rem 0;
+  border-radius: 16px 16px 0 0;
+  padding: 0.85rem 1.1rem 0;
   margin-bottom: 0;
-  box-shadow: none;
 }}
 .fc-header-shell .fc-brand {{
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.7rem;
   border-bottom: 1px solid {BORDER_SOFT};
   margin-bottom: 0;
 }}
@@ -228,7 +184,6 @@ div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{
   margin-bottom: 0 !important;
 }}
 
-/* Nav row card styling */
 .fc-nav-row-marker {{
   display: none !important;
   height: 0 !important;
@@ -238,17 +193,31 @@ div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{
 
 div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.94);
   border: 1px solid rgba(226,232,240,0.95);
   border-top: none;
-  border-radius: 0 0 20px 20px;
-  padding: 0.55rem 1.15rem 0.7rem;
+  border-radius: 0 0 16px 16px;
+  padding: 0.45rem 0.85rem 0.55rem;
   margin-top: -0.5rem;
-  margin-bottom: 1.35rem;
-  box-shadow: 0 8px 28px rgba(15, 70, 40, 0.06);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 20px rgba(15, 70, 40, 0.05);
   align-items: center !important;
-  gap: 0.45rem !important;
+  gap: 0.35rem !important;
+}}
+
+/* Soften nav link buttons (not primary CTA) */
+div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"],
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"] {{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: {TEXT} !important;
+  font-weight: 560 !important;
+}}
+div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"]:hover,
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"]:hover {{
+  background: {MINT} !important;
+  color: {GREEN_DARK} !important;
 }}
 
 @media (max-width: 768px) {{
@@ -256,118 +225,177 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
   [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
     flex-wrap: nowrap !important;
     gap: 0.5rem !important;
-    padding: 0.45rem 0.85rem 0.55rem !important;
-    border-radius: 0 0 16px 16px !important;
+    padding: 0.4rem 0.7rem 0.5rem !important;
+    border-radius: 0 0 14px 14px !important;
     margin-bottom: 1rem !important;
-  }}
-  div.element-container:has(.fc-nav-row-marker) + div.element-container [data-testid="stPopover"] > button,
-  [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stPopover"] > button {{
-    padding: 0.4rem 0.35rem !important;
-    font-size: 1.05rem !important;
-    min-height: 2.35rem !important;
-    line-height: 1 !important;
   }}
 }}
 
-/* ── Full-bleed photo hero ── */
+/* ── Photo hero ── */
 .fc-hero-bleed {{
   position: relative;
-  width: 100vw;
-  max-width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  margin-bottom: 2.25rem;
-  min-height: min(72vh, 640px);
+  width: 100%;
+  margin: 0 0 1.1rem 0;
+  min-height: min(52vh, 460px);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: 18px;
   isolation: isolate;
-  animation: fc-fade-in 0.7s ease both;
+  animation: fc-fade-in 0.65s ease both;
 }}
-.fc-hero-bleed-bg {{
+.fc-hero-bleed-media,
+.fc-hero-bleed-fallback {{
   position: absolute;
   inset: 0;
-  background-color: #14532d;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  animation: fc-soft-zoom 12s ease-out both;
   z-index: 0;
+  background: #14532d;
+}}
+.fc-hero-bleed-img {{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+  animation: fc-soft-zoom 14s ease-out both;
 }}
 .fc-hero-bleed-veil {{
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(105deg, rgba(10, 36, 22, 0.82) 0%, rgba(15, 61, 36, 0.62) 42%, rgba(15, 61, 36, 0.28) 68%, rgba(15, 61, 36, 0.12) 100%),
-    linear-gradient(180deg, rgba(8, 28, 18, 0.15) 0%, rgba(8, 28, 18, 0.55) 100%);
+    linear-gradient(100deg, rgba(8, 28, 18, 0.88) 0%, rgba(12, 48, 28, 0.72) 38%, rgba(12, 48, 28, 0.35) 68%, rgba(12, 48, 28, 0.18) 100%),
+    linear-gradient(180deg, rgba(8, 28, 18, 0.08) 0%, rgba(8, 28, 18, 0.5) 100%);
 }}
 .fc-hero-bleed-content {{
   position: relative;
   z-index: 2;
-  width: min(1140px, calc(100% - 2.5rem));
-  margin: 0 auto;
-  padding: 3.5rem 0 3.25rem;
-  animation: fc-fade-up 0.85s 0.12s ease both;
+  width: 100%;
+  padding: 2.4rem 1.6rem 2.1rem;
+  animation: fc-fade-up 0.75s 0.1s ease both;
+}}
+.fc-hero-kicker {{
+  margin: 0 0 0.65rem 0;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(187, 247, 208, 0.95);
 }}
 .fc-hero-brand {{
   font-family: var(--fc-display);
-  font-size: clamp(2.6rem, 6.2vw, 4.4rem);
-  font-weight: 800;
+  font-size: clamp(2.4rem, 5.5vw, 3.75rem);
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: -0.035em;
-  line-height: 0.98;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
   margin: 0 0 0.85rem 0;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.25);
-  max-width: 14ch;
+  max-width: 12ch;
 }}
 .fc-hero-title {{
-  font-family: var(--fc-font);
-  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
-  font-weight: 600;
-  color: rgba(255,255,255,0.94);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.75rem 0;
-  max-width: 28ch;
+  display: none;
 }}
 .fc-hero-sub {{
-  color: rgba(236, 253, 245, 0.88);
-  font-size: 1.02rem;
-  line-height: 1.6;
-  max-width: 36ch;
+  color: rgba(236, 253, 245, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  max-width: 38ch;
   margin: 0;
   font-weight: 400;
 }}
+.fc-hero-cta-wrap {{
+  margin: 0 0 2.75rem 0;
+  max-width: 520px;
+  animation: fc-fade-up 0.7s 0.2s ease both;
+}}
 .fc-hero-cta-bar {{
-  width: min(1140px, 100%);
-  margin: -1.1rem auto 2.5rem;
-  max-width: 560px;
-  padding: 0;
-  position: relative;
-  z-index: 3;
-  animation: fc-fade-up 0.8s 0.28s ease both;
-}}
-.fc-hero-cta-label {{
   display: none;
 }}
-.fc-hero-open {{
-  display: none;
+
+/* Process + capability layouts (open, not heavy cards) */
+.fc-process-row {{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 0 0 0.5rem 0;
+  padding: 0.25rem 0 0.5rem;
 }}
+.fc-process-step {{
+  padding: 0.15rem 0.15rem 0.15rem 0;
+  border-top: 2px solid {GREEN_MID};
+  padding-top: 1rem;
+}}
+.fc-process-num {{
+  font-family: var(--fc-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: {GREEN_MID};
+  margin-bottom: 0.45rem;
+  line-height: 1;
+}}
+.fc-process-title {{
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: {TEXT};
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.015em;
+}}
+.fc-process-text {{
+  color: {TEXT_MUTED};
+  font-size: 0.92rem;
+  line-height: 1.55;
+}}
+
+.fc-capability-grid {{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-bottom: 0.5rem;
+  border-top: 1px solid {BORDER};
+}}
+.fc-capability {{
+  display: grid;
+  grid-template-columns: 3.25rem 1fr;
+  gap: 0.85rem;
+  padding: 1.25rem 0.15rem;
+  border-bottom: 1px solid {BORDER};
+  align-items: start;
+}}
+.fc-capability-num {{
+  font-family: var(--fc-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: {GREEN_MID};
+  line-height: 1.2;
+  padding-top: 0.1rem;
+}}
+.fc-capability-title {{
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: {TEXT};
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.015em;
+}}
+.fc-capability-text {{
+  color: {TEXT_MUTED};
+  font-size: 0.93rem;
+  line-height: 1.55;
+  max-width: 60ch;
+}}
+
 .fc-feature-section {{
-  animation: fc-fade-up 0.75s 0.18s ease both;
+  animation: fc-fade-up 0.7s 0.12s ease both;
 }}
 .fc-icon-svg {{
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   display: block;
 }}
 
-/* ── Card grids ── */
+/* ── Card grids (kept for farmer/bank flows) ── */
 .fc-card-grid {{
   display: grid;
-  gap: 1.1rem;
+  gap: 1rem;
   margin-bottom: 0.5rem;
 }}
 .fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
@@ -375,132 +403,121 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 .fc-card-grid-4 {{ grid-template-columns: repeat(4, 1fr); }}
 .fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
 
-@media (max-width: 900px) {{
-  .fc-card-grid-4 {{ grid-template-columns: repeat(2, 1fr); }}
-}}
-
 .fc-steps-row {{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-  position: relative;
+  gap: 1rem;
   margin-bottom: 0.5rem;
 }}
 .fc-step-card {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: var(--fc-radius);
-  padding: 1.45rem 1.35rem;
-  box-shadow: {SHADOW_SM};
-  height: 100%;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  background: transparent;
+  border: none;
+  border-top: 2px solid {GREEN_MID};
+  border-radius: 0;
+  padding: 1rem 0.15rem 0.25rem;
+  box-shadow: none;
 }}
 .fc-step-card:hover {{
-  transform: translateY(-2px);
-  box-shadow: {SHADOW_MD};
-}}
-
-/* legacy hero panels */
-.fc-hero-panel {{
-  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 55%, #f0fdf4 100%);
-  border: 1px solid #dbeafe;
-  border-radius: 22px;
-  padding: 2rem 1.75rem;
-  box-shadow: {SHADOW_LG};
-  height: 100%;
-  box-sizing: border-box;
+  transform: none;
+  box-shadow: none;
 }}
 
 /* ── Sections ── */
 .fc-section-title {{
   font-family: var(--fc-display);
-  font-size: 1.85rem;
+  font-size: 1.65rem;
   font-weight: 700;
   color: {GREEN_DARK};
-  letter-spacing: -0.03em;
-  margin: 3rem 0 0.45rem 0;
+  letter-spacing: -0.025em;
+  margin: 2.75rem 0 0.4rem 0;
   line-height: 1.15;
 }}
-.fc-section-title:first-child {{ margin-top: 0.25rem; }}
+.fc-section-title:first-child {{ margin-top: 0.35rem; }}
 .fc-section-sub {{
   color: {TEXT_MUTED};
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   line-height: 1.55;
-  margin: 0 0 1.45rem 0;
-  max-width: 640px;
+  margin: 0 0 1.35rem 0;
+  max-width: 52ch;
 }}
 
-/* ── Cards ── */
+/* ── Cards (interactive / content panels elsewhere) ── */
 .fc-card {{
   background: {SURFACE};
-  border: 1px solid rgba(226,232,240,0.9);
-  border-radius: var(--fc-radius);
-  padding: 1.55rem 1.35rem 1.45rem;
-  box-shadow: 0 10px 30px rgba(15, 70, 40, 0.05);
+  border: 1px solid rgba(226,232,240,0.95);
+  border-radius: 14px;
+  padding: 1.25rem 1.2rem;
+  box-shadow: none;
   height: 100%;
   box-sizing: border-box;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }}
 .fc-card:hover {{
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(15, 70, 40, 0.09);
-  border-color: #bbf7d0;
+  transform: none;
+  box-shadow: none;
+  border-color: #cbd5e1;
 }}
 .fc-card-icon-wrap {{
-  width: 52px; height: 52px;
-  border-radius: 16px;
-  background: linear-gradient(145deg, #ecfdf5, #dcfce7);
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: {MINT};
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.85rem;
   border: 1px solid #bbf7d0;
   color: {GREEN_MID};
 }}
 .fc-card-num {{
-  width: 36px; height: 36px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, {GREEN_MID}, {GREEN_BRIGHT});
-  color: white;
-  font-size: 0.78rem;
-  font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 0.85rem;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: {GREEN_MID};
+  font-family: var(--fc-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.55rem;
 }}
 .fc-card-title {{
   font-weight: 700;
   color: {TEXT};
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.02rem;
+  margin-bottom: 0.4rem;
   letter-spacing: -0.015em;
 }}
 .fc-card-text {{
   color: {TEXT_MUTED};
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.55;
 }}
 
 .fc-choice-card {{
   background: {SURFACE};
   border: 1px solid {BORDER};
-  border-radius: var(--fc-radius-lg);
-  padding: 1.65rem 1.5rem 1.25rem;
-  box-shadow: {SHADOW_SM};
+  border-radius: 14px;
+  padding: 1.35rem 1.25rem 1.1rem;
+  box-shadow: none;
   height: 100%;
-  margin-bottom: 0.85rem;
-  transition: box-shadow 0.18s ease, border-color 0.18s ease;
+  margin-bottom: 0.75rem;
 }}
 .fc-choice-card:hover {{
-  box-shadow: {SHADOW_MD};
-  border-color: #cbd5e1;
+  border-color: #86efac;
+  box-shadow: none;
 }}
 .fc-choice-icon {{
-  width: 52px; height: 52px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, {SKY}, {GREEN_LIGHT});
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: {MINT};
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  border: 1px solid #dbeafe;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: {GREEN_DARK};
+  margin-bottom: 0.85rem;
+  border: 1px solid #bbf7d0;
 }}
+
+/* legacy unused cta band kept minimal */
+.fc-cta-band {{ display: none; }}
+.fc-cta-actions {{ display: none; }}
 
 .fc-profile-card {{
   background: {SURFACE};
@@ -565,27 +582,26 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 }}
 
 .fc-footer-wrap {{
-  margin-top: 3rem;
-  padding: 1.75rem 0 0.25rem;
+  margin-top: 3.25rem;
+  padding: 1.5rem 0 0.25rem;
   border-top: 1px solid {BORDER};
-  text-align: center;
+  text-align: left;
 }}
 .fc-footer-brand {{
-  font-weight: 800;
+  font-family: var(--fc-display);
+  font-weight: 700;
   color: {GREEN_DARK};
-  font-size: 0.98rem;
-  margin-bottom: 0.2rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
 }}
 .fc-footer-tag {{
-  font-size: 0.82rem;
-  color: {TEXT_MUTED};
-  margin-bottom: 0.75rem;
+  display: none;
 }}
 .fc-footer-copy {{
-  text-align: center;
-  font-size: 0.78rem;
+  text-align: left;
+  font-size: 0.8rem;
   color: #94a3b8;
-  margin: 0.85rem 0 0;
+  margin: 0;
   line-height: 1.5;
 }}
 .fc-advisory-box {{
@@ -651,27 +667,26 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-t
 }}
 
 .stButton > button {{
-  border-radius: 14px !important;
-  font-weight: 650 !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
   font-family: var(--fc-font) !important;
-  padding: 0.7rem 1.2rem !important;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease !important;
+  padding: 0.65rem 1.1rem !important;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
   border: 1px solid {BORDER} !important;
-  box-shadow: 0 2px 8px rgba(15,70,40,0.05) !important;
+  box-shadow: none !important;
 }}
 .stButton > button[kind="primary"] {{
-  background: linear-gradient(135deg, #166534, {GREEN_MID}) !important;
-  border-color: #166534 !important;
+  background: {GREEN_DARK} !important;
+  border-color: {GREEN_DARK} !important;
   color: white !important;
-  box-shadow: 0 8px 22px rgba(21,128,61,0.28) !important;
 }}
 .stButton > button[kind="primary"]:hover {{
-  background: linear-gradient(135deg, {GREEN_DARK}, #166534) !important;
-  border-color: {GREEN_DARK} !important;
-  transform: translateY(-1px);
+  background: #0f3d24 !important;
+  border-color: #0f3d24 !important;
+  transform: none;
 }}
 .stButton > button[kind="secondary"] {{
-  background: rgba(255,255,255,0.92) !important;
+  background: {WHITE} !important;
 }}
 .stButton > button[kind="secondary"]:hover {{
   border-color: #86efac !important;
@@ -751,49 +766,37 @@ hr {{
   }}
 
   .fc-hero-bleed {{
-    min-height: min(62vh, 520px) !important;
-    margin-bottom: 1.5rem !important;
+    min-height: min(46vh, 380px) !important;
+    margin-bottom: 0.85rem !important;
+    border-radius: 14px !important;
   }}
   .fc-hero-bleed-content {{
-    padding: 2.4rem 0 2.1rem !important;
-    width: calc(100% - 1.5rem) !important;
+    padding: 1.6rem 1.1rem 1.4rem !important;
   }}
   .fc-hero-brand {{
-    font-size: 2.35rem !important;
+    font-size: 2.2rem !important;
     max-width: none !important;
-  }}
-  .fc-hero-title {{
-    font-size: 1.08rem !important;
-    max-width: none !important;
-    margin-bottom: 0.55rem !important;
   }}
   .fc-hero-sub {{
-    font-size: 0.92rem !important;
+    font-size: 0.95rem !important;
     max-width: none !important;
   }}
-  .fc-hero-cta-bar {{
-    margin: -0.65rem 0 1.5rem 0 !important;
+  .fc-hero-cta-wrap {{
+    margin-bottom: 2rem !important;
     max-width: none !important;
   }}
 
   /* Sections & cards */
-  .fc-section-title {{ font-size: 1.4rem !important; margin-top: 1.75rem !important; }}
-  .fc-section-sub {{ font-size: 0.88rem !important; margin-bottom: 1rem !important; }}
-  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row {{
+  .fc-section-title {{ font-size: 1.35rem !important; margin-top: 2rem !important; }}
+  .fc-section-sub {{ font-size: 0.9rem !important; margin-bottom: 1rem !important; }}
+  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row,
+  .fc-process-row {{
     grid-template-columns: 1fr !important;
+    gap: 1.15rem !important;
   }}
-
-  /* CTA band */
-  .fc-cta-band {{
-    padding: 1.25rem 1rem 2rem !important;
-    border-radius: 16px !important;
-    margin-top: 1.75rem !important;
-  }}
-  .fc-cta-band-title {{ font-size: 1.15rem !important; }}
-  .fc-cta-band-sub {{ font-size: 0.86rem !important; }}
-  .fc-cta-actions {{
-    margin: -1.5rem 0 0.5rem 0 !important;
-    padding: 0 !important;
+  .fc-capability {{
+    grid-template-columns: 2.5rem 1fr !important;
+    padding: 1rem 0 !important;
   }}
 
   /* Brand */
@@ -822,8 +825,8 @@ hr {{
 }}
 
 @media (max-width: 480px) {{
-  .fc-hero-brand {{ font-size: 2.05rem !important; }}
-  .fc-hero-title {{ font-size: 1rem !important; }}
+  .fc-hero-brand {{ font-size: 1.95rem !important; }}
+  .fc-hero-kicker {{ font-size: 0.72rem !important; }}
 }}
 """
 
@@ -904,62 +907,42 @@ body {{
   display: inline-block; font-size: 0.68rem; font-weight: 800;
   padding: 0.22rem 0.65rem; border-radius: 999px;
 }}
-.fc-footer-wrap {{ text-align: center; padding: 1.5rem 0 0.25rem; border-top: 1px solid {BORDER}; margin-top: 2rem; }}
+.fc-footer-wrap {{ text-align: left; padding: 1.5rem 0 0.25rem; border-top: 1px solid {BORDER}; margin-top: 2rem; }}
 .fc-footer-brand {{
   font-family: 'Fraunces', Georgia, serif;
-  font-weight: 700; color: {GREEN_DARK}; font-size: 1.05rem;
+  font-weight: 700; color: {GREEN_DARK}; font-size: 1.05rem; margin-bottom: 0.35rem;
 }}
-.fc-footer-tag {{ font-size: 0.82rem; color: {TEXT_MUTED}; margin-top: 0.2rem; }}
-.fc-footer-copy {{ font-size: 0.78rem; color: #94a3b8; margin: 0.85rem 0 0; line-height: 1.5; }}
-.fc-cta-band {{
-  background: linear-gradient(135deg, {GREEN_DARK} 0%, {GREEN_MID} 55%, #166534 100%);
-  border-radius: 22px;
-  padding: 2rem 2.25rem;
-  margin: 0;
-  box-shadow: {SHADOW_LG};
-  color: white;
-  position: relative;
-  overflow: hidden;
+.fc-footer-tag {{ display: none; }}
+.fc-footer-copy {{ font-size: 0.8rem; color: #94a3b8; margin: 0; line-height: 1.5; }}
+.fc-process-row {{
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 0 0 0.5rem 0;
 }}
-.fc-cta-band::before {{
-  content: "";
-  position: absolute;
-  width: 280px; height: 280px;
-  top: -60%; right: -5%;
-  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
-  pointer-events: none;
+.fc-process-step {{ border-top: 2px solid {GREEN_MID}; padding-top: 1rem; }}
+.fc-process-num {{
+  font-family: 'Fraunces', Georgia, serif; font-size: 1.35rem; font-weight: 700;
+  color: {GREEN_MID}; margin-bottom: 0.45rem;
 }}
-.fc-cta-band-inner {{ position: relative; z-index: 1; }}
-.fc-cta-band-title {{
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.55rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.45rem 0;
-  line-height: 1.2;
+.fc-process-title {{ font-weight: 700; font-size: 1.05rem; color: {TEXT}; margin-bottom: 0.4rem; }}
+.fc-process-text {{ color: {TEXT_MUTED}; font-size: 0.92rem; line-height: 1.55; }}
+.fc-capability-grid {{ display: grid; grid-template-columns: 1fr; border-top: 1px solid {BORDER}; }}
+.fc-capability {{
+  display: grid; grid-template-columns: 3.25rem 1fr; gap: 0.85rem;
+  padding: 1.25rem 0.15rem; border-bottom: 1px solid {BORDER};
 }}
-.fc-cta-band-sub {{
-  font-size: 0.95rem;
-  opacity: 0.88;
-  line-height: 1.55;
-  margin: 0;
+.fc-capability-num {{
+  font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 700; color: {GREEN_MID};
 }}
-@media (max-width: 900px) {{
-  .fc-card-grid-4 {{ grid-template-columns: repeat(2, 1fr) !important; }}
-}}
+.fc-capability-title {{ font-weight: 700; font-size: 1.05rem; color: {TEXT}; margin-bottom: 0.3rem; }}
+.fc-capability-text {{ color: {TEXT_MUTED}; font-size: 0.93rem; line-height: 1.55; }}
+.fc-cta-band {{ display: none; }}
 @media (max-width: 768px) {{
-  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row {{
+  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row, .fc-process-row {{
     grid-template-columns: 1fr !important;
   }}
+  .fc-capability {{ grid-template-columns: 2.5rem 1fr !important; }}
   .fc-card, .fc-step-card, .fc-choice-card, .fc-profile-card {{
     padding: 1.15rem 1.05rem !important;
   }}
-  .fc-cta-band {{
-    padding: 1.35rem 1.15rem 2.25rem !important;
-    border-radius: 18px !important;
-  }}
-  .fc-cta-band-title {{ font-size: 1.25rem !important; }}
-  .fc-cta-band-sub {{ font-size: 0.88rem !important; }}
 }}
 """
 
