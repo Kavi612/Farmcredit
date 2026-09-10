@@ -1,4 +1,4 @@
-"""Site header — ONE nav bar; mobile OR desktop rendered via viewport check."""
+"""Site header — mockup top bar + full-width pill nav."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from collections.abc import Callable
 
 import streamlit as st
 
-from frontend.utils.html_ui import render_inline_html
+from frontend.utils.html_ui import render_html
 from frontend.utils.state import go_about, go_bank, go_farmer, go_welcome
 from frontend.utils.theme import brand_html
 from frontend.utils.viewport import is_mobile_viewport
@@ -21,12 +21,13 @@ def _run(handler: Callable[[], None]) -> None:
 
 def _render_nav(
     *,
-    prefix: str,
     links: list[NavLink],
     primary: tuple[str, str, Callable[[], None], bool],
+    highlight_first: bool = False,
 ) -> None:
-    """Render exactly one nav layout — hamburger OR inline links, never both."""
     st.markdown('<div class="fc-nav-row-marker" aria-hidden="true"></div>', unsafe_allow_html=True)
+    if highlight_first:
+        st.markdown('<div class="fc-nav-active-marker" aria-hidden="true"></div>', unsafe_allow_html=True)
 
     plabel, pkey, phandler, pprimary = primary
     mobile = is_mobile_viewport()
@@ -44,27 +45,36 @@ def _render_nav(
                 key=pkey,
                 type="primary" if pprimary else "secondary",
                 use_container_width=True,
+                icon=":material/account_balance:",
             ):
                 _run(phandler)
         return
 
     if not links:
-        cols = st.columns([1], gap="small")
-        with cols[0]:
-            if st.button(
-                plabel,
-                key=pkey,
-                type="primary" if pprimary else "secondary",
-                use_container_width=True,
-            ):
-                _run(phandler)
+        if st.button(
+            plabel,
+            key=pkey,
+            type="primary" if pprimary else "secondary",
+            use_container_width=True,
+        ):
+            _run(phandler)
         return
 
-    weights = [1.0] * len(links) + [1.35]
-    cols = st.columns(weights, gap="small")
+    weights = [1.0] * len(links) + [1.2]
+    cols = st.columns(weights, gap="medium")
+    icons = {
+        "Home": ":material/home:",
+        "About": ":material/info:",
+        "Farmer": ":material/agriculture:",
+    }
     for idx, (label, key, handler) in enumerate(links):
         with cols[idx]:
-            if st.button(label, key=key, use_container_width=True):
+            if st.button(
+                label,
+                key=key,
+                use_container_width=True,
+                icon=icons.get(label),
+            ):
                 _run(handler)
     with cols[-1]:
         if st.button(
@@ -72,6 +82,7 @@ def _render_nav(
             key=pkey,
             type="primary" if pprimary else "secondary",
             use_container_width=True,
+            icon=":material/account_balance:" if "Bank" in plabel else ":material/agriculture:",
         ):
             _run(phandler)
 
@@ -86,26 +97,24 @@ def render_site_header() -> None:
     }
     subtitle = subtitles.get(view, "Credit Guidance for Farmers")
 
-    render_inline_html(brand_html(subtitle=subtitle, shell=True))
+    render_html(brand_html(subtitle=subtitle, shell=True), height=84)
 
     if view == "welcome":
         _render_nav(
-            prefix="welcome",
             links=[
                 ("Home", "nav_home", go_welcome),
                 ("About", "nav_about", go_about),
             ],
             primary=("Bank Officer", "nav_bank", go_bank, True),
+            highlight_first=True,
         )
     elif view == "about":
         _render_nav(
-            prefix="about",
             links=[("Home", "nav_about_home", go_welcome)],
             primary=("Bank Officer", "nav_about_bank", go_bank, True),
         )
     elif view == "bank":
         _render_nav(
-            prefix="bank",
             links=[
                 ("Home", "nav_bank_menu_home", go_welcome),
                 ("About", "nav_bank_menu_about", go_about),
@@ -115,7 +124,6 @@ def render_site_header() -> None:
         )
     else:
         _render_nav(
-            prefix="farmer",
             links=[
                 ("Home", "nav_farmer_home", go_welcome),
                 ("About", "nav_farmer_about", go_about),

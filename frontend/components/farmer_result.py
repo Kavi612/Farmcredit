@@ -1,4 +1,4 @@
-"""Farmer assessment result — redesigned layout."""
+"""Farmer assessment result — card layout matching project theme."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from frontend.components.shap_panel import render_shap_panel
 from frontend.utils.assessment import advisory_source_label
 from frontend.utils.constants import STATE_NAMES
 from frontend.utils.formatting import format_inr
-from frontend.utils.html_ui import render_inline_html
+from frontend.utils.html_ui import render_html
 from frontend.utils.theme import status_pill_html
 
 
@@ -66,25 +66,25 @@ def _affordability_html(features: dict) -> str:
     def fmt_per_ha(v: float | None) -> str:
         return "—" if v is None else format_inr(v)
 
-    return f"""
-    <div class="fc-metric-grid">
-      <div class="fc-metric-card">
-        <p class="fc-metric-label">Loan / income</p>
-        <p class="fc-metric-value">{fmt_ratio(loan_income)}</p>
-        <p class="fc-metric-hint">Requested loan vs annual farm income</p>
-      </div>
-      <div class="fc-metric-card">
-        <p class="fc-metric-label">Debt / income</p>
-        <p class="fc-metric-value">{fmt_ratio(debt_income)}</p>
-        <p class="fc-metric-hint">Existing debt vs annual farm income</p>
-      </div>
-      <div class="fc-metric-card">
-        <p class="fc-metric-label">Loan / land</p>
-        <p class="fc-metric-value">{fmt_per_ha(loan_land)}</p>
-        <p class="fc-metric-hint">Loan amount per hectare</p>
-      </div>
-    </div>
-    """
+    return (
+        '<div class="fc-metric-grid">'
+        '<div class="fc-metric-card">'
+        '<p class="fc-metric-label">Loan / income</p>'
+        f'<p class="fc-metric-value">{fmt_ratio(loan_income)}</p>'
+        '<p class="fc-metric-hint">Requested loan vs annual farm income</p>'
+        "</div>"
+        '<div class="fc-metric-card">'
+        '<p class="fc-metric-label">Debt / income</p>'
+        f'<p class="fc-metric-value">{fmt_ratio(debt_income)}</p>'
+        '<p class="fc-metric-hint">Existing debt vs annual farm income</p>'
+        "</div>"
+        '<div class="fc-metric-card">'
+        '<p class="fc-metric-label">Loan / land</p>'
+        f'<p class="fc-metric-value">{fmt_per_ha(loan_land)}</p>'
+        '<p class="fc-metric-hint">Loan amount per hectare</p>'
+        "</div>"
+        "</div>"
+    )
 
 
 def render_farmer_result(result: dict, *, inline: bool = True) -> None:
@@ -105,25 +105,23 @@ def render_farmer_result(result: dict, *, inline: bool = True) -> None:
 
     initials = "".join(part[0] for part in str(name).split()[:2]).upper() or "FC"
 
-    render_inline_html(
-        f"""
-        <div class="fc-result-header">
-          <div class="fc-result-identity">
-            <div class="fc-avatar">{html.escape(initials)}</div>
-            <div>
-              <p class="fc-result-name">{html.escape(str(name))}</p>
-              <p class="fc-result-meta">{html.escape(str(state))} · {html.escape(str(crop))}</p>
-            </div>
-          </div>
-          {risk_score_block_html(level, score)}
-        </div>
-        """
+    render_html(
+        f'<div class="fc-result-header">'
+        f'<div class="fc-result-identity">'
+        f'<div class="fc-avatar">{html.escape(initials)}</div>'
+        f"<div>"
+        f'<p class="fc-result-name">{html.escape(str(name))}</p>'
+        f'<p class="fc-result-meta">{html.escape(str(state))} · {html.escape(str(crop))}</p>'
+        f"</div></div>"
+        f"{risk_score_block_html(level, score)}"
+        f"</div>",
+        height=100,
     )
 
     pills = status_pill_html(str(level), kind=f"risk-{level}") + status_pill_html(
         source, kind="source"
     )
-    render_inline_html(f'<div class="fc-pill-row">{pills}</div>')
+    render_html(f'<div class="fc-pill-row">{pills}</div>', height=48)
 
     chips = []
     for key, label in _FEATURE_CHIP_ORDER:
@@ -135,15 +133,18 @@ def render_farmer_result(result: dict, *, inline: bool = True) -> None:
             f"{html.escape(val)}</span>"
         )
     if chips:
-        render_inline_html(
+        render_html(
             f'<div class="fc-card"><div class="fc-card-title">Submitted inputs</div>'
-            f'<div>{"".join(chips)}</div></div>'
+            f'<div class="fc-chip-row">{"".join(chips)}</div></div>',
+            height=120,
         )
 
     if feats:
-        render_inline_html(
-            '<p class="fc-section-title" style="font-size:16px;margin-bottom:8px;">Affordability</p>'
+        render_html(
+            '<div class="fc-card"><div class="fc-card-title">Affordability</div>'
             + _affordability_html(feats)
+            + "</div>",
+            height=160,
         )
 
     render_shap_panel(

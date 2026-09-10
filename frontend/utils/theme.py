@@ -7,14 +7,16 @@ from urllib.parse import quote
 
 import streamlit as st
 
-# ── Palette ───────────────────────────────────────────────────────────────────
-PAGE_BG = "#f3f4f6"
+# ── Palette (mockup: soft blue page, royal accent) ─────────────────────────────
+PAGE_BG = "#eef3fb"
 SURFACE = "#ffffff"
 BORDER = "#e5e7eb"
-TEXT = "#111827"
-TEXT_MUTED = "#6b7280"
+TEXT = "#0f172a"
+TEXT_MUTED = "#64748b"
 ACCENT = "#2563eb"
 ACCENT_HOVER = "#1d4ed8"
+SHADOW = "0 10px 30px rgba(15, 23, 42, 0.08)"
+RADIUS = "20px"
 
 # Risk band colors — ONLY for risk UI
 RISK_STYLES = {
@@ -73,9 +75,10 @@ _SHARED = f"""
 .fc-card {{
   background:{SURFACE};
   border:1px solid {BORDER};
-  border-radius:12px;
+  border-radius:{RADIUS};
   padding:18px;
   margin-bottom:16px;
+  box-shadow:{SHADOW};
 }}
 .fc-card-title {{
   font-size:16px; font-weight:500; color:{TEXT}; margin:0 0 12px 0;
@@ -126,10 +129,31 @@ h1, h2, h3, h4, h5, h6 {{ text-transform:none !important; font-style:normal !imp
 .fc-card-grid-2 {{ grid-template-columns:repeat(2,1fr); }}
 .fc-card-grid-3 {{ grid-template-columns:repeat(3,1fr); }}
 .fc-process-row {{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; }}
-.fc-process-step {{ background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px; padding:16px; }}
-.fc-process-num {{ font-size:13px; font-weight:500; color:{ACCENT}; margin-bottom:6px; }}
-.fc-process-title {{ font-size:14px; font-weight:500; color:{TEXT}; margin-bottom:4px; }}
+.fc-process-step {{
+  position:relative; background:{SURFACE}; border:1px solid {BORDER};
+  border-radius:{RADIUS}; padding:18px 18px 18px 20px;
+  box-shadow:{SHADOW}; display:flex; gap:12px; align-items:flex-start;
+}}
+.fc-process-step::before {{
+  content:""; position:absolute; left:0; top:14px; bottom:14px; width:4px;
+  border-radius:0 4px 4px 0;
+}}
+.fc-process-step.step-1::before {{ background:#22c55e; }}
+.fc-process-step.step-2::before {{ background:#2563eb; }}
+.fc-process-step.step-3::before {{ background:#8b5cf6; }}
+.fc-process-badge {{
+  width:28px; height:28px; border-radius:999px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:500; color:#fff;
+}}
+.fc-process-step.step-1 .fc-process-badge {{ background:#22c55e; }}
+.fc-process-step.step-2 .fc-process-badge {{ background:#2563eb; }}
+.fc-process-step.step-3 .fc-process-badge {{ background:#8b5cf6; }}
+.fc-process-body {{ flex:1; min-width:0; }}
+.fc-process-title {{ font-size:15px; font-weight:500; color:{TEXT}; margin-bottom:4px; }}
 .fc-process-text {{ font-size:13px; color:{TEXT_MUTED}; line-height:1.45; }}
+.fc-process-chevron {{ color:#94a3b8; font-size:18px; margin-left:auto; align-self:center; }}
+.fc-process-num {{ display:none; }}
 .fc-capability-grid {{ display:grid; gap:0; }}
 .fc-capability {{
   display:grid; grid-template-columns:2.5rem 1fr; gap:12px;
@@ -140,8 +164,46 @@ h1, h2, h3, h4, h5, h6 {{ text-transform:none !important; font-style:normal !imp
 .fc-capability-title {{ font-size:14px; font-weight:500; color:{TEXT}; margin-bottom:4px; }}
 .fc-capability-text {{ font-size:13px; color:{TEXT_MUTED}; line-height:1.45; }}
 
+.fc-chip-row {{ display:flex; flex-wrap:wrap; gap:0; }}
+.fc-factor-legend {{
+  display:flex; gap:16px; margin:0 0 12px 0; font-size:12px; color:{TEXT_MUTED};
+}}
+.fc-factor-legend span {{ display:inline-flex; align-items:center; gap:6px; }}
+.fc-factor-legend .swatch {{
+  display:inline-block; width:12px; height:8px; border-radius:3px;
+}}
+.fc-factor-legend .swatch.up {{ background:#b91c1c; }}
+.fc-factor-legend .swatch.down {{ background:#15803d; }}
+.fc-factor-row {{
+  display:grid; grid-template-columns:150px 1fr 44px; gap:10px;
+  align-items:center; margin-bottom:12px;
+}}
+.fc-factor-label {{ font-size:13px; color:{TEXT}; font-weight:400; }}
+.fc-factor-track {{
+  position:relative; height:12px; background:#f3f4f6; border-radius:6px;
+  overflow:hidden; border:1px solid {BORDER};
+}}
+.fc-factor-mid {{
+  position:absolute; left:50%; top:0; bottom:0; width:1px; background:#d1d5db; z-index:1;
+}}
+.fc-factor-bar {{
+  position:absolute; top:2px; bottom:2px; border-radius:4px; z-index:2;
+}}
+.fc-factor-pts {{ font-size:12px; font-weight:500; text-align:right; }}
+.fc-two-col {{
+  display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:8px;
+}}
+.fc-factor-list {{ margin:0; padding:0; list-style:none; }}
+.fc-factor-list li {{
+  font-size:13px; color:{TEXT}; line-height:1.45;
+  padding:8px 0; border-bottom:1px solid {BORDER};
+}}
+.fc-factor-list li:last-child {{ border-bottom:none; }}
+.fc-factor-list .hint {{ color:{TEXT_MUTED}; display:block; margin-top:2px; font-size:12px; }}
+
 @media (max-width:768px) {{
-  .fc-card-grid-2, .fc-card-grid-3, .fc-process-row {{ grid-template-columns:1fr !important; }}
+  .fc-card-grid-2, .fc-card-grid-3, .fc-process-row, .fc-two-col {{ grid-template-columns:1fr !important; }}
+  .fc-factor-row {{ grid-template-columns:1fr !important; gap:4px !important; }}
 }}
 """
 
@@ -162,7 +224,12 @@ html, body, [class*="css"] {{
   color:{TEXT};
   font-weight:400;
 }}
-.stApp {{ background:{PAGE_BG} !important; }}
+.stApp {{
+  background:
+    radial-gradient(ellipse 40% 30% at 0% 0%, rgba(37,99,235,0.08), transparent 60%),
+    radial-gradient(ellipse 35% 28% at 100% 100%, rgba(34,197,94,0.07), transparent 55%),
+    linear-gradient(180deg, #eef3fb 0%, #f8fafc 55%, #eef3fb 100%) !important;
+}}
 
 header[data-testid="stHeader"],
 [data-testid="stToolbar"],
@@ -172,75 +239,126 @@ section[data-testid="stSidebar"] {{
   display:none !important;
 }}
 
+/* Full-bleed: no side gutters */
 .stAppViewContainer .main .block-container,
 .block-container {{
-  padding-top:12px;
-  padding-bottom:40px;
-  max-width:1040px;
+  padding-top: 12px !important;
+  padding-bottom: 48px !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+  max-width: 100% !important;
 }}
+section.main > div {{ max-width: 100% !important; }}
 
 {_SHARED}
 
-/* Header shell */
-.fc-header-shell {{
-  background:{SURFACE};
-  border:1px solid {BORDER};
-  border-bottom:none;
-  border-radius:12px 12px 0 0;
-  padding:14px 16px 0;
+/* Header shell — mockup top bar */
+.fc-topbar {{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:16px; flex-wrap:wrap;
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:{RADIUS};
+  padding:14px 18px; margin-bottom:12px; box-shadow:{SHADOW};
 }}
-.fc-header-shell .fc-brand {{
-  padding-bottom:12px;
-  border-bottom:1px solid {BORDER};
+.fc-topbar-right {{ display:flex; align-items:center; gap:10px; }}
+.fc-motto-chip {{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#f8fafc; border:1px solid {BORDER}; border-radius:999px;
+  padding:8px 14px; font-size:12px; font-weight:500; color:{TEXT};
 }}
-div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{ margin-bottom:0 !important; }}
+.fc-motto-chip .leaf {{ color:#22c55e; font-size:14px; }}
+.fc-theme-btn {{
+  width:40px; height:40px; border-radius:999px; border:1px solid {BORDER};
+  background:{SURFACE}; display:flex; align-items:center; justify-content:center;
+  color:#f59e0b; font-size:16px; box-shadow:{SHADOW};
+}}
+
+.fc-header-shell {{ display:none; }}
 .fc-nav-row-marker {{ display:none !important; height:0 !important; margin:0 !important; }}
 
+/* Welcome nav pills — full width row */
 div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-  background:{SURFACE};
-  border:1px solid {BORDER};
-  border-top:none;
-  border-radius:0 0 12px 12px;
-  padding:8px 12px 10px;
-  margin-top:-6px;
-  margin-bottom:24px;
-  align-items:center !important;
-  gap:8px !important;
+  background:transparent !important;
+  border:none !important;
+  padding:0 !important;
+  margin:0 0 16px 0 !important;
+  gap:12px !important;
+}}
+div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button,
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button {{
+  border-radius:999px !important;
+  min-height:48px !important;
+  font-size:15px !important;
+  box-shadow:{SHADOW} !important;
 }}
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"] {{
-  background:transparent !important;
-  border-color:transparent !important;
-  box-shadow:none !important;
+  background:{SURFACE} !important;
+  border:1px solid {BORDER} !important;
   color:{TEXT} !important;
-  font-weight:500 !important;
 }}
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="primary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="primary"] {{
-  background:{ACCENT} !important;
-  border-color:{ACCENT} !important;
+  background:linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  border-color:transparent !important;
+  color:#fff !important;
 }}
+/* Active Home-style nav (data-testid via key not available) — style first secondary as soft blue when welcome */
+div.element-container:has(.fc-nav-active-marker) + div.element-container div[data-testid="stHorizontalBlock"] > div:first-child .stButton > button {{
+  background:#eff6ff !important;
+  border-color:#bfdbfe !important;
+  color:{ACCENT} !important;
+}}
+.fc-nav-active-marker {{ display:none !important; height:0 !important; margin:0 !important; }}
 
-/* Hero */
+/* Hero — mockup banner */
 .fc-hero {{
-  position:relative; overflow:hidden; border-radius:12px;
-  min-height:min(42vh, 360px); margin:0 0 16px 0;
-  display:flex; align-items:flex-end; isolation:isolate;
-  border:1px solid {BORDER};
+  position:relative; overflow:hidden; border-radius:{RADIUS};
+  min-height:min(48vh, 420px); margin:0 0 16px 0;
+  display:flex; align-items:stretch; isolation:isolate;
+  border:1px solid {BORDER}; box-shadow:{SHADOW};
 }}
-.fc-hero-media, .fc-hero-fallback {{ position:absolute; inset:0; background:#1f2937; z-index:0; }}
+.fc-hero-media, .fc-hero-fallback {{ position:absolute; inset:0; background:#1e293b; z-index:0; }}
 .fc-hero-img {{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }}
 .fc-hero-veil {{
   position:absolute; inset:0; z-index:1;
-  background:linear-gradient(105deg, rgba(17,24,39,0.82) 0%, rgba(17,24,39,0.45) 55%, rgba(17,24,39,0.15) 100%);
+  background:linear-gradient(100deg, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.55) 42%, rgba(15,23,42,0.12) 72%, transparent 100%);
 }}
-.fc-hero-body {{ position:relative; z-index:2; padding:24px 20px; max-width:34rem; }}
+.fc-hero-body {{
+  position:relative; z-index:2; padding:36px 32px 28px;
+  max-width:min(36rem, 92%); display:flex; flex-direction:column; justify-content:flex-end;
+}}
+.fc-hero-badge {{
+  display:inline-flex; align-items:center; gap:6px; align-self:flex-start;
+  background:#dcfce7; color:#15803d; border:1px solid #bbf7d0;
+  border-radius:999px; padding:6px 12px; font-size:12px; font-weight:500; margin-bottom:14px;
+}}
 .fc-hero-brand {{
-  font-size:22px; font-weight:500; color:#fff; margin:0 0 8px 0; line-height:1.2;
+  font-size:clamp(28px, 4vw, 40px); font-weight:500; color:#fff; margin:0 0 10px 0; line-height:1.15;
 }}
-.fc-hero-sub {{ margin:0; color:rgba(255,255,255,0.88); font-size:15px; line-height:1.5; font-weight:400; }}
-.fc-hero-actions {{ margin:0 0 24px; max-width:28rem; }}
+.fc-hero-sub {{
+  margin:0 0 22px; color:rgba(255,255,255,0.9); font-size:15px; line-height:1.55; font-weight:400;
+  max-width:34ch;
+}}
+.fc-hero-features {{
+  display:flex; flex-wrap:wrap; gap:18px 22px; margin-top:auto;
+}}
+.fc-hero-feat {{
+  display:inline-flex; align-items:center; gap:8px;
+  color:rgba(255,255,255,0.92); font-size:13px; font-weight:500;
+}}
+.fc-hero-feat .dot {{
+  width:8px; height:8px; border-radius:999px; background:#4ade80; flex-shrink:0;
+}}
+.fc-hero-actions {{ margin:0 0 18px; width:100%; }}
+div.element-container:has(.fc-hero-actions-marker) + div.element-container .stButton > button,
+[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-hero-actions-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button {{
+  min-height:56px !important;
+  border-radius:16px !important;
+  font-size:16px !important;
+  box-shadow:{SHADOW} !important;
+}}
+.fc-hero-actions-marker {{ display:none !important; height:0 !important; margin:0 !important; }}
 
 /* Step progress */
 .fc-steps {{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }}
@@ -284,36 +402,6 @@ div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton 
 .fc-metric-value {{ font-size:20px; font-weight:500; color:{TEXT}; margin:0; }}
 .fc-metric-hint {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
 
-.fc-factor-row {{
-  display:grid; grid-template-columns:140px 1fr 48px; gap:10px;
-  align-items:center; margin-bottom:10px;
-}}
-.fc-factor-label {{ font-size:13px; color:{TEXT}; font-weight:400; }}
-.fc-factor-track {{
-  position:relative; height:10px; background:#f3f4f6; border-radius:6px; overflow:hidden;
-  border:1px solid {BORDER};
-}}
-.fc-factor-mid {{
-  position:absolute; left:50%; top:0; bottom:0; width:1px; background:#d1d5db;
-}}
-.fc-factor-bar {{
-  position:absolute; top:1px; bottom:1px; border-radius:4px; height:calc(100% - 2px);
-}}
-.fc-factor-bar.up {{ background:#b91c1c; }}
-.fc-factor-bar.down {{ background:#15803d; }}
-.fc-factor-pts {{ font-size:12px; font-weight:500; text-align:right; }}
-
-.fc-two-col {{
-  display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;
-}}
-.fc-factor-list {{ margin:0; padding:0; list-style:none; }}
-.fc-factor-list li {{
-  font-size:13px; color:{TEXT}; line-height:1.45;
-  padding:8px 0; border-bottom:1px solid {BORDER};
-}}
-.fc-factor-list li:last-child {{ border-bottom:none; }}
-.fc-factor-list .hint {{ color:{TEXT_MUTED}; display:block; margin-top:2px; font-size:12px; }}
-
 .fc-form-section {{
   background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px;
   padding:18px; margin-bottom:16px;
@@ -343,13 +431,13 @@ div[data-testid="stForm"] [data-testid="stVerticalBlockBorderWrapper"] > div {{
 
 /* Widgets */
 .stButton > button {{
-  border-radius:8px !important;
+  border-radius:16px !important;
   font-family:'IBM Plex Sans', sans-serif !important;
   font-weight:500 !important;
   font-size:14px !important;
-  padding:8px 14px !important;
+  padding:10px 16px !important;
   border:1px solid {BORDER} !important;
-  box-shadow:none !important;
+  box-shadow:{SHADOW} !important;
 }}
 .stButton > button[kind="primary"] {{
   background:{ACCENT} !important;
@@ -391,8 +479,7 @@ div[data-testid="stForm"] {{
 hr {{ display:none !important; }}
 
 @media (max-width:768px) {{
-  .fc-metric-grid, .fc-two-col {{ grid-template-columns:1fr !important; }}
-  .fc-factor-row {{ grid-template-columns:1fr !important; gap:4px !important; }}
+  .fc-metric-grid {{ grid-template-columns:1fr !important; }}
   .fc-result-score-block {{ text-align:left !important; }}
   .fc-hero {{ min-height:min(36vh, 280px) !important; }}
 }}
@@ -401,12 +488,67 @@ hr {{ display:none !important; }}
 HTML_IFRAME_CSS = f"""
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap');
 * {{ box-sizing:border-box; }}
-body {{ margin:0; font-family:'IBM Plex Sans', sans-serif; color:{TEXT}; font-weight:400; }}
+body {{ margin:0; padding:0; font-family:'IBM Plex Sans', sans-serif; color:{TEXT}; font-weight:400; background:transparent; }}
 {_SHARED}
+.fc-topbar {{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:16px; flex-wrap:wrap;
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:{RADIUS};
+  padding:14px 18px; margin:0; box-shadow:{SHADOW};
+}}
+.fc-topbar-right {{ display:flex; align-items:center; gap:10px; }}
+.fc-motto-chip {{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#f8fafc; border:1px solid {BORDER}; border-radius:999px;
+  padding:8px 14px; font-size:12px; font-weight:500; color:{TEXT};
+}}
+.fc-motto-chip .leaf {{ color:#22c55e; font-size:14px; }}
+.fc-theme-btn {{
+  width:40px; height:40px; border-radius:999px; border:1px solid {BORDER};
+  background:{SURFACE}; display:flex; align-items:center; justify-content:center;
+  color:#f59e0b; font-size:16px; box-shadow:{SHADOW};
+}}
+.fc-hero {{
+  position:relative; overflow:hidden; border-radius:{RADIUS};
+  min-height:400px; height:400px; margin:0;
+  display:flex; align-items:stretch; isolation:isolate;
+  border:1px solid {BORDER}; box-shadow:{SHADOW};
+}}
+.fc-hero-media, .fc-hero-fallback {{ position:absolute; inset:0; background:#1e293b; z-index:0; }}
+.fc-hero-img {{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }}
+.fc-hero-veil {{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(100deg, rgba(15,23,42,0.88) 0%, rgba(15,23,42,0.55) 42%, rgba(15,23,42,0.12) 72%, transparent 100%);
+}}
+.fc-hero-body {{
+  position:relative; z-index:2; padding:36px 32px 28px;
+  max-width:min(36rem, 92%); display:flex; flex-direction:column; justify-content:flex-end;
+  height:100%;
+}}
+.fc-hero-badge {{
+  display:inline-flex; align-items:center; gap:6px; align-self:flex-start;
+  background:#dcfce7; color:#15803d; border:1px solid #bbf7d0;
+  border-radius:999px; padding:6px 12px; font-size:12px; font-weight:500; margin-bottom:14px;
+}}
+.fc-hero-brand {{
+  font-size:clamp(28px, 4vw, 40px); font-weight:500; color:#fff; margin:0 0 10px 0; line-height:1.15;
+}}
+.fc-hero-sub {{
+  margin:0 0 22px; color:rgba(255,255,255,0.9); font-size:15px; line-height:1.55; font-weight:400;
+  max-width:34ch;
+}}
+.fc-hero-features {{ display:flex; flex-wrap:wrap; gap:18px 22px; margin-top:auto; }}
+.fc-hero-feat {{
+  display:inline-flex; align-items:center; gap:8px;
+  color:rgba(255,255,255,0.92); font-size:13px; font-weight:500;
+}}
+.fc-hero-feat .dot {{
+  width:8px; height:8px; border-radius:999px; background:#4ade80; flex-shrink:0;
+}}
 .fc-result-header {{
   display:flex; justify-content:space-between; align-items:flex-start;
   gap:16px; flex-wrap:wrap; background:{SURFACE}; border:1px solid {BORDER};
-  border-radius:12px; padding:18px; margin-bottom:12px;
+  border-radius:{RADIUS}; padding:18px; margin-bottom:0; box-shadow:{SHADOW};
 }}
 .fc-result-identity {{ display:flex; gap:12px; align-items:center; }}
 .fc-avatar {{
@@ -420,32 +562,18 @@ body {{ margin:0; font-family:'IBM Plex Sans', sans-serif; color:{TEXT}; font-we
 .fc-result-score-label {{ font-size:12px; color:{TEXT_MUTED}; margin:0 0 4px; }}
 .fc-result-score-value {{ font-size:28px; font-weight:500; line-height:1; margin:0; }}
 .fc-result-score-sub {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
-.fc-pill-row {{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }}
-.fc-metric-grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }}
-.fc-metric-card {{ background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px; padding:16px; }}
+.fc-pill-row {{ display:flex; flex-wrap:wrap; gap:8px; margin:0; }}
+.fc-metric-grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }}
+.fc-metric-card {{ background:#f9fafb; border:1px solid {BORDER}; border-radius:12px; padding:16px; }}
 .fc-metric-label {{ font-size:12px; color:{TEXT_MUTED}; margin:0 0 6px; }}
 .fc-metric-value {{ font-size:20px; font-weight:500; color:{TEXT}; margin:0; }}
 .fc-metric-hint {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
-.fc-factor-row {{
-  display:grid; grid-template-columns:140px 1fr 48px; gap:10px;
-  align-items:center; margin-bottom:10px;
+@media (max-width:768px) {{
+  .fc-metric-grid {{ grid-template-columns:1fr !important; }}
+  .fc-result-score-block {{ text-align:left !important; }}
+  .fc-hero {{ min-height:320px; height:320px; }}
+  .fc-hero-body {{ padding:24px 18px; }}
 }}
-.fc-factor-label {{ font-size:13px; color:{TEXT}; }}
-.fc-factor-track {{
-  position:relative; height:10px; background:#f3f4f6; border-radius:6px;
-  overflow:hidden; border:1px solid {BORDER};
-}}
-.fc-factor-mid {{ position:absolute; left:50%; top:0; bottom:0; width:1px; background:#d1d5db; }}
-.fc-factor-bar {{ position:absolute; top:1px; bottom:1px; border-radius:4px; }}
-.fc-factor-pts {{ font-size:12px; font-weight:500; text-align:right; }}
-.fc-two-col {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; }}
-.fc-factor-list {{ margin:0; padding:0; list-style:none; }}
-.fc-factor-list li {{
-  font-size:13px; color:{TEXT}; line-height:1.45;
-  padding:8px 0; border-bottom:1px solid {BORDER};
-}}
-.fc-factor-list li:last-child {{ border-bottom:none; }}
-.fc-factor-list .hint {{ color:{TEXT_MUTED}; display:block; margin-top:2px; font-size:12px; }}
 """
 
 
@@ -462,7 +590,8 @@ def brand_icon_html(*, size: str = "sm") -> str:
 
 
 def brand_html(*, subtitle: str = "Credit Guidance for Farmers", shell: bool = False) -> str:
-    inner = f"""
+    """Top brand mark. shell=True includes motto chip (welcome mockup top bar)."""
+    brand = f"""
     <div class="fc-brand">
       {brand_icon_html()}
       <div>
@@ -472,8 +601,24 @@ def brand_html(*, subtitle: str = "Credit Guidance for Farmers", shell: bool = F
     </div>
     """
     if shell:
-        return f'<div class="fc-header-shell">{inner}</div>'
-    return inner
+        return f"""
+        <div class="fc-topbar">
+          {brand}
+          <div class="fc-topbar-right">
+            <div class="fc-motto-chip">
+              <img src="{BRAND_LEAF_ICON_URI}" alt="" width="14" height="14" style="filter:hue-rotate(90deg);" />
+              Stronger Farmers, Brighter Tomorrow
+            </div>
+            <div class="fc-theme-btn" title="Theme" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" fill="#f59e0b"/>
+                <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="#f59e0b" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        """
+    return brand
 
 
 def section_heading(title: str, subtitle: str = "") -> None:

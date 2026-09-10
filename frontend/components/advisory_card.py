@@ -11,7 +11,7 @@ import streamlit as st
 
 from frontend.utils import api
 from frontend.utils.api import ApiError
-from frontend.utils.html_ui import render_inline_html
+from frontend.utils.html_ui import render_html
 
 
 def render_advisory_card(
@@ -27,9 +27,10 @@ def render_advisory_card(
     use_demo_cache: bool = True,
 ) -> None:
     if not advisory_text:
-        render_inline_html(
+        render_html(
             '<div class="fc-card"><div class="fc-card-title">What to consider next</div>'
-            '<p class="fc-section-sub" style="margin:0;">No advisory text returned for this assessment.</p></div>'
+            '<p class="fc-section-sub" style="margin:0;">No advisory text returned for this assessment.</p></div>',
+            height=96,
         )
     else:
         safe = html.escape(advisory_text).replace("\n", "<br>")
@@ -45,10 +46,12 @@ def render_advisory_card(
             if meta_bits
             else ""
         )
-        render_inline_html(
+        approx = 120 + max(1, advisory_text.count("\n") + len(advisory_text) // 90) * 22
+        render_html(
             f'<div class="fc-card"><div class="fc-card-title">What to consider next</div>'
             f'<div style="font-size:14px;line-height:1.55;color:#111827;">{safe}</div>'
-            f"{meta}</div>"
+            f"{meta}</div>",
+            height=min(360, approx),
         )
 
     st.markdown(
