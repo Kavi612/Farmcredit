@@ -1,4 +1,4 @@
-"""FarmCredit AI design system — one visual language for every screen."""
+"""FarmCredit AI design system — clean neutral UI, risk colors only for risk."""
 
 from __future__ import annotations
 
@@ -8,24 +8,20 @@ from urllib.parse import quote
 import streamlit as st
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-GREEN_DARK = "#0f3d24"
-GREEN_MID = "#1b5e38"
-GREEN_BRIGHT = "#2f9e5c"
-GREEN_LIGHT = "#e7f5ec"
-MINT = "#f3faf6"
-PAGE_BG = "#f4f6f5"
+PAGE_BG = "#f3f4f6"
 SURFACE = "#ffffff"
-TEXT = "#15231b"
-TEXT_MUTED = "#5f6f66"
-BORDER = "#dde5df"
-BORDER_SOFT = "#eef3f0"
-WHITE = "#ffffff"
+BORDER = "#e5e7eb"
+TEXT = "#111827"
+TEXT_MUTED = "#6b7280"
+ACCENT = "#2563eb"
+ACCENT_HOVER = "#1d4ed8"
 
+# Risk band colors — ONLY for risk UI
 RISK_STYLES = {
-    "Low": ("#1b5e38", "#e7f5ec"),
-    "Medium": ("#9a6700", "#fff6db"),
-    "High": ("#b54708", "#ffedd5"),
-    "Critical": ("#b42318", "#fee4e2"),
+    "Low": ("#15803d", "#dcfce7"),
+    "Medium": ("#a16207", "#fef3c7"),
+    "High": ("#c2410c", "#ffedd5"),
+    "Critical": ("#b91c1c", "#fee2e2"),
 }
 
 CROP_ICON: dict[str, str] = {
@@ -43,8 +39,8 @@ CROP_ICON: dict[str, str] = {
 
 BRAND_LEAF_SVG_RAW = """
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-  <path d="M12 2C8 6 4 8 4 14c0 4 3.5 7 8 8 4.5-1 8-4 8-8 0-6-4-8-8-12z" fill="#1b5e38"/>
-  <path d="M12 22V10" stroke="#e7f5ec" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M12 2C8 6 4 8 4 14c0 4 3.5 7 8 8 4.5-1 8-4 8-8 0-6-4-8-8-12z" fill="#2563eb"/>
+  <path d="M12 22V10" stroke="#eff6ff" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
 """.strip()
 
@@ -55,343 +51,401 @@ def _svg_data_uri(svg: str) -> str:
 
 BRAND_LEAF_ICON_URI = _svg_data_uri(BRAND_LEAF_SVG_RAW)
 
-# Shared CSS used both in page theme and st.html iframes
-_SHARED_COMPONENT_CSS = f"""
-.fc-brand {{ display: flex; align-items: center; gap: 0.7rem; min-width: 0; }}
+_SHARED = f"""
+.fc-brand {{ display:flex; align-items:center; gap:0.65rem; }}
 .fc-brand-icon {{
-  width: 42px; height: 42px; border-radius: 50%;
-  background: {GREEN_LIGHT}; border: 1px solid #c6e7d2;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width:40px; height:40px; border-radius:10px; background:#eff6ff;
+  border:1px solid #dbeafe; display:flex; align-items:center; justify-content:center;
 }}
-.fc-brand-icon img {{ width: 20px; height: 20px; display: block; }}
-.fc-brand-name {{
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.15rem; font-weight: 700; color: {GREEN_DARK};
-  letter-spacing: -0.02em; line-height: 1.15;
-}}
-.fc-brand-tag {{ font-size: 0.78rem; color: {TEXT_MUTED}; margin-top: 0.1rem; }}
+.fc-brand-icon img {{ width:20px; height:20px; display:block; }}
+.fc-brand-name {{ font-size:18px; font-weight:500; color:{TEXT}; line-height:1.2; }}
+.fc-brand-tag {{ font-size:12px; color:{TEXT_MUTED}; margin-top:2px; font-weight:400; }}
 
 .fc-section-title {{
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.55rem; font-weight: 700; color: {GREEN_DARK};
-  letter-spacing: -0.025em; margin: 1.75rem 0 0.35rem; line-height: 1.2;
+  font-size:20px; font-weight:500; color:{TEXT};
+  margin:0 0 6px 0; line-height:1.3;
 }}
 .fc-section-sub {{
-  color: {TEXT_MUTED}; font-size: 0.95rem; line-height: 1.55;
-  margin: 0 0 1.15rem; max-width: 54ch;
+  font-size:14px; font-weight:400; color:{TEXT_MUTED};
+  margin:0 0 20px 0; line-height:1.5; max-width:60ch;
 }}
 
-.fc-card-grid {{ display: grid; gap: 0.9rem; margin-bottom: 0.35rem; }}
-.fc-card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
-.fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
-.fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
+.fc-card {{
+  background:{SURFACE};
+  border:1px solid {BORDER};
+  border-radius:12px;
+  padding:18px;
+  margin-bottom:16px;
+}}
+.fc-card-title {{
+  font-size:16px; font-weight:500; color:{TEXT}; margin:0 0 12px 0;
+}}
 
-.fc-choice-card, .fc-profile-card, .fc-card {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 14px;
-  padding: 1.15rem 1.1rem;
+.fc-pill {{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; font-weight:500; line-height:1;
+  padding:6px 10px; border-radius:999px; border:1px solid transparent;
 }}
-.fc-choice-icon {{
-  width: 36px; height: 36px; border-radius: 10px;
-  background: {GREEN_LIGHT}; color: {GREEN_DARK};
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;
-  border: 1px solid #c6e7d2;
+.fc-chip {{
+  display:inline-flex; align-items:center;
+  font-size:12px; font-weight:400; color:{TEXT};
+  background:#f9fafb; border:1px solid {BORDER};
+  border-radius:6px; padding:5px 8px; margin:0 6px 6px 0;
 }}
-.fc-card-title {{ font-weight: 700; color: {TEXT}; font-size: 1rem; margin-bottom: 0.35rem; }}
-.fc-card-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.55; }}
-
-.fc-profile-crop {{
-  width: 36px; height: 36px; border-radius: 10px; background: {GREEN_LIGHT};
-  border: 1px solid #c6e7d2; display: flex; align-items: center; justify-content: center;
-  font-size: 1.05rem; margin-bottom: 0.65rem;
-}}
-.fc-profile-name {{ font-weight: 700; color: {GREEN_DARK}; font-size: 0.95rem; }}
-.fc-profile-meta {{ color: {TEXT_MUTED}; font-size: 0.78rem; margin: 0.2rem 0 0.45rem; }}
-.fc-profile-desc {{ color: {TEXT_MUTED}; font-size: 0.78rem; line-height: 1.45; margin-top: 0.4rem; }}
+.fc-chip strong {{ font-weight:500; margin-right:4px; }}
+strong {{ font-weight:500 !important; }}
+em, i {{ font-style:normal !important; }}
+h1, h2, h3, h4, h5, h6 {{ text-transform:none !important; font-style:normal !important; }}
 
 .fc-risk-badge {{
-  display: inline-block; font-size: 0.68rem; font-weight: 750;
-  padding: 0.2rem 0.55rem; border-radius: 999px; letter-spacing: 0.02em;
+  display:inline-flex; align-items:center;
+  font-size:12px; font-weight:500;
+  padding:6px 10px; border-radius:999px;
 }}
-
-.fc-capability-grid {{ display: grid; border-top: 1px solid {BORDER}; }}
-.fc-capability {{
-  display: grid; grid-template-columns: 2.75rem 1fr; gap: 0.75rem;
-  padding: 1.05rem 0; border-bottom: 1px solid {BORDER};
-}}
-.fc-capability-num {{
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
-  color: {GREEN_MID}; font-size: 1.05rem;
-}}
-.fc-capability-title {{ font-weight: 700; color: {TEXT}; margin-bottom: 0.25rem; }}
-.fc-capability-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.5; }}
-
-.fc-process-row {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }}
-.fc-process-step {{ border-top: 2px solid {GREEN_MID}; padding-top: 0.85rem; }}
-.fc-process-num {{
-  font-family: 'Fraunces', Georgia, serif; font-size: 1.2rem; font-weight: 700;
-  color: {GREEN_MID}; margin-bottom: 0.35rem;
-}}
-.fc-process-title {{ font-weight: 700; color: {TEXT}; margin-bottom: 0.3rem; }}
-.fc-process-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.5; }}
 
 .fc-footer-wrap {{
-  margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid {BORDER};
+  margin-top:32px; padding-top:16px; border-top:1px solid {BORDER};
 }}
-.fc-footer-brand {{
-  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
-  color: {GREEN_DARK}; font-size: 1rem; margin-bottom: 0.25rem;
-}}
-.fc-footer-copy {{ font-size: 0.78rem; color: #8a9a91; margin: 0; line-height: 1.5; }}
+.fc-footer-brand {{ font-size:14px; font-weight:500; color:{TEXT}; margin-bottom:4px; }}
+.fc-footer-copy {{ font-size:12px; color:{TEXT_MUTED}; margin:0; line-height:1.5; }}
 
-@media (max-width: 768px) {{
-  .fc-card-grid-2, .fc-card-grid-3, .fc-card-grid-5, .fc-process-row {{
-    grid-template-columns: 1fr !important;
-  }}
+.fc-choice-card, .fc-profile-card {{
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px; padding:16px;
+}}
+.fc-choice-icon {{
+  width:28px; height:28px; border-radius:6px; background:#f3f4f6; color:{TEXT};
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:500; margin-bottom:10px; border:1px solid {BORDER};
+}}
+.fc-card-title {{ font-size:15px; font-weight:500; color:{TEXT}; margin-bottom:6px; }}
+.fc-card-text {{ font-size:13px; color:{TEXT_MUTED}; line-height:1.5; }}
+.fc-profile-name {{ font-size:14px; font-weight:500; color:{TEXT}; }}
+.fc-profile-meta {{ font-size:12px; color:{TEXT_MUTED}; margin:4px 0 8px; }}
+.fc-profile-desc {{ font-size:12px; color:{TEXT_MUTED}; line-height:1.45; margin-top:8px; }}
+.fc-card-grid {{ display:grid; gap:12px; }}
+.fc-card-grid-2 {{ grid-template-columns:repeat(2,1fr); }}
+.fc-card-grid-3 {{ grid-template-columns:repeat(3,1fr); }}
+.fc-process-row {{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px; }}
+.fc-process-step {{ background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px; padding:16px; }}
+.fc-process-num {{ font-size:13px; font-weight:500; color:{ACCENT}; margin-bottom:6px; }}
+.fc-process-title {{ font-size:14px; font-weight:500; color:{TEXT}; margin-bottom:4px; }}
+.fc-process-text {{ font-size:13px; color:{TEXT_MUTED}; line-height:1.45; }}
+.fc-capability-grid {{ display:grid; gap:0; }}
+.fc-capability {{
+  display:grid; grid-template-columns:2.5rem 1fr; gap:12px;
+  padding:14px 0; border-bottom:1px solid {BORDER};
+}}
+.fc-capability:last-child {{ border-bottom:none; }}
+.fc-capability-num {{ font-size:13px; font-weight:500; color:{ACCENT}; }}
+.fc-capability-title {{ font-size:14px; font-weight:500; color:{TEXT}; margin-bottom:4px; }}
+.fc-capability-text {{ font-size:13px; color:{TEXT_MUTED}; line-height:1.45; }}
+
+@media (max-width:768px) {{
+  .fc-card-grid-2, .fc-card-grid-3, .fc-process-row {{ grid-template-columns:1fr !important; }}
 }}
 """
 
 THEME_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap');
 
 :root {{
-  --fc-green: {GREEN_MID};
-  --fc-green-dark: {GREEN_DARK};
-  --fc-text: {TEXT};
-  --fc-muted: {TEXT_MUTED};
-  --fc-border: {BORDER};
-  --fc-surface: {SURFACE};
-  --fc-font: 'Outfit', 'Segoe UI', sans-serif;
-  --fc-display: 'Fraunces', Georgia, serif;
+  --fc-page:{PAGE_BG};
+  --fc-surface:{SURFACE};
+  --fc-border:{BORDER};
+  --fc-text:{TEXT};
+  --fc-muted:{TEXT_MUTED};
+  --fc-accent:{ACCENT};
 }}
 
 html, body, [class*="css"] {{
-  font-family: var(--fc-font) !important;
-  color: {TEXT};
+  font-family:'IBM Plex Sans', 'Segoe UI', sans-serif !important;
+  color:{TEXT};
+  font-weight:400;
 }}
-.stApp {{
-  background:
-    radial-gradient(ellipse 80% 40% at 10% -10%, rgba(231,245,236,0.9) 0%, transparent 55%),
-    {PAGE_BG} !important;
-}}
+.stApp {{ background:{PAGE_BG} !important; }}
 
 header[data-testid="stHeader"],
 [data-testid="stToolbar"],
 [data-testid="stDecoration"],
 [data-testid="stSidebarNav"],
 section[data-testid="stSidebar"] {{
-  display: none !important;
+  display:none !important;
 }}
 
 .stAppViewContainer .main .block-container,
 .block-container {{
-  padding-top: 0.75rem;
-  padding-bottom: 2.75rem;
-  max-width: 1040px;
+  padding-top:12px;
+  padding-bottom:40px;
+  max-width:1040px;
 }}
 
-{_SHARED_COMPONENT_CSS}
+{_SHARED}
 
-/* Header */
+/* Header shell */
 .fc-header-shell {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-bottom: none;
-  border-radius: 14px 14px 0 0;
-  padding: 0.85rem 1rem 0;
+  background:{SURFACE};
+  border:1px solid {BORDER};
+  border-bottom:none;
+  border-radius:12px 12px 0 0;
+  padding:14px 16px 0;
 }}
 .fc-header-shell .fc-brand {{
-  padding-bottom: 0.7rem;
-  border-bottom: 1px solid {BORDER_SOFT};
+  padding-bottom:12px;
+  border-bottom:1px solid {BORDER};
 }}
-div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{
-  margin-bottom: 0 !important;
-}}
-.fc-nav-row-marker {{ display: none !important; height: 0 !important; margin: 0 !important; }}
+div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{ margin-bottom:0 !important; }}
+.fc-nav-row-marker {{ display:none !important; height:0 !important; margin:0 !important; }}
 
 div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-top: none;
-  border-radius: 0 0 14px 14px;
-  padding: 0.45rem 0.75rem 0.55rem;
-  margin-top: -0.45rem;
-  margin-bottom: 1.35rem;
-  align-items: center !important;
-  gap: 0.35rem !important;
+  background:{SURFACE};
+  border:1px solid {BORDER};
+  border-top:none;
+  border-radius:0 0 12px 12px;
+  padding:8px 12px 10px;
+  margin-top:-6px;
+  margin-bottom:24px;
+  align-items:center !important;
+  gap:8px !important;
 }}
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"] {{
-  background: transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  color: {TEXT} !important;
-  font-weight: 560 !important;
+  background:transparent !important;
+  border-color:transparent !important;
+  box-shadow:none !important;
+  color:{TEXT} !important;
+  font-weight:500 !important;
 }}
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="primary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="primary"] {{
-  background: {GREEN_DARK} !important;
-  border-color: {GREEN_DARK} !important;
+  background:{ACCENT} !important;
+  border-color:{ACCENT} !important;
 }}
 
-/* Welcome hero */
+/* Hero */
 .fc-hero {{
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  min-height: min(48vh, 420px);
-  margin: 0 0 1rem 0;
-  display: flex;
-  align-items: flex-end;
-  isolation: isolate;
+  position:relative; overflow:hidden; border-radius:12px;
+  min-height:min(42vh, 360px); margin:0 0 16px 0;
+  display:flex; align-items:flex-end; isolation:isolate;
+  border:1px solid {BORDER};
 }}
-.fc-hero-media, .fc-hero-fallback {{
-  position: absolute; inset: 0; background: {GREEN_DARK}; z-index: 0;
-}}
-.fc-hero-img {{
-  width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;
-}}
+.fc-hero-media, .fc-hero-fallback {{ position:absolute; inset:0; background:#1f2937; z-index:0; }}
+.fc-hero-img {{ width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block; }}
 .fc-hero-veil {{
-  position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(105deg, rgba(10,32,20,0.88) 0%, rgba(10,32,20,0.62) 42%, rgba(10,32,20,0.22) 100%),
-    linear-gradient(180deg, rgba(10,32,20,0.1) 0%, rgba(10,32,20,0.5) 100%);
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(105deg, rgba(17,24,39,0.82) 0%, rgba(17,24,39,0.45) 55%, rgba(17,24,39,0.15) 100%);
 }}
-.fc-hero-body {{
-  position: relative; z-index: 2; padding: 2rem 1.5rem 1.75rem; max-width: 36rem;
-}}
+.fc-hero-body {{ position:relative; z-index:2; padding:24px 20px; max-width:34rem; }}
 .fc-hero-brand {{
-  font-family: var(--fc-display);
-  font-size: clamp(2.3rem, 5vw, 3.4rem);
-  font-weight: 700; color: #fff; letter-spacing: -0.03em;
-  line-height: 1; margin: 0 0 0.75rem;
+  font-size:22px; font-weight:500; color:#fff; margin:0 0 8px 0; line-height:1.2;
 }}
-.fc-hero-sub {{
-  margin: 0; color: rgba(236,253,245,0.9); font-size: 1.02rem; line-height: 1.55;
-}}
-.fc-hero-actions {{
-  margin: 0.85rem 0 2rem; max-width: 34rem;
-}}
+.fc-hero-sub {{ margin:0; color:rgba(255,255,255,0.88); font-size:15px; line-height:1.5; font-weight:400; }}
+.fc-hero-actions {{ margin:0 0 24px; max-width:28rem; }}
 
 /* Step progress */
-.fc-steps {{
-  display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1.15rem;
-}}
+.fc-steps {{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }}
 .fc-step-pill {{
-  font-size: 0.78rem; font-weight: 600; color: {TEXT_MUTED};
-  background: {SURFACE}; border: 1px solid {BORDER};
-  border-radius: 999px; padding: 0.28rem 0.7rem;
+  font-size:12px; font-weight:500; color:{TEXT_MUTED};
+  background:{SURFACE}; border:1px solid {BORDER};
+  border-radius:999px; padding:6px 10px;
 }}
-.fc-step-pill.is-active {{
-  color: {GREEN_DARK}; background: {GREEN_LIGHT}; border-color: #c6e7d2;
+.fc-step-pill.is-active {{ color:{ACCENT}; border-color:#bfdbfe; background:#eff6ff; }}
+.fc-step-pill.is-done {{ color:{TEXT}; }}
+
+/* Results layout */
+.fc-result-header {{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap:16px; flex-wrap:wrap;
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px;
+  padding:18px; margin-bottom:12px;
 }}
-.fc-step-pill.is-done {{
-  color: {GREEN_MID};
+.fc-result-identity {{ display:flex; gap:12px; align-items:center; min-width:0; }}
+.fc-avatar {{
+  width:44px; height:44px; border-radius:999px; background:#eff6ff; color:{ACCENT};
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:500; border:1px solid #dbeafe; flex-shrink:0;
+}}
+.fc-result-name {{ font-size:18px; font-weight:500; color:{TEXT}; margin:0 0 4px; }}
+.fc-result-meta {{ font-size:13px; color:{TEXT_MUTED}; margin:0; }}
+.fc-result-score-block {{ text-align:right; }}
+.fc-result-score-label {{ font-size:12px; color:{TEXT_MUTED}; margin:0 0 4px; }}
+.fc-result-score-value {{ font-size:28px; font-weight:500; line-height:1; margin:0; }}
+.fc-result-score-sub {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
+
+.fc-pill-row {{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }}
+
+.fc-metric-grid {{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px;
+}}
+.fc-metric-card {{
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px; padding:16px;
+}}
+.fc-metric-label {{ font-size:12px; color:{TEXT_MUTED}; margin:0 0 6px; font-weight:400; }}
+.fc-metric-value {{ font-size:20px; font-weight:500; color:{TEXT}; margin:0; }}
+.fc-metric-hint {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
+
+.fc-factor-row {{
+  display:grid; grid-template-columns:140px 1fr 48px; gap:10px;
+  align-items:center; margin-bottom:10px;
+}}
+.fc-factor-label {{ font-size:13px; color:{TEXT}; font-weight:400; }}
+.fc-factor-track {{
+  position:relative; height:10px; background:#f3f4f6; border-radius:6px; overflow:hidden;
+  border:1px solid {BORDER};
+}}
+.fc-factor-mid {{
+  position:absolute; left:50%; top:0; bottom:0; width:1px; background:#d1d5db;
+}}
+.fc-factor-bar {{
+  position:absolute; top:1px; bottom:1px; border-radius:4px; height:calc(100% - 2px);
+}}
+.fc-factor-bar.up {{ background:#b91c1c; }}
+.fc-factor-bar.down {{ background:#15803d; }}
+.fc-factor-pts {{ font-size:12px; font-weight:500; text-align:right; }}
+
+.fc-two-col {{
+  display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;
+}}
+.fc-factor-list {{ margin:0; padding:0; list-style:none; }}
+.fc-factor-list li {{
+  font-size:13px; color:{TEXT}; line-height:1.45;
+  padding:8px 0; border-bottom:1px solid {BORDER};
+}}
+.fc-factor-list li:last-child {{ border-bottom:none; }}
+.fc-factor-list .hint {{ color:{TEXT_MUTED}; display:block; margin-top:2px; font-size:12px; }}
+
+.fc-form-section {{
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px;
+  padding:18px; margin-bottom:16px;
+}}
+.fc-form-section-title {{
+  font-size:15px; font-weight:500; color:{TEXT}; margin:0 0 12px 0;
 }}
 
-/* Result / panels */
-.fc-result-hero {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 14px;
-  padding: 1.15rem 1.2rem;
-  margin-bottom: 1rem;
+.fc-bank-panel {{
+  background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px;
+  padding:16px; margin-bottom:16px;
 }}
-.fc-panel {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 14px;
-  padding: 1.15rem 1.2rem;
-  margin-bottom: 0.85rem;
+
+/* Match Streamlit bordered containers to card system */
+[data-testid="stVerticalBlockBorderWrapper"] > div {{
+  background:{SURFACE} !important;
+  border:1px solid {BORDER} !important;
+  border-radius:12px !important;
+  box-shadow:none !important;
 }}
-.fc-advisory-box {{
-  background: {MINT};
-  border: 1px solid #c6e7d2;
-  border-radius: 14px;
-  padding: 1.1rem 1.15rem;
-  color: {GREEN_DARK};
-  line-height: 1.6;
+div[data-testid="stForm"] [data-testid="stVerticalBlockBorderWrapper"] {{
+  margin-bottom:16px !important;
+}}
+div[data-testid="stForm"] [data-testid="stVerticalBlockBorderWrapper"] > div {{
+  padding:16px 18px !important;
 }}
 
 /* Widgets */
 .stButton > button {{
-  border-radius: 10px !important;
-  font-family: var(--fc-font) !important;
-  font-weight: 600 !important;
-  padding: 0.62rem 1rem !important;
-  border: 1px solid {BORDER} !important;
-  box-shadow: none !important;
+  border-radius:8px !important;
+  font-family:'IBM Plex Sans', sans-serif !important;
+  font-weight:500 !important;
+  font-size:14px !important;
+  padding:8px 14px !important;
+  border:1px solid {BORDER} !important;
+  box-shadow:none !important;
 }}
 .stButton > button[kind="primary"] {{
-  background: {GREEN_DARK} !important;
-  border-color: {GREEN_DARK} !important;
-  color: #fff !important;
+  background:{ACCENT} !important;
+  border-color:{ACCENT} !important;
+  color:#fff !important;
 }}
 .stButton > button[kind="primary"]:hover {{
-  background: #0a2f1c !important;
-  border-color: #0a2f1c !important;
+  background:{ACCENT_HOVER} !important;
+  border-color:{ACCENT_HOVER} !important;
 }}
 .stButton > button[kind="secondary"]:hover {{
-  background: {GREEN_LIGHT} !important;
-  border-color: #c6e7d2 !important;
+  background:#f9fafb !important;
+  border-color:#d1d5db !important;
 }}
 div[data-testid="stForm"] {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 14px;
-  padding: 1.2rem 1.1rem;
+  background:transparent; border:none; padding:0;
 }}
 [data-testid="stMetric"] {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 12px;
-  padding: 0.75rem 0.9rem;
+  background:{SURFACE};
+  border:1px solid {BORDER};
+  border-radius:12px;
+  padding:12px 14px;
 }}
 [data-testid="stMetricLabel"] {{
-  color: {TEXT_MUTED} !important;
-  font-weight: 600 !important;
-  font-size: 0.78rem !important;
+  color:{TEXT_MUTED} !important;
+  font-weight:400 !important;
+  font-size:12px !important;
 }}
 [data-testid="stMetricValue"] {{
-  color: {GREEN_DARK} !important;
-  font-weight: 750 !important;
+  color:{TEXT} !important;
+  font-weight:500 !important;
+  font-size:20px !important;
 }}
 [data-testid="stDataFrame"] {{
-  border: 1px solid {BORDER};
-  border-radius: 12px;
-  overflow: hidden;
+  border:1px solid {BORDER};
+  border-radius:12px;
+  overflow:hidden;
 }}
-hr {{
-  border: none !important;
-  border-top: 1px solid {BORDER} !important;
-  margin: 1.5rem 0 !important;
-}}
+hr {{ display:none !important; }}
 
-@media (max-width: 768px) {{
-  .block-container {{
-    padding-left: 0.8rem !important;
-    padding-right: 0.8rem !important;
-  }}
-  .fc-hero {{ min-height: min(42vh, 340px) !important; border-radius: 14px !important; }}
-  .fc-hero-body {{ padding: 1.4rem 1.05rem 1.25rem !important; }}
-  .fc-hero-brand {{ font-size: 2.1rem !important; }}
-  .fc-hero-actions {{ max-width: none !important; }}
-  .fc-section-title {{ font-size: 1.3rem !important; }}
+@media (max-width:768px) {{
+  .fc-metric-grid, .fc-two-col {{ grid-template-columns:1fr !important; }}
+  .fc-factor-row {{ grid-template-columns:1fr !important; gap:4px !important; }}
+  .fc-result-score-block {{ text-align:left !important; }}
+  .fc-hero {{ min-height:min(36vh, 280px) !important; }}
 }}
 """
 
 HTML_IFRAME_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap');
-* {{ box-sizing: border-box; }}
-body {{
-  margin: 0;
-  font-family: 'Outfit', 'Segoe UI', sans-serif;
-  color: {TEXT};
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap');
+* {{ box-sizing:border-box; }}
+body {{ margin:0; font-family:'IBM Plex Sans', sans-serif; color:{TEXT}; font-weight:400; }}
+{_SHARED}
+.fc-result-header {{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap:16px; flex-wrap:wrap; background:{SURFACE}; border:1px solid {BORDER};
+  border-radius:12px; padding:18px; margin-bottom:12px;
 }}
-{_SHARED_COMPONENT_CSS}
+.fc-result-identity {{ display:flex; gap:12px; align-items:center; }}
+.fc-avatar {{
+  width:44px; height:44px; border-radius:999px; background:#eff6ff; color:{ACCENT};
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px; font-weight:500; border:1px solid #dbeafe;
+}}
+.fc-result-name {{ font-size:18px; font-weight:500; color:{TEXT}; margin:0 0 4px; }}
+.fc-result-meta {{ font-size:13px; color:{TEXT_MUTED}; margin:0; }}
+.fc-result-score-block {{ text-align:right; }}
+.fc-result-score-label {{ font-size:12px; color:{TEXT_MUTED}; margin:0 0 4px; }}
+.fc-result-score-value {{ font-size:28px; font-weight:500; line-height:1; margin:0; }}
+.fc-result-score-sub {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
+.fc-pill-row {{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 16px; }}
+.fc-metric-grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:16px; }}
+.fc-metric-card {{ background:{SURFACE}; border:1px solid {BORDER}; border-radius:12px; padding:16px; }}
+.fc-metric-label {{ font-size:12px; color:{TEXT_MUTED}; margin:0 0 6px; }}
+.fc-metric-value {{ font-size:20px; font-weight:500; color:{TEXT}; margin:0; }}
+.fc-metric-hint {{ font-size:12px; color:{TEXT_MUTED}; margin:6px 0 0; }}
+.fc-factor-row {{
+  display:grid; grid-template-columns:140px 1fr 48px; gap:10px;
+  align-items:center; margin-bottom:10px;
+}}
+.fc-factor-label {{ font-size:13px; color:{TEXT}; }}
+.fc-factor-track {{
+  position:relative; height:10px; background:#f3f4f6; border-radius:6px;
+  overflow:hidden; border:1px solid {BORDER};
+}}
+.fc-factor-mid {{ position:absolute; left:50%; top:0; bottom:0; width:1px; background:#d1d5db; }}
+.fc-factor-bar {{ position:absolute; top:1px; bottom:1px; border-radius:4px; }}
+.fc-factor-pts {{ font-size:12px; font-weight:500; text-align:right; }}
+.fc-two-col {{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px; }}
+.fc-factor-list {{ margin:0; padding:0; list-style:none; }}
+.fc-factor-list li {{
+  font-size:13px; color:{TEXT}; line-height:1.45;
+  padding:8px 0; border-bottom:1px solid {BORDER};
+}}
+.fc-factor-list li:last-child {{ border-bottom:none; }}
+.fc-factor-list .hint {{ color:{TEXT_MUTED}; display:block; margin-top:2px; font-size:12px; }}
 """
 
 
@@ -400,10 +454,9 @@ def apply_theme() -> None:
 
 
 def brand_icon_html(*, size: str = "sm") -> str:
-    px = "20" if size != "hero" else "48"
     return (
         f'<div class="fc-brand-icon">'
-        f'<img src="{BRAND_LEAF_ICON_URI}" alt="" width="{px}" height="{px}" />'
+        f'<img src="{BRAND_LEAF_ICON_URI}" alt="" width="20" height="20" />'
         f"</div>"
     )
 
@@ -441,13 +494,8 @@ def section_header(title: str, icon: str = "analytics") -> None:
 
 
 def render_step_progress(current: str) -> None:
-    """Farmer flow progress: choose → demo/form → results."""
     order = ["choose", "input", "results"]
-    labels = {
-        "choose": "1 · Path",
-        "input": "2 · Details",
-        "results": "3 · Result",
-    }
+    labels = {"choose": "1 · Path", "input": "2 · Details", "results": "3 · Result"}
     mapped = {
         "choose": "choose",
         "demo_pick": "input",
@@ -464,6 +512,26 @@ def render_step_progress(current: str) -> None:
             cls += " is-active"
         pills.append(f'<span class="{cls}">{labels[key]}</span>')
     st.markdown(f'<div class="fc-steps">{"".join(pills)}</div>', unsafe_allow_html=True)
+
+
+def status_pill_html(label: str, *, kind: str = "neutral") -> str:
+    """kind: risk-Low/Medium/High/Critical | source | neutral"""
+    if kind.startswith("risk-"):
+        level = kind.replace("risk-", "")
+        fg, bg = RISK_STYLES.get(level, (TEXT_MUTED, "#f3f4f6"))
+        return (
+            f'<span class="fc-pill" style="color:{fg};background:{bg};border-color:{fg}33;">'
+            f"{html.escape(label)}</span>"
+        )
+    if kind == "source":
+        return (
+            f'<span class="fc-pill" style="color:{ACCENT};background:#eff6ff;border-color:#bfdbfe;">'
+            f"{html.escape(label)}</span>"
+        )
+    return (
+        f'<span class="fc-pill" style="color:{TEXT_MUTED};background:#f9fafb;border-color:{BORDER};">'
+        f"{html.escape(label)}</span>"
+    )
 
 
 from frontend.utils.badges import risk_badge_html as _risk_badge_html

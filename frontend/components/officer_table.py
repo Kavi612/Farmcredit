@@ -7,22 +7,22 @@ from datetime import datetime, timezone
 import pandas as pd
 import streamlit as st
 
-from frontend.utils.constants import RISK_COLORS
+from frontend.utils.badges import RISK_STYLES, risk_badge_html
 from frontend.utils.formatting import format_inr, risk_points
-from frontend.utils.theme import section_header
+from frontend.utils.theme import section_heading
 
 
 def _decision_badge(status: str) -> str:
-    colors = {
-        "Pending": "#78909c",
-        "Approved": "#2e7d32",
-        "Rejected": "#546e7a",
-        "Flagged": "#c62828",
+    # Neutral / accent only — risk greens/reds reserved for risk bands.
+    styles = {
+        "Pending": ("#6b7280", "#f3f4f6"),
+        "Approved": ("#2563eb", "#eff6ff"),
+        "Rejected": ("#374151", "#f3f4f6"),
+        "Flagged": ("#1d4ed8", "#dbeafe"),
     }
-    color = colors.get(status, "#78909c")
+    fg, bg = styles.get(status, ("#6b7280", "#f3f4f6"))
     return (
-        f"<span style='background:{color}22;color:{color};"
-        f"padding:0.15rem 0.55rem;border-radius:999px;font-weight:600;font-size:0.8rem;'>"
+        f'<span class="fc-pill" style="color:{fg};background:{bg};border-color:{fg}33;">'
         f"{status}</span>"
     )
 
@@ -43,7 +43,7 @@ def render_officer_table(
     df: pd.DataFrame,
     applications_by_id: dict[str, dict],
 ) -> None:
-    section_header("Application queue", icon="list_alt")
+    section_heading("Application queue", "Demo applications in the current filter set.")
 
     if df.empty:
         st.info("No applications match the current filters.")
@@ -83,7 +83,7 @@ def render_officer_table(
         hide_index=True,
     )
 
-    st.markdown("##### :material/rate_review: Review & decide")
+    section_heading("Review & decide", "Select an application and record a session decision.")
     options = [
         f"{r.application_id} — {r.display_name} ({r.risk_level})"
         for r in view.itertuples()
@@ -99,12 +99,12 @@ def render_officer_table(
     if notice:
         st.success(notice)
 
-    color = RISK_COLORS.get(app["risk_level"], "#546e7a")
+    level = app.get("risk_level") or "Medium"
+    fg, _bg = RISK_STYLES.get(level, ("#6b7280", "#f3f4f6"))
     st.markdown(
-        f"**{app['display_name']}** · "
-        f"<span style='color:{color};font-weight:700'>{app['risk_level']}</span> "
-        f"({risk_points(app['risk_score'])}/100) · {format_inr(app['loan_amount_inr'])} · "
-        f"{_decision_badge(current_status)}",
+        f"**{app['display_name']}** · {risk_badge_html(level)} "
+        f"<span style='color:{fg};font-weight:500'>({risk_points(app['risk_score'])}/100)</span> · "
+        f"{format_inr(app['loan_amount_inr'])} · {_decision_badge(current_status)}",
         unsafe_allow_html=True,
     )
     if app.get("narrative"):

@@ -111,7 +111,6 @@ def render_bank_view() -> None:
     apps_by_id = {a["application_id"]: a for a in apps}
     render_officer_table(filtered, apps_by_id)
 
-    st.markdown("---")
     if st.button(
         "← Switch to Farmer View",
         key="bank_to_farmer",

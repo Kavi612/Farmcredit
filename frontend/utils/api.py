@@ -126,6 +126,20 @@ def predict_risk(features: dict[str, Any], include_shap: bool = False) -> dict[s
     return _request("POST", "/predict-risk", json=body, timeout=30.0)
 
 
+def explain_risk(
+    *,
+    features: dict[str, Any] | None = None,
+    farmer_id: str | None = None,
+    top_k: int = 5,
+) -> dict[str, Any]:
+    body: dict[str, Any] = {"top_k": top_k}
+    if features:
+        body["features"] = features
+    if farmer_id:
+        body["farmer_id"] = farmer_id
+    return _request("POST", "/explain-risk", json=body, timeout=45.0)
+
+
 def generate_report_pdf(
     *,
     features: dict[str, Any] | None = None,

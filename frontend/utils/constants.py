@@ -52,17 +52,17 @@ SOILS = ["Alluvial", "Black", "ClayLoam", "Laterite", "Red", "Sandy"]
 IRRIGATION = ["Canal", "Drip", "Rainfed", "Tubewell"]
 
 RISK_COLORS = {
-    "Low": "#2e7d32",
-    "Medium": "#f9a825",
-    "High": "#ef6c00",
-    "Critical": "#c62828",
+    "Low": "#15803d",
+    "Medium": "#a16207",
+    "High": "#c2410c",
+    "Critical": "#b91c1c",
 }
 
 RISK_BG = {
-    "Low": "#e8f5e9",
-    "Medium": "#fff8e1",
-    "High": "#fff3e0",
-    "Critical": "#ffebee",
+    "Low": "#dcfce7",
+    "Medium": "#fef3c7",
+    "High": "#ffedd5",
+    "Critical": "#fee2e2",
 }
 
 DEFAULT_FEATURES = {

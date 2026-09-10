@@ -1,4 +1,4 @@
-"""Advisory text card and PDF/JSON report downloads."""
+"""Advisory card and PDF/JSON downloads."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ import streamlit as st
 
 from frontend.utils import api
 from frontend.utils.api import ApiError
-from frontend.utils.theme import section_heading
+from frontend.utils.html_ui import render_inline_html
 
 
 def render_advisory_card(
@@ -26,61 +26,79 @@ def render_advisory_card(
     features: dict[str, Any] | None = None,
     use_demo_cache: bool = True,
 ) -> None:
-    section_heading("Advice for you", "Plain-language guidance based on your profile.")
     if not advisory_text:
-        st.info("No advisory text returned for this assessment.")
-        return
-
-    safe = html.escape(advisory_text).replace("\n", "<br>")
-    st.markdown(
-        f'<div class="fc-advisory-box">{safe}</div>',
-        unsafe_allow_html=True,
-    )
-
-    meta_bits = []
-    if model_id:
-        meta_bits.append(f"source: `{model_id}`")
-    if cached is not None:
-        meta_bits.append("cached demo" if cached else "live result")
-    if latency_ms is not None:
-        meta_bits.append(f"{latency_ms} ms")
-    if meta_bits:
-        st.caption(" · ".join(meta_bits))
-
-    st.markdown("##### Download report")
-    pdf_key = f"pdf_{farmer_label}"
-    if st.button("Prepare PDF report", key=f"btn_{pdf_key}", use_container_width=True):
-        with st.spinner("Building PDF…"):
-            try:
-                pdf_bytes, filename = api.generate_report_pdf(
-                    farmer_id=farmer_id,
-                    features=features,
-                    use_demo_cache=use_demo_cache,
-                )
-                st.session_state[pdf_key] = (pdf_bytes, filename)
-            except ApiError as exc:
-                st.error(exc.message)
-
-    if pdf_key in st.session_state:
-        pdf_bytes, filename = st.session_state[pdf_key]
-        st.download_button(
-            label="Download PDF report",
-            data=pdf_bytes,
-            file_name=filename,
-            mime="application/pdf",
-            use_container_width=True,
-            key=f"dl_{pdf_key}",
+        render_inline_html(
+            '<div class="fc-card"><div class="fc-card-title">What to consider next</div>'
+            '<p class="fc-section-sub" style="margin:0;">No advisory text returned for this assessment.</p></div>'
+        )
+    else:
+        safe = html.escape(advisory_text).replace("\n", "<br>")
+        meta_bits = []
+        if model_id:
+            meta_bits.append(f"source: {html.escape(str(model_id))}")
+        if cached is not None:
+            meta_bits.append("cached demo" if cached else "live result")
+        if latency_ms is not None:
+            meta_bits.append(f"{int(latency_ms)} ms")
+        meta = (
+            f'<p class="fc-section-sub" style="margin:12px 0 0;">{ " · ".join(meta_bits)}</p>'
+            if meta_bits
+            else ""
+        )
+        render_inline_html(
+            f'<div class="fc-card"><div class="fc-card-title">What to consider next</div>'
+            f'<div style="font-size:14px;line-height:1.55;color:#111827;">{safe}</div>'
+            f"{meta}</div>"
         )
 
-    payload = report or {
-        "advisory_text": advisory_text,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-    }
-    st.download_button(
-        label="Download report (JSON)",
-        data=json.dumps(payload, indent=2),
-        file_name=f"farmcredit_report_{farmer_label}.json",
-        mime="application/json",
-        use_container_width=True,
-        key=f"json_{pdf_key}",
+    st.markdown(
+        '<p class="fc-section-title" style="font-size:16px;">Downloads</p>',
+        unsafe_allow_html=True,
     )
+    pdf_key = f"pdf_{farmer_label}"
+    c1, c2, c3 = st.columns([1.2, 1.2, 1])
+    with c1:
+        if st.button(
+            "Prepare PDF",
+            key=f"btn_{pdf_key}",
+            use_container_width=True,
+            icon=":material/picture_as_pdf:",
+        ):
+            with st.spinner("Building PDF…"):
+                try:
+                    pdf_bytes, filename = api.generate_report_pdf(
+                        farmer_id=farmer_id,
+                        features=features,
+                        use_demo_cache=use_demo_cache,
+                    )
+                    st.session_state[pdf_key] = (pdf_bytes, filename)
+                except ApiError as exc:
+                    st.error(exc.message)
+    with c2:
+        if pdf_key in st.session_state:
+            pdf_bytes, filename = st.session_state[pdf_key]
+            st.download_button(
+                label="Download PDF",
+                data=pdf_bytes,
+                file_name=filename,
+                mime="application/pdf",
+                use_container_width=True,
+                key=f"dl_{pdf_key}",
+                icon=":material/download:",
+            )
+        else:
+            st.caption("Prepare PDF first")
+    with c3:
+        payload = report or {
+            "advisory_text": advisory_text,
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+        }
+        st.download_button(
+            label="Download JSON",
+            data=json.dumps(payload, indent=2),
+            file_name=f"farmcredit_report_{farmer_label}.json",
+            mime="application/json",
+            use_container_width=True,
+            key=f"json_{pdf_key}",
+            icon=":material/data_object:",
+        )
