@@ -60,8 +60,8 @@ def render_bank_view() -> None:
     _ensure_state()
 
     section_heading(
-        "Bank Officer Dashboard",
-        "Review demo loan applications, filter by risk, and record approve / reject / flag decisions.",
+        "Bank officer workspace",
+        "Review demo applications, filter by risk, and record session decisions.",
     )
 
     try:

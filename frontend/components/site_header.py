@@ -95,13 +95,13 @@ def render_site_header() -> None:
                 ("Home", "nav_home", go_welcome),
                 ("About", "nav_about", go_about),
             ],
-            primary=("Bank Officer →", "nav_bank", go_bank, True),
+            primary=("Bank Officer", "nav_bank", go_bank, True),
         )
     elif view == "about":
         _render_nav(
             prefix="about",
-            links=[("← Home", "nav_about_home", go_welcome)],
-            primary=("Bank Officer →", "nav_about_bank", go_bank, True),
+            links=[("Home", "nav_about_home", go_welcome)],
+            primary=("Bank Officer", "nav_about_bank", go_bank, True),
         )
     elif view == "bank":
         _render_nav(
@@ -109,9 +109,9 @@ def render_site_header() -> None:
             links=[
                 ("Home", "nav_bank_menu_home", go_welcome),
                 ("About", "nav_bank_menu_about", go_about),
-                ("Farmer View", "nav_bank_menu_farmer", go_farmer),
+                ("Farmer", "nav_bank_menu_farmer", go_farmer),
             ],
-            primary=("← Farmer View", "nav_bank_farmer", go_farmer, False),
+            primary=("Farmer View", "nav_bank_farmer", go_farmer, False),
         )
     else:
         _render_nav(
@@ -120,5 +120,5 @@ def render_site_header() -> None:
                 ("Home", "nav_farmer_home", go_welcome),
                 ("About", "nav_farmer_about", go_about),
             ],
-            primary=("Bank Officer →", "nav_farmer_bank", go_bank, True),
+            primary=("Bank Officer", "nav_farmer_bank", go_bank, True),
         )

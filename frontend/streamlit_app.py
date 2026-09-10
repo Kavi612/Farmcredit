@@ -22,7 +22,7 @@ from frontend.views.welcome_view import render_welcome_page
 
 st.set_page_config(
     page_title="FarmCredit AI",
-    page_icon="🌾",
+    page_icon="🌿",
     layout="wide",
     initial_sidebar_state="collapsed",
 )

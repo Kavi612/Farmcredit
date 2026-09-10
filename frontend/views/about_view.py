@@ -1,4 +1,4 @@
-"""About page — clean project overview."""
+"""About page."""
 
 from __future__ import annotations
 
@@ -13,13 +13,15 @@ from frontend.utils.theme import section_heading
 def render_about_view() -> None:
     section_heading(
         "About FarmCredit AI",
-        "A portfolio demonstration of explainable agri-credit risk scoring.",
+        "A portfolio demo of explainable crop-loan risk scoring.",
     )
     st.markdown(
         """
-FarmCredit AI helps farmers and rural bank officers understand crop-loan default risk
-before a lending conversation gets locked in. It combines an XGBoost risk model,
-SHAP explanations, and practical advisory text — using **synthetic** demonstration data only.
+FarmCredit AI shows how machine learning and clear explanations can support
+agri-credit conversations — for farmers reviewing their profile and for bank
+officers screening applications.
+
+It uses **synthetic demonstration data only**. It is not a production lending system.
 """
     )
     items = "".join(
@@ -33,9 +35,9 @@ SHAP explanations, and practical advisory text — using **synthetic** demonstra
         </div>
         """
         for num, title, text in [
-            ("01", "For farmers", "See your risk level, what drives it, and practical next steps."),
-            ("02", "For bank officers", "Review demo applications with filters, charts, and approve/flag decisions."),
-            ("03", "How AI helps", "XGBoost scores risk, SHAP explains factors, and advisory text turns results into guidance."),
+            ("01", "For farmers", "See risk level, what drives it, and practical next steps."),
+            ("02", "For bank officers", "Review demo applications with filters, charts, and decisions."),
+            ("03", "How AI helps", "XGBoost scores risk, SHAP explains factors, advisory text guides action."),
         ]
     )
     render_html(f'<div class="fc-capability-grid">{items}</div>')
@@ -43,13 +45,11 @@ SHAP explanations, and practical advisory text — using **synthetic** demonstra
 
 
 def render_privacy_view() -> None:
-    section_heading("Privacy Policy", "How this demo handles your information.")
+    section_heading("Privacy", "How this demo handles information.")
     st.markdown(
         """
-- Data stays on your **local** backend unless you deploy elsewhere.
+- Data stays on your local/backend host unless you deploy elsewhere.
 - Demo profiles use synthetic sample data.
-- Bank review sessions are stored in your browser only.
-
-This is a demonstration notice — not a production legal document.
+- Bank decisions are stored in the browser session only.
 """
     )

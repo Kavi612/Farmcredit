@@ -1,4 +1,4 @@
-"""FarmCredit AI design system — polished UI tokens & global CSS."""
+"""FarmCredit AI design system — one visual language for every screen."""
 
 from __future__ import annotations
 
@@ -8,29 +8,24 @@ from urllib.parse import quote
 import streamlit as st
 
 # ── Palette ───────────────────────────────────────────────────────────────────
-GREEN_DARK = "#14532d"
-GREEN_MID = "#15803d"
-GREEN_BRIGHT = "#22c55e"
-GREEN_LIGHT = "#dcfce7"
-MINT = "#f0fdf4"
-SKY = "#eff6ff"
-SKY_DEEP = "#dbeafe"
-PAGE_BG = "#f8fafc"
+GREEN_DARK = "#0f3d24"
+GREEN_MID = "#1b5e38"
+GREEN_BRIGHT = "#2f9e5c"
+GREEN_LIGHT = "#e7f5ec"
+MINT = "#f3faf6"
+PAGE_BG = "#f4f6f5"
 SURFACE = "#ffffff"
-TEXT = "#0f172a"
-TEXT_MUTED = "#64748b"
-BORDER = "#e2e8f0"
-BORDER_SOFT = "#f1f5f9"
+TEXT = "#15231b"
+TEXT_MUTED = "#5f6f66"
+BORDER = "#dde5df"
+BORDER_SOFT = "#eef3f0"
 WHITE = "#ffffff"
-SHADOW_SM = "0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04)"
-SHADOW_MD = "0 4px 16px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04)"
-SHADOW_LG = "0 12px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.05)"
 
 RISK_STYLES = {
-    "Low": ("#15803d", "#dcfce7"),
-    "Medium": ("#a16207", "#fef9c3"),
-    "High": ("#c2410c", "#ffedd5"),
-    "Critical": ("#b91c1c", "#fee2e2"),
+    "Low": ("#1b5e38", "#e7f5ec"),
+    "Medium": ("#9a6700", "#fff6db"),
+    "High": ("#b54708", "#ffedd5"),
+    "Critical": ("#b42318", "#fee4e2"),
 }
 
 CROP_ICON: dict[str, str] = {
@@ -46,59 +41,12 @@ CROP_ICON: dict[str, str] = {
     "Wheat": "agriculture",
 }
 
-HERO_ILLUSTRATION = """
-<svg class="fc-farm-svg" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs>
-    <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#bfdbfe"/>
-      <stop offset="100%" stop-color="#f0fdf4"/>
-    </linearGradient>
-    <linearGradient id="heroField" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#4ade80"/>
-      <stop offset="100%" stop-color="#22c55e"/>
-    </linearGradient>
-  </defs>
-  <rect width="400" height="260" rx="20" fill="url(#heroSky)"/>
-  <circle cx="330" cy="52" r="32" fill="#fde68a" opacity="0.95"/>
-  <ellipse cx="70" cy="58" rx="42" ry="15" fill="#fff" opacity="0.9"/>
-  <ellipse cx="105" cy="52" rx="30" ry="11" fill="#fff" opacity="0.75"/>
-  <ellipse cx="220" cy="60" rx="36" ry="12" fill="#fff" opacity="0.7"/>
-  <path d="M0 175 Q100 155 200 170 T400 175 L400 260 L0 260 Z" fill="url(#heroField)"/>
-  <path d="M0 190 Q130 175 240 188 T400 195 L400 260 L0 260 Z" fill="#16a34a" opacity="0.35"/>
-  <rect x="268" y="138" width="58" height="42" fill="#a16207" rx="3"/>
-  <polygon points="268,138 297,100 326,138" fill="#dc2626"/>
-  <rect x="286" y="154" width="16" height="26" fill="#78350f" rx="1"/>
-  <rect x="304" y="148" width="12" height="12" fill="#fef3c7" rx="1"/>
-  <rect x="310" y="108" width="4" height="34" fill="#78716c"/>
-  <polygon points="312,108 312,88 332,108" fill="#e5e7eb" opacity="0.9"/>
-  <line x1="312" y1="108" x2="292" y2="128" stroke="#e5e7eb" stroke-width="2"/>
-  <line x1="312" y1="108" x2="332" y2="128" stroke="#e5e7eb" stroke-width="2"/>
-  <circle cx="312" cy="108" r="3" fill="#78716c"/>
-  <circle cx="155" cy="158" r="30" fill="#16a34a"/>
-  <circle cx="190" cy="148" r="22" fill="#22c55e"/>
-  <rect x="137" y="158" width="6" height="32" fill="#92400e" rx="1"/>
-  <rect x="183" y="162" width="5" height="28" fill="#92400e" rx="1"/>
-  <circle cx="95" cy="162" r="18" fill="#4ade80"/>
-  <rect x="92" y="162" width="4" height="24" fill="#92400e"/>
-  <circle cx="230" cy="168" r="14" fill="#86efac"/>
-  <rect x="228" y="168" width="3" height="18" fill="#92400e"/>
-</svg>
-"""
-
 BRAND_LEAF_SVG_RAW = """
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-  <path d="M12 2C8 6 4 8 4 14c0 4 3.5 7 8 8 4.5-1 8-4 8-8 0-6-4-8-8-12z" fill="#15803d"/>
-  <path d="M12 22V10" stroke="#dcfce7" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M12 2C8 6 4 8 4 14c0 4 3.5 7 8 8 4.5-1 8-4 8-8 0-6-4-8-8-12z" fill="#1b5e38"/>
+  <path d="M12 22V10" stroke="#e7f5ec" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
 """.strip()
-
-# Kept for any legacy inline SVG usage
-BRAND_LEAF_SVG = BRAND_LEAF_SVG_RAW.replace(
-    'viewBox="0 0 24 24"', 'width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"'
-)
-BRAND_LEAF_SVG_HERO = BRAND_LEAF_SVG_RAW.replace(
-    'viewBox="0 0 24 24"', 'width="64" height="64" viewBox="0 0 24 24" aria-hidden="true"'
-)
 
 
 def _svg_data_uri(svg: str) -> str:
@@ -107,8 +55,106 @@ def _svg_data_uri(svg: str) -> str:
 
 BRAND_LEAF_ICON_URI = _svg_data_uri(BRAND_LEAF_SVG_RAW)
 
+# Shared CSS used both in page theme and st.html iframes
+_SHARED_COMPONENT_CSS = f"""
+.fc-brand {{ display: flex; align-items: center; gap: 0.7rem; min-width: 0; }}
+.fc-brand-icon {{
+  width: 42px; height: 42px; border-radius: 50%;
+  background: {GREEN_LIGHT}; border: 1px solid #c6e7d2;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}}
+.fc-brand-icon img {{ width: 20px; height: 20px; display: block; }}
+.fc-brand-name {{
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem; font-weight: 700; color: {GREEN_DARK};
+  letter-spacing: -0.02em; line-height: 1.15;
+}}
+.fc-brand-tag {{ font-size: 0.78rem; color: {TEXT_MUTED}; margin-top: 0.1rem; }}
+
+.fc-section-title {{
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.55rem; font-weight: 700; color: {GREEN_DARK};
+  letter-spacing: -0.025em; margin: 1.75rem 0 0.35rem; line-height: 1.2;
+}}
+.fc-section-sub {{
+  color: {TEXT_MUTED}; font-size: 0.95rem; line-height: 1.55;
+  margin: 0 0 1.15rem; max-width: 54ch;
+}}
+
+.fc-card-grid {{ display: grid; gap: 0.9rem; margin-bottom: 0.35rem; }}
+.fc-card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
+.fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
+.fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
+
+.fc-choice-card, .fc-profile-card, .fc-card {{
+  background: {SURFACE};
+  border: 1px solid {BORDER};
+  border-radius: 14px;
+  padding: 1.15rem 1.1rem;
+}}
+.fc-choice-icon {{
+  width: 36px; height: 36px; border-radius: 10px;
+  background: {GREEN_LIGHT}; color: {GREEN_DARK};
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem;
+  border: 1px solid #c6e7d2;
+}}
+.fc-card-title {{ font-weight: 700; color: {TEXT}; font-size: 1rem; margin-bottom: 0.35rem; }}
+.fc-card-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.55; }}
+
+.fc-profile-crop {{
+  width: 36px; height: 36px; border-radius: 10px; background: {GREEN_LIGHT};
+  border: 1px solid #c6e7d2; display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; margin-bottom: 0.65rem;
+}}
+.fc-profile-name {{ font-weight: 700; color: {GREEN_DARK}; font-size: 0.95rem; }}
+.fc-profile-meta {{ color: {TEXT_MUTED}; font-size: 0.78rem; margin: 0.2rem 0 0.45rem; }}
+.fc-profile-desc {{ color: {TEXT_MUTED}; font-size: 0.78rem; line-height: 1.45; margin-top: 0.4rem; }}
+
+.fc-risk-badge {{
+  display: inline-block; font-size: 0.68rem; font-weight: 750;
+  padding: 0.2rem 0.55rem; border-radius: 999px; letter-spacing: 0.02em;
+}}
+
+.fc-capability-grid {{ display: grid; border-top: 1px solid {BORDER}; }}
+.fc-capability {{
+  display: grid; grid-template-columns: 2.75rem 1fr; gap: 0.75rem;
+  padding: 1.05rem 0; border-bottom: 1px solid {BORDER};
+}}
+.fc-capability-num {{
+  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
+  color: {GREEN_MID}; font-size: 1.05rem;
+}}
+.fc-capability-title {{ font-weight: 700; color: {TEXT}; margin-bottom: 0.25rem; }}
+.fc-capability-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.5; }}
+
+.fc-process-row {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }}
+.fc-process-step {{ border-top: 2px solid {GREEN_MID}; padding-top: 0.85rem; }}
+.fc-process-num {{
+  font-family: 'Fraunces', Georgia, serif; font-size: 1.2rem; font-weight: 700;
+  color: {GREEN_MID}; margin-bottom: 0.35rem;
+}}
+.fc-process-title {{ font-weight: 700; color: {TEXT}; margin-bottom: 0.3rem; }}
+.fc-process-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.5; }}
+
+.fc-footer-wrap {{
+  margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid {BORDER};
+}}
+.fc-footer-brand {{
+  font-family: 'Fraunces', Georgia, serif; font-weight: 700;
+  color: {GREEN_DARK}; font-size: 1rem; margin-bottom: 0.25rem;
+}}
+.fc-footer-copy {{ font-size: 0.78rem; color: #8a9a91; margin: 0; line-height: 1.5; }}
+
+@media (max-width: 768px) {{
+  .fc-card-grid-2, .fc-card-grid-3, .fc-card-grid-5, .fc-process-row {{
+    grid-template-columns: 1fr !important;
+  }}
+}}
+"""
+
 THEME_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {{
   --fc-green: {GREEN_MID};
@@ -117,8 +163,6 @@ THEME_CSS = f"""
   --fc-muted: {TEXT_MUTED};
   --fc-border: {BORDER};
   --fc-surface: {SURFACE};
-  --fc-radius: 18px;
-  --fc-radius-lg: 24px;
   --fc-font: 'Outfit', 'Segoe UI', sans-serif;
   --fc-display: 'Fraunces', Georgia, serif;
 }}
@@ -128,983 +172,226 @@ html, body, [class*="css"] {{
   color: {TEXT};
 }}
 .stApp {{
-  background: #f3f5f4 !important;
-}}
-
-@keyframes fc-fade-up {{
-  from {{ opacity: 0; transform: translateY(14px); }}
-  to {{ opacity: 1; transform: translateY(0); }}
-}}
-@keyframes fc-soft-zoom {{
-  from {{ transform: scale(1.05); }}
-  to {{ transform: scale(1); }}
-}}
-@keyframes fc-fade-in {{
-  from {{ opacity: 0; }}
-  to {{ opacity: 1; }}
+  background:
+    radial-gradient(ellipse 80% 40% at 10% -10%, rgba(231,245,236,0.9) 0%, transparent 55%),
+    {PAGE_BG} !important;
 }}
 
 header[data-testid="stHeader"],
 [data-testid="stToolbar"],
-[data-testid="stDecoration"] {{
-  display: none !important;
-  height: 0 !important;
-  visibility: hidden !important;
-}}
-
-.stAppViewContainer .main .block-container,
-.block-container {{
-  padding-top: 0.85rem;
-  padding-bottom: 3rem;
-  max-width: 1120px;
-}}
+[data-testid="stDecoration"],
 [data-testid="stSidebarNav"],
 section[data-testid="stSidebar"] {{
   display: none !important;
 }}
 
-/* ── Header shell (brand + nav) ── */
+.stAppViewContainer .main .block-container,
+.block-container {{
+  padding-top: 0.75rem;
+  padding-bottom: 2.75rem;
+  max-width: 1040px;
+}}
+
+{_SHARED_COMPONENT_CSS}
+
+/* Header */
 .fc-header-shell {{
-  background: #ffffff;
-  border: 1px solid rgba(226,232,240,0.95);
+  background: {SURFACE};
+  border: 1px solid {BORDER};
   border-bottom: none;
-  border-radius: 18px 18px 0 0;
-  padding: 0.95rem 1.2rem 0;
-  margin-bottom: 0;
+  border-radius: 14px 14px 0 0;
+  padding: 0.85rem 1rem 0;
 }}
 .fc-header-shell .fc-brand {{
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.7rem;
   border-bottom: 1px solid {BORDER_SOFT};
-  margin-bottom: 0;
 }}
 div[data-testid="stMarkdownContainer"]:has(.fc-header-shell) {{
   margin-bottom: 0 !important;
 }}
-
-.fc-nav-row-marker {{
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}}
+.fc-nav-row-marker {{ display: none !important; height: 0 !important; margin: 0 !important; }}
 
 div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-  background: #ffffff;
-  border: 1px solid rgba(226,232,240,0.95);
+  background: {SURFACE};
+  border: 1px solid {BORDER};
   border-top: none;
-  border-radius: 0 0 18px 18px;
-  padding: 0.55rem 0.95rem 0.65rem;
-  margin-top: -0.5rem;
+  border-radius: 0 0 14px 14px;
+  padding: 0.45rem 0.75rem 0.55rem;
+  margin-top: -0.45rem;
   margin-bottom: 1.35rem;
-  box-shadow: 0 10px 30px rgba(15, 40, 30, 0.05);
   align-items: center !important;
-  gap: 0.45rem !important;
+  gap: 0.35rem !important;
 }}
-
-/* Soften nav link buttons into pill-like controls */
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"] {{
-  background: #f3faf5 !important;
+  background: transparent !important;
   border-color: transparent !important;
   box-shadow: none !important;
-  color: {GREEN_DARK} !important;
-  font-weight: 600 !important;
-  border-radius: 999px !important;
-}}
-div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="secondary"]:hover,
-[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="secondary"]:hover {{
-  background: #e8f8ee !important;
-  color: {GREEN_DARK} !important;
+  color: {TEXT} !important;
+  font-weight: 560 !important;
 }}
 div.element-container:has(.fc-nav-row-marker) + div.element-container .stButton > button[kind="primary"],
 [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] .stButton > button[kind="primary"] {{
-  border-radius: 999px !important;
-  background: #0b3d28 !important;
-  border-color: #0b3d28 !important;
+  background: {GREEN_DARK} !important;
+  border-color: {GREEN_DARK} !important;
 }}
 
-@media (max-width: 768px) {{
-  div.element-container:has(.fc-nav-row-marker) + div.element-container div[data-testid="stHorizontalBlock"],
-  [data-testid="stVerticalBlockBorderWrapper"]:has(.fc-nav-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] div[data-testid="stHorizontalBlock"] {{
-    flex-wrap: nowrap !important;
-    gap: 0.5rem !important;
-    padding: 0.45rem 0.75rem 0.55rem !important;
-    border-radius: 0 0 16px 16px !important;
-    margin-bottom: 1rem !important;
-  }}
-}}
-
-/* ── Photo hero ── */
-.fc-hero-bleed {{
+/* Welcome hero */
+.fc-hero {{
   position: relative;
-  width: 100%;
-  margin: 0 0 1.15rem 0;
-  min-height: min(56vh, 500px);
+  overflow: hidden;
+  border-radius: 16px;
+  min-height: min(48vh, 420px);
+  margin: 0 0 1rem 0;
   display: flex;
   align-items: flex-end;
-  overflow: hidden;
-  border-radius: 22px;
   isolation: isolate;
-  animation: fc-fade-in 0.65s ease both;
-  box-shadow: 0 18px 50px rgba(11, 61, 40, 0.16);
 }}
-.fc-hero-bleed-media,
-.fc-hero-bleed-fallback {{
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background: #0b3d28;
+.fc-hero-media, .fc-hero-fallback {{
+  position: absolute; inset: 0; background: {GREEN_DARK}; z-index: 0;
 }}
-.fc-hero-bleed-img {{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 42%;
-  display: block;
-  animation: fc-soft-zoom 14s ease-out both;
+.fc-hero-img {{
+  width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block;
 }}
-.fc-hero-bleed-veil {{
-  position: absolute;
-  inset: 0;
-  z-index: 1;
+.fc-hero-veil {{
+  position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(105deg, rgba(6, 28, 18, 0.9) 0%, rgba(8, 40, 26, 0.78) 34%, rgba(8, 40, 26, 0.35) 66%, rgba(8, 40, 26, 0.12) 100%),
-    linear-gradient(180deg, rgba(6, 28, 18, 0.12) 0%, rgba(6, 28, 18, 0.55) 100%);
+    linear-gradient(105deg, rgba(10,32,20,0.88) 0%, rgba(10,32,20,0.62) 42%, rgba(10,32,20,0.22) 100%),
+    linear-gradient(180deg, rgba(10,32,20,0.1) 0%, rgba(10,32,20,0.5) 100%);
 }}
-.fc-hero-bleed-content {{
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: 2.2rem 1.75rem 1.8rem;
-  animation: fc-fade-up 0.75s 0.1s ease both;
-}}
-.fc-hero-trust {{
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin: 0 0 1rem 0;
-  padding: 0.42rem 0.85rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(236,253,245,0.95);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  backdrop-filter: blur(8px);
-}}
-.fc-hero-trust-dot {{
-  width: 0.55rem;
-  height: 0.55rem;
-  border-radius: 50%;
-  background: #86efac;
-  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.25);
-}}
-.fc-hero-kicker {{
-  margin: 0 0 0.55rem 0;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #86efac;
+.fc-hero-body {{
+  position: relative; z-index: 2; padding: 2rem 1.5rem 1.75rem; max-width: 36rem;
 }}
 .fc-hero-brand {{
   font-family: var(--fc-display);
-  font-size: clamp(2.5rem, 5.8vw, 3.9rem);
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.03em;
-  line-height: 0.98;
-  margin: 0 0 0.85rem 0;
-  max-width: 12ch;
-}}
-.fc-hero-title {{
-  display: none;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  font-weight: 700; color: #fff; letter-spacing: -0.03em;
+  line-height: 1; margin: 0 0 0.75rem;
 }}
 .fc-hero-sub {{
-  color: rgba(236, 253, 245, 0.9);
-  font-size: 1.05rem;
-  line-height: 1.55;
-  max-width: 40ch;
-  margin: 0 0 1.5rem 0;
-  font-weight: 400;
+  margin: 0; color: rgba(236,253,245,0.9); font-size: 1.02rem; line-height: 1.55;
 }}
-.fc-hero-metrics {{
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.85rem;
-  padding-top: 1.1rem;
-  border-top: 1px solid rgba(255,255,255,0.16);
-}}
-.fc-hero-metric {{
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  min-width: 0;
-}}
-.fc-hero-metric-icon {{
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.14);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #bbf7d0;
-  flex-shrink: 0;
-}}
-.fc-hero-metric-icon svg {{
-  width: 16px;
-  height: 16px;
-  display: block;
-}}
-.fc-hero-metric-title {{
-  color: #fff;
-  font-size: 0.88rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 0.15rem;
-}}
-.fc-hero-metric-sub {{
-  color: rgba(220, 252, 231, 0.78);
-  font-size: 0.76rem;
-  line-height: 1.3;
+.fc-hero-actions {{
+  margin: 0.85rem 0 2rem; max-width: 34rem;
 }}
 
-/* Start CTA cards (interactive) */
-.fc-start-row-marker {{
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
+/* Step progress */
+.fc-steps {{
+  display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0 0 1.15rem;
 }}
-.fc-start-card {{
-  border-radius: 18px 18px 0 0;
-  padding: 1.35rem 1.3rem 1.05rem;
-  min-height: 128px;
+.fc-step-pill {{
+  font-size: 0.78rem; font-weight: 600; color: {TEXT_MUTED};
+  background: {SURFACE}; border: 1px solid {BORDER};
+  border-radius: 999px; padding: 0.28rem 0.7rem;
 }}
-.fc-start-card-primary {{
-  background: linear-gradient(145deg, #0b3d28 0%, #14532d 100%);
-  color: #fff;
-  border: 1px solid #0b3d28;
-  border-bottom: none;
+.fc-step-pill.is-active {{
+  color: {GREEN_DARK}; background: {GREEN_LIGHT}; border-color: #c6e7d2;
 }}
-.fc-start-card-secondary {{
-  background: #ffffff;
-  color: {TEXT};
-  border: 1px solid {BORDER};
-  border-bottom: none;
-  box-shadow: 0 10px 28px rgba(15, 40, 30, 0.04);
-}}
-.fc-start-card-icon {{
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.9rem;
-}}
-.fc-start-card-primary .fc-start-card-icon {{
-  background: rgba(255,255,255,0.12);
-  color: #bbf7d0;
-}}
-.fc-start-card-secondary .fc-start-card-icon {{
-  background: #f3faf5;
-  color: {GREEN_DARK};
-  border: 1px solid #dcfce7;
-}}
-.fc-start-card-icon svg {{
-  width: 20px;
-  height: 20px;
-  display: block;
-}}
-.fc-start-card-title {{
-  font-size: 1.15rem;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.3rem;
-}}
-.fc-start-card-sub {{
-  font-size: 0.9rem;
-  line-height: 1.4;
-  opacity: 0.82;
-}}
-
-/* Attach CTA buttons to cards above (same pattern as nav marker) */
-div.element-container:has(.fc-start-row-marker) + div.element-container,
-[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-start-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] {{
-  margin-bottom: 1.25rem !important;
-  animation: fc-fade-up 0.7s 0.18s ease both;
-}}
-div.element-container:has(.fc-start-row-marker) + div.element-container [data-testid="column"]:nth-child(1) .stButton > button,
-[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-start-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] [data-testid="column"]:nth-child(1) .stButton > button {{
-  border-radius: 0 0 18px 18px !important;
-  margin-top: -0.45rem !important;
-  min-height: 3rem !important;
-  background: #0b3d28 !important;
-  border-color: #0b3d28 !important;
-  color: #fff !important;
-  font-weight: 700 !important;
-  box-shadow: none !important;
-}}
-div.element-container:has(.fc-start-row-marker) + div.element-container [data-testid="column"]:nth-child(2) .stButton > button,
-[data-testid="stVerticalBlockBorderWrapper"]:has(.fc-start-row-marker) + [data-testid="stVerticalBlockBorderWrapper"] [data-testid="column"]:nth-child(2) .stButton > button {{
-  border-radius: 0 0 18px 18px !important;
-  margin-top: -0.45rem !important;
-  min-height: 3rem !important;
-  background: #ffffff !important;
-  border: 1px solid {BORDER} !important;
-  border-top-color: {BORDER_SOFT} !important;
-  color: {GREEN_DARK} !important;
-  font-weight: 700 !important;
-  box-shadow: 0 10px 28px rgba(15, 40, 30, 0.04) !important;
-}}
-
-.fc-hero-cta-wrap,
-.fc-hero-cta-bar,
-.fc-start-grid-wrap {{
-  display: none;
-}}
-
-/* Process + capability layouts */
-.fc-process-row {{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 0 0 0.5rem 0;
-  padding: 0.25rem 0 0.5rem;
-}}
-.fc-process-step {{
-  padding: 0.15rem 0.15rem 0.15rem 0;
-  border-top: 2px solid {GREEN_MID};
-  padding-top: 1rem;
-}}
-.fc-process-num {{
-  font-family: var(--fc-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: {GREEN_MID};
-  margin-bottom: 0.45rem;
-  line-height: 1;
-}}
-.fc-process-title {{
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: {TEXT};
-  margin-bottom: 0.4rem;
-  letter-spacing: -0.015em;
-}}
-.fc-process-text {{
-  color: {TEXT_MUTED};
-  font-size: 0.92rem;
-  line-height: 1.55;
-}}
-
-.fc-capability-grid {{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  margin-bottom: 0.5rem;
-  border-top: 1px solid {BORDER};
-}}
-.fc-capability {{
-  display: grid;
-  grid-template-columns: 3.25rem 1fr;
-  gap: 0.85rem;
-  padding: 1.25rem 0.15rem;
-  border-bottom: 1px solid {BORDER};
-  align-items: start;
-}}
-.fc-capability-num {{
-  font-family: var(--fc-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: {GREEN_MID};
-  line-height: 1.2;
-  padding-top: 0.1rem;
-}}
-.fc-capability-title {{
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: {TEXT};
-  margin-bottom: 0.3rem;
-  letter-spacing: -0.015em;
-}}
-.fc-capability-text {{
-  color: {TEXT_MUTED};
-  font-size: 0.93rem;
-  line-height: 1.55;
-  max-width: 60ch;
-}}
-
-.fc-feature-section {{
-  animation: fc-fade-up 0.7s 0.12s ease both;
-}}
-.fc-icon-svg {{
-  width: 24px;
-  height: 24px;
-  display: block;
-}}
-
-/* ── Card grids (kept for farmer/bank flows) ── */
-.fc-card-grid {{
-  display: grid;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}}
-.fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
-.fc-card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
-.fc-card-grid-4 {{ grid-template-columns: repeat(4, 1fr); }}
-.fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
-
-.fc-steps-row {{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}}
-.fc-step-card {{
-  background: transparent;
-  border: none;
-  border-top: 2px solid {GREEN_MID};
-  border-radius: 0;
-  padding: 1rem 0.15rem 0.25rem;
-  box-shadow: none;
-}}
-.fc-step-card:hover {{
-  transform: none;
-  box-shadow: none;
-}}
-
-/* ── Sections ── */
-.fc-section-title {{
-  font-family: var(--fc-display);
-  font-size: 1.65rem;
-  font-weight: 700;
-  color: {GREEN_DARK};
-  letter-spacing: -0.025em;
-  margin: 2.75rem 0 0.4rem 0;
-  line-height: 1.15;
-}}
-.fc-section-title:first-child {{ margin-top: 0.35rem; }}
-.fc-section-sub {{
-  color: {TEXT_MUTED};
-  font-size: 0.96rem;
-  line-height: 1.55;
-  margin: 0 0 1.35rem 0;
-  max-width: 52ch;
-}}
-
-/* ── Cards (interactive / content panels elsewhere) ── */
-.fc-card {{
-  background: {SURFACE};
-  border: 1px solid rgba(226,232,240,0.95);
-  border-radius: 14px;
-  padding: 1.25rem 1.2rem;
-  box-shadow: none;
-  height: 100%;
-  box-sizing: border-box;
-}}
-.fc-card:hover {{
-  transform: none;
-  box-shadow: none;
-  border-color: #cbd5e1;
-}}
-.fc-card-icon-wrap {{
-  width: 44px; height: 44px;
-  border-radius: 12px;
-  background: {MINT};
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 0.85rem;
-  border: 1px solid #bbf7d0;
+.fc-step-pill.is-done {{
   color: {GREEN_MID};
 }}
-.fc-card-num {{
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  background: none;
-  color: {GREEN_MID};
-  font-family: var(--fc-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 0.55rem;
-}}
-.fc-card-title {{
-  font-weight: 700;
-  color: {TEXT};
-  font-size: 1.02rem;
-  margin-bottom: 0.4rem;
-  letter-spacing: -0.015em;
-}}
-.fc-card-text {{
-  color: {TEXT_MUTED};
-  font-size: 0.9rem;
-  line-height: 1.55;
-}}
 
-.fc-choice-card {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: 14px;
-  padding: 1.35rem 1.25rem 1.1rem;
-  box-shadow: none;
-  height: 100%;
-  margin-bottom: 0.75rem;
-}}
-.fc-choice-card:hover {{
-  border-color: #86efac;
-  box-shadow: none;
-}}
-.fc-choice-icon {{
-  width: 40px; height: 40px;
-  border-radius: 10px;
-  background: {MINT};
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: {GREEN_DARK};
-  margin-bottom: 0.85rem;
-  border: 1px solid #bbf7d0;
-}}
-
-.fc-cta-band {{ display: none; }}
-.fc-cta-actions {{ display: none; }}
-
-.fc-profile-card {{
-  background: {SURFACE};
-  border: 1px solid {BORDER};
-  border-radius: var(--fc-radius);
-  padding: 1.15rem 1.2rem 1rem;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
-  box-shadow: {SHADOW_SM};
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}}
-.fc-profile-card:hover {{
-  transform: translateY(-1px);
-  box-shadow: {SHADOW_MD};
-}}
-.fc-profile-crop {{
-  width: 40px; height: 40px;
-  border-radius: 12px;
-  background: {MINT};
-  border: 1px solid #bbf7d0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-}}
-.fc-profile-name {{
-  font-weight: 700;
-  color: {GREEN_DARK};
-  font-size: 0.98rem;
-  letter-spacing: -0.01em;
-}}
-.fc-profile-meta {{
-  color: {TEXT_MUTED};
-  font-size: 0.8rem;
-  margin: 0.2rem 0 0.55rem;
-  font-weight: 500;
-}}
-.fc-profile-desc {{
-  color: {TEXT_MUTED};
-  font-size: 0.8rem;
-  line-height: 1.5;
-  flex: 1;
-  margin-top: 0.35rem;
-}}
-
-.fc-risk-badge {{
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 800;
-  padding: 0.22rem 0.65rem;
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-}}
-
+/* Result / panels */
 .fc-result-hero {{
-  background: linear-gradient(135deg, {SURFACE}, {MINT});
-  border: 1px solid #bbf7d0;
-  border-radius: var(--fc-radius-lg);
-  padding: 1.35rem 1.5rem;
-  margin-bottom: 1.25rem;
-  box-shadow: {SHADOW_SM};
-}}
-
-.fc-footer-wrap {{
-  margin-top: 3.25rem;
-  padding: 1.5rem 0 0.25rem;
-  border-top: 1px solid {BORDER};
-  text-align: left;
-}}
-.fc-footer-brand {{
-  font-family: var(--fc-display);
-  font-weight: 700;
-  color: {GREEN_DARK};
-  font-size: 1.05rem;
-  margin-bottom: 0.35rem;
-}}
-.fc-footer-tag {{
-  display: none;
-}}
-.fc-footer-copy {{
-  text-align: left;
-  font-size: 0.8rem;
-  color: #94a3b8;
-  margin: 0;
-  line-height: 1.5;
-}}
-.fc-advisory-box {{
-  background: linear-gradient(135deg, #f0fdf4, #ffffff);
-  border: 1px solid #bbf7d0;
-  border-radius: 16px;
-  padding: 1.25rem 1.35rem;
-  line-height: 1.65;
-  color: {GREEN_DARK};
-  box-shadow: {SHADOW_SM};
+  background: {SURFACE};
+  border: 1px solid {BORDER};
+  border-radius: 14px;
+  padding: 1.15rem 1.2rem;
+  margin-bottom: 1rem;
 }}
 .fc-panel {{
   background: {SURFACE};
   border: 1px solid {BORDER};
-  border-radius: var(--fc-radius-lg);
-  padding: 1.35rem 1.4rem;
-  box-shadow: {SHADOW_SM};
-  margin-bottom: 1rem;
+  border-radius: 14px;
+  padding: 1.15rem 1.2rem;
+  margin-bottom: 0.85rem;
 }}
-
-.fc-brand {{
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  min-width: 0;
-}}
-.fc-brand-icon {{
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: #dcfce7;
-  border: 1px solid #bbf7d0;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}}
-.fc-brand-icon svg,
-.fc-brand-icon img {{
-  width: 22px;
-  height: 22px;
-  display: block;
-}}
-.fc-brand-name {{
-  font-family: var(--fc-display);
-  font-size: 1.22rem;
-  font-weight: 700;
+.fc-advisory-box {{
+  background: {MINT};
+  border: 1px solid #c6e7d2;
+  border-radius: 14px;
+  padding: 1.1rem 1.15rem;
   color: {GREEN_DARK};
-  letter-spacing: -0.025em;
-  line-height: 1.15;
-}}
-.fc-brand-tag {{
-  font-size: 0.78rem;
-  color: {TEXT_MUTED};
-  font-weight: 500;
-  margin-top: 0.12rem;
+  line-height: 1.6;
 }}
 
-/* ── Streamlit widgets ── */
-[data-testid="stHorizontalBlock"] {{
-  gap: 0.65rem !important;
-  align-items: stretch !important;
-}}
-[data-testid="column"] [data-testid="stVerticalBlock"] {{
-  gap: 0.35rem !important;
-}}
-
+/* Widgets */
 .stButton > button {{
-  border-radius: 12px !important;
-  font-weight: 600 !important;
+  border-radius: 10px !important;
   font-family: var(--fc-font) !important;
-  padding: 0.65rem 1.1rem !important;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease !important;
+  font-weight: 600 !important;
+  padding: 0.62rem 1rem !important;
   border: 1px solid {BORDER} !important;
   box-shadow: none !important;
 }}
 .stButton > button[kind="primary"] {{
-  background: #0b3d28 !important;
-  border-color: #0b3d28 !important;
-  color: white !important;
+  background: {GREEN_DARK} !important;
+  border-color: {GREEN_DARK} !important;
+  color: #fff !important;
 }}
 .stButton > button[kind="primary"]:hover {{
-  background: #072a1b !important;
-  border-color: #072a1b !important;
-  transform: none;
-}}
-.stButton > button[kind="secondary"] {{
-  background: {WHITE} !important;
+  background: #0a2f1c !important;
+  border-color: #0a2f1c !important;
 }}
 .stButton > button[kind="secondary"]:hover {{
-  border-color: #86efac !important;
-  background: {MINT} !important;
+  background: {GREEN_LIGHT} !important;
+  border-color: #c6e7d2 !important;
 }}
-
 div[data-testid="stForm"] {{
   background: {SURFACE};
   border: 1px solid {BORDER};
-  border-radius: var(--fc-radius-lg);
-  padding: 1.5rem 1.35rem;
-  box-shadow: {SHADOW_SM};
+  border-radius: 14px;
+  padding: 1.2rem 1.1rem;
 }}
-
 [data-testid="stMetric"] {{
   background: {SURFACE};
   border: 1px solid {BORDER};
-  border-radius: 14px;
-  padding: 0.85rem 1rem;
-  box-shadow: {SHADOW_SM};
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
 }}
 [data-testid="stMetricLabel"] {{
-  font-size: 0.78rem !important;
   color: {TEXT_MUTED} !important;
   font-weight: 600 !important;
+  font-size: 0.78rem !important;
 }}
 [data-testid="stMetricValue"] {{
-  font-size: 1.5rem !important;
-  font-weight: 800 !important;
   color: {GREEN_DARK} !important;
+  font-weight: 750 !important;
 }}
-
 [data-testid="stDataFrame"] {{
   border: 1px solid {BORDER};
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: {SHADOW_SM};
 }}
-
-div[data-baseweb="select"] > div,
-div[data-baseweb="input"] > div {{
-  border-radius: 10px !important;
-}}
-
 hr {{
   border: none !important;
   border-top: 1px solid {BORDER} !important;
-  margin: 2rem 0 !important;
+  margin: 1.5rem 0 !important;
 }}
 
 @media (max-width: 768px) {{
-  .stAppViewContainer .main .block-container,
   .block-container {{
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-    padding-top: 0.35rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
   }}
-
-  /* Header */
-  .fc-header-shell {{
-    padding: 0.7rem 0.85rem 0 !important;
-    margin-bottom: 0 !important;
-    border-radius: 16px 16px 0 0 !important;
-  }}
-  .fc-header-shell .fc-brand {{
-    padding-bottom: 0.65rem !important;
-  }}
-
-  /* Stack page content columns — not the nav row */
-  section.main .block-container div[data-testid="stHorizontalBlock"]:not(:has([data-testid="stPopover"])) {{
-    flex-wrap: wrap !important;
-  }}
-  section.main .block-container div[data-testid="stHorizontalBlock"]:not(:has([data-testid="stPopover"])) > [data-testid="column"] {{
-    flex: 1 1 100% !important;
-    min-width: 100% !important;
-    width: 100% !important;
-  }}
-
-  .fc-hero-bleed {{
-    min-height: min(54vh, 460px) !important;
-    margin-bottom: 0.95rem !important;
-    border-radius: 18px !important;
-  }}
-  .fc-hero-bleed-content {{
-    padding: 1.5rem 1.1rem 1.25rem !important;
-  }}
-  .fc-hero-brand {{
-    font-size: 2.25rem !important;
-    max-width: none !important;
-  }}
-  .fc-hero-sub {{
-    font-size: 0.95rem !important;
-    max-width: none !important;
-    margin-bottom: 1.1rem !important;
-  }}
-  .fc-hero-metrics {{
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0.75rem !important;
-  }}
-  .fc-start-card {{
-    min-height: 110px !important;
-    padding: 1.15rem 1.05rem 0.9rem !important;
-  }}
-
-  /* Sections & cards */
-  .fc-section-title {{ font-size: 1.35rem !important; margin-top: 2rem !important; }}
-  .fc-section-sub {{ font-size: 0.9rem !important; margin-bottom: 1rem !important; }}
-  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row,
-  .fc-process-row {{
-    grid-template-columns: 1fr !important;
-    gap: 1.15rem !important;
-  }}
-  .fc-capability {{
-    grid-template-columns: 2.5rem 1fr !important;
-    padding: 1rem 0 !important;
-  }}
-
-  /* Brand */
-  .fc-brand-name {{ font-size: 0.98rem !important; }}
-  .fc-brand-tag {{ font-size: 0.7rem !important; }}
-
-  /* Content buttons (not nav row with popover) */
-  section.main .block-container div[data-testid="stHorizontalBlock"]:not(:has([data-testid="stPopover"])) .stButton > button {{
-    padding: 0.62rem 0.85rem !important;
-    font-size: 0.88rem !important;
-    white-space: normal !important;
-    line-height: 1.3 !important;
-    min-height: 2.75rem !important;
-  }}
-
-  /* Metrics & tables */
-  [data-testid="stMetric"] {{ margin-bottom: 0.35rem !important; }}
-  [data-testid="stMetricValue"] {{ font-size: 1.25rem !important; }}
-  [data-testid="stDataFrame"] {{ overflow-x: auto !important; }}
-
-  [data-testid="stHtml"],
-  [data-testid="stHtml"] iframe {{
-    width: 100% !important;
-    max-width: 100% !important;
-  }}
-}}
-
-@media (max-width: 480px) {{
-  .fc-hero-brand {{ font-size: 1.95rem !important; }}
-  .fc-hero-kicker {{ font-size: 0.72rem !important; }}
+  .fc-hero {{ min-height: min(42vh, 340px) !important; border-radius: 14px !important; }}
+  .fc-hero-body {{ padding: 1.4rem 1.05rem 1.25rem !important; }}
+  .fc-hero-brand {{ font-size: 2.1rem !important; }}
+  .fc-hero-actions {{ max-width: none !important; }}
+  .fc-section-title {{ font-size: 1.3rem !important; }}
 }}
 """
 
-# CSS injected into every st.html iframe (global theme CSS does NOT reach iframes)
 HTML_IFRAME_CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap');
 * {{ box-sizing: border-box; }}
 body {{
-  font-family: 'Outfit', 'Segoe UI', sans-serif;
   margin: 0;
+  font-family: 'Outfit', 'Segoe UI', sans-serif;
   color: {TEXT};
 }}
-.fc-brand {{ display: flex; align-items: center; gap: 0.65rem; }}
-.fc-brand-icon {{
-  width: 44px; height: 44px; border-radius: 50%;
-  background: linear-gradient(145deg, #dcfce7, #bbf7d0);
-  border: 1px solid #86efac;
-  display: flex; align-items: center; justify-content: center;
-}}
-.fc-brand-icon svg,
-.fc-brand-icon img {{ width: 22px; height: 22px; display: block; }}
-.fc-brand-name {{
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.2rem; font-weight: 700; color: {GREEN_DARK}; line-height: 1.15;
-}}
-.fc-brand-tag {{ font-size: 0.78rem; color: {TEXT_MUTED}; margin-top: 0.12rem; }}
-.fc-card-grid {{ display: grid; gap: 1.1rem; }}
-.fc-card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
-.fc-card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
-.fc-card-grid-4 {{ grid-template-columns: repeat(4, 1fr); }}
-.fc-card-grid-5 {{ grid-template-columns: repeat(5, 1fr); }}
-.fc-steps-row {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }}
-.fc-card, .fc-step-card, .fc-choice-card, .fc-profile-card {{
-  background: {SURFACE};
-  border: 1px solid rgba(226,232,240,0.9);
-  border-radius: 18px;
-  padding: 1.45rem 1.25rem;
-  box-shadow: 0 10px 30px rgba(15, 70, 40, 0.05);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-}}
-.fc-card:hover, .fc-step-card:hover, .fc-choice-card:hover {{
-  transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(15, 70, 40, 0.09);
-  border-color: #bbf7d0;
-}}
-.fc-choice-card {{ border-radius: 20px; padding: 1.65rem 1.5rem; margin-bottom: 0; }}
-.fc-choice-icon {{
-  width: 52px; height: 52px; border-radius: 16px;
-  background: linear-gradient(135deg, {SKY}, {GREEN_LIGHT});
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; margin-bottom: 1rem; border: 1px solid #dbeafe;
-}}
-.fc-card-icon-wrap {{
-  width: 52px; height: 52px; border-radius: 16px;
-  background: linear-gradient(145deg, #ecfdf5, #dcfce7);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.1rem; border: 1px solid #bbf7d0; color: {GREEN_MID};
-}}
-.fc-icon-svg {{ width: 26px; height: 26px; display: block; }}
-.fc-card-num {{
-  width: 36px; height: 36px; border-radius: 12px;
-  background: linear-gradient(135deg, {GREEN_MID}, {GREEN_BRIGHT});
-  color: white; font-size: 0.78rem; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 0.85rem;
-}}
-.fc-card-title {{ font-weight: 700; color: {TEXT}; font-size: 1.05rem; margin-bottom: 0.5rem; }}
-.fc-card-text {{ color: {TEXT_MUTED}; font-size: 0.9rem; line-height: 1.6; }}
-.fc-profile-crop {{
-  width: 40px; height: 40px; border-radius: 12px; background: {MINT};
-  border: 1px solid #bbf7d0; display: flex; align-items: center; justify-content: center;
-  font-size: 1.2rem; margin-bottom: 0.75rem;
-}}
-.fc-profile-name {{ font-weight: 700; color: {GREEN_DARK}; font-size: 0.98rem; }}
-.fc-profile-meta {{ color: {TEXT_MUTED}; font-size: 0.8rem; margin: 0.2rem 0 0.55rem; }}
-.fc-profile-desc {{ color: {TEXT_MUTED}; font-size: 0.8rem; line-height: 1.5; margin-top: 0.35rem; }}
-.fc-risk-badge {{
-  display: inline-block; font-size: 0.68rem; font-weight: 800;
-  padding: 0.22rem 0.65rem; border-radius: 999px;
-}}
-.fc-footer-wrap {{ text-align: left; padding: 1.5rem 0 0.25rem; border-top: 1px solid {BORDER}; margin-top: 2rem; }}
-.fc-footer-brand {{
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 700; color: {GREEN_DARK}; font-size: 1.05rem; margin-bottom: 0.35rem;
-}}
-.fc-footer-tag {{ display: none; }}
-.fc-footer-copy {{ font-size: 0.8rem; color: #94a3b8; margin: 0; line-height: 1.5; }}
-.fc-process-row {{
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 0 0 0.5rem 0;
-}}
-.fc-process-step {{ border-top: 2px solid {GREEN_MID}; padding-top: 1rem; }}
-.fc-process-num {{
-  font-family: 'Fraunces', Georgia, serif; font-size: 1.35rem; font-weight: 700;
-  color: {GREEN_MID}; margin-bottom: 0.45rem;
-}}
-.fc-process-title {{ font-weight: 700; font-size: 1.05rem; color: {TEXT}; margin-bottom: 0.4rem; }}
-.fc-process-text {{ color: {TEXT_MUTED}; font-size: 0.92rem; line-height: 1.55; }}
-.fc-capability-grid {{ display: grid; grid-template-columns: 1fr; border-top: 1px solid {BORDER}; }}
-.fc-capability {{
-  display: grid; grid-template-columns: 3.25rem 1fr; gap: 0.85rem;
-  padding: 1.25rem 0.15rem; border-bottom: 1px solid {BORDER};
-}}
-.fc-capability-num {{
-  font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 700; color: {GREEN_MID};
-}}
-.fc-capability-title {{ font-weight: 700; font-size: 1.05rem; color: {TEXT}; margin-bottom: 0.3rem; }}
-.fc-capability-text {{ color: {TEXT_MUTED}; font-size: 0.93rem; line-height: 1.55; }}
-.fc-cta-band {{ display: none; }}
-@media (max-width: 768px) {{
-  .fc-card-grid-3, .fc-card-grid-2, .fc-card-grid-4, .fc-card-grid-5, .fc-steps-row, .fc-process-row {{
-    grid-template-columns: 1fr !important;
-  }}
-  .fc-capability {{ grid-template-columns: 2.5rem 1fr !important; }}
-  .fc-card, .fc-step-card, .fc-choice-card, .fc-profile-card {{
-    padding: 1.15rem 1.05rem !important;
-  }}
-}}
+{_SHARED_COMPONENT_CSS}
 """
 
 
@@ -1113,15 +400,10 @@ def apply_theme() -> None:
 
 
 def brand_icon_html(*, size: str = "sm") -> str:
-    if size == "hero":
-        return (
-            f'<div class="fc-hero-icon">'
-            f'<img src="{BRAND_LEAF_ICON_URI}" alt="" width="64" height="64" />'
-            f"</div>"
-        )
+    px = "20" if size != "hero" else "48"
     return (
         f'<div class="fc-brand-icon">'
-        f'<img src="{BRAND_LEAF_ICON_URI}" alt="" width="22" height="22" />'
+        f'<img src="{BRAND_LEAF_ICON_URI}" alt="" width="{px}" height="{px}" />'
         f"</div>"
     )
 
@@ -1151,12 +433,37 @@ def section_heading(title: str, subtitle: str = "") -> None:
 
 
 def section_close() -> None:
-    """No-op — kept for backward compatibility."""
     return
 
 
 def section_header(title: str, icon: str = "analytics") -> None:
-    st.markdown(f":material/{icon}: **{title}**")
+    section_heading(title)
+
+
+def render_step_progress(current: str) -> None:
+    """Farmer flow progress: choose → demo/form → results."""
+    order = ["choose", "input", "results"]
+    labels = {
+        "choose": "1 · Path",
+        "input": "2 · Details",
+        "results": "3 · Result",
+    }
+    mapped = {
+        "choose": "choose",
+        "demo_pick": "input",
+        "form": "input",
+        "results": "results",
+    }.get(current, "choose")
+    current_idx = order.index(mapped)
+    pills = []
+    for i, key in enumerate(order):
+        cls = "fc-step-pill"
+        if i < current_idx:
+            cls += " is-done"
+        elif i == current_idx:
+            cls += " is-active"
+        pills.append(f'<span class="{cls}">{labels[key]}</span>')
+    st.markdown(f'<div class="fc-steps">{"".join(pills)}</div>', unsafe_allow_html=True)
 
 
 from frontend.utils.badges import risk_badge_html as _risk_badge_html

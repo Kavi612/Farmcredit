@@ -1,4 +1,4 @@
-"""Welcome page — mockup-aligned landing: hero + start CTAs."""
+"""Welcome page."""
 
 from __future__ import annotations
 

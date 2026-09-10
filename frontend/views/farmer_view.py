@@ -21,7 +21,7 @@ from frontend.utils.state import (
     go_welcome,
 )
 from frontend.utils.html_ui import render_html
-from frontend.utils.theme import section_heading
+from frontend.utils.theme import render_step_progress, section_heading
 
 
 @st.cache_data(ttl=60)
@@ -31,26 +31,26 @@ def _cached_demos() -> list[dict]:
 
 def _render_choose_step() -> None:
     section_heading(
-        "How would you like to start?",
-        "Both paths use the same assessment form.",
+        "Start an assessment",
+        "Choose a demo farmer or enter your own farm and loan details.",
     )
     render_html(
         """
         <div class="fc-card-grid fc-card-grid-2">
           <div class="fc-choice-card">
-            <div class="fc-choice-icon">A</div>
+            <div class="fc-choice-icon">1</div>
             <div class="fc-card-title">Try Demo Data</div>
-            <div class="fc-card-text">Pick one of five sample farmers. Their details pre-fill the form so you can see a complete result quickly.</div>
+            <div class="fc-card-text">Five sample farmers across Low to Critical risk. Details pre-fill the form.</div>
           </div>
           <div class="fc-choice-card">
-            <div class="fc-choice-icon">B</div>
+            <div class="fc-choice-icon">2</div>
             <div class="fc-card-title">Enter Your Own Data</div>
-            <div class="fc-card-text">Start with a blank form and enter farm location, crop, rainfall, and loan details yourself.</div>
+            <div class="fc-card-text">Blank form for location, crop, rainfall, income, debt, and repayment history.</div>
           </div>
         </div>
         """
     )
-    c1, c2 = st.columns(2, gap="medium")
+    c1, c2 = st.columns(2, gap="small")
     with c1:
         if st.button("Try Demo Data", key="farmer_try_demo", type="primary", use_container_width=True):
             farmer_choose_demo()
@@ -59,7 +59,6 @@ def _render_choose_step() -> None:
         if st.button("Enter Your Own Data", key="farmer_enter_own", use_container_width=True):
             farmer_choose_manual()
             st.rerun()
-
     if st.button("Back to Welcome", key="farmer_choose_back"):
         go_welcome()
         st.rerun()
@@ -82,7 +81,7 @@ def _render_demo_pick_step() -> None:
             except ApiError as exc:
                 st.error(exc.message)
 
-    if st.button("← Back", key="farmer_demo_back"):
+    if st.button("Back", key="farmer_demo_back"):
         farmer_back_to_choose()
         st.rerun()
 
@@ -90,7 +89,7 @@ def _render_demo_pick_step() -> None:
 def _render_form_step() -> None:
     features = render_farmer_form()
     if features:
-        with st.spinner("Analyzing your credit risk…"):
+        with st.spinner("Analyzing credit risk…"):
             try:
                 result = run_custom_assess(features)
                 if st.session_state.get("selected_demo_id"):
@@ -100,7 +99,7 @@ def _render_form_step() -> None:
             except ApiError as exc:
                 st.error(exc.message)
 
-    if st.button("← Back", key="farmer_form_back"):
+    if st.button("Back", key="farmer_form_back"):
         farmer_back_from_form()
         st.rerun()
 
@@ -112,21 +111,15 @@ def _render_results_step() -> None:
         st.rerun()
         return
 
-    st.markdown("---")
     render_farmer_result(result, inline=True)
-
-    if st.button(
-        "Start a new assessment",
-        key="farmer_new_assessment",
-        use_container_width=True,
-        icon=":material/refresh:",
-    ):
+    if st.button("Start a new assessment", key="farmer_new_assessment", use_container_width=True):
         farmer_new_assessment()
         st.rerun()
 
 
 def render_farmer_view() -> None:
     step = st.session_state.get("farmer_step", "choose")
+    render_step_progress(step)
     if step == "choose":
         _render_choose_step()
     elif step == "demo_pick":
